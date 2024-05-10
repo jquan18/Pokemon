@@ -20,38 +20,40 @@ public class battleSystem {
         while (trainer.trainerBag.pokemonList.checkStatus() && enemy.enemyBag.pokemonList.checkStatus() && trainer.isKeepStay()) {
             displayBattleStatus();
 
-            playerTurn();
-            if (!monsters.isAlive()) {
-                System.out.println("You defeated " + monsters.getName());
-                break;
-            }
-
-            monstersTurn();
-            if (!player.isAlive()) {
-                System.out.println("You are defeated by " + monsters.getName());
-                break;
-            }
+//            playerTurn();
+//            if (!monsters.isAlive()) {
+//                System.out.println("You defeated " + monsters.getName());
+//                break;
+//            }
+//
+//            monstersTurn();
+//            if (!player.isAlive()) {
+//                System.out.println("You are defeated by " + monsters.getName());
+//                break;
+//            }
         }
     }
     public void displayBattleStatus() {
-
+        System.out.printf("%s is sent out! Its %s type is s");
     }
     public void chooseEnemyPokemon(String enemeyType) {
         switch (enemeyType) {
             /*
             For the "Wild_Pokemon", need to check current city first
              */
-            case "Wild_Pokemon" :
-                enemyCurrentPokemon =
+//            case "Wild_Pokemon" :
+//                enemyCurrentPokemon =
             default :
                 int num = new Random().nextInt(6);
                 enemyCurrentPokemon = enemy.enemyBag.pokemonList.get(num);
-                System.out.printf("%s sends out %s [Level %d]", enemy.getName(), enemyCurrentPokemon.getName(), enemyCurrentPokemon.getLevel());
+                System.out.printf("%s sends out %s [Level %d] !\n", enemy.getName(), enemyCurrentPokemon.getName(), enemyCurrentPokemon.getLevel());
 
         }
+    }
 
-        int num = new Random().nextInt();
-
+    public void checkTypeCounter() {
+        double multipliers;
+//        if ()
     }
 
 }

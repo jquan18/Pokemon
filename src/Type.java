@@ -30,7 +30,7 @@ public class Type {
         return this.type;
     }
 
-    public double counter(String[] enemy) {
+    public double typeCounter(String[] enemy) {
         double total = 1;
         int trainerTypeIndex = 0;
         int enemyTypeIndex = 0;
@@ -54,6 +54,52 @@ public class Type {
                 }
         }
         return total;
+    }
+    public double moveCounter(String own, String[] opposite) {
+        int trainerMoveIndex = 0;
+        double total = 1;
+        int oppositeTypeIndex = 0;
+
+        for (int i=0; i< pokemonType.length; i++) {
+            if (pokemonType[i].equalsIgnoreCase(own)) {
+                trainerMoveIndex = i;
+                break;
+            }
+        }
+
+        for (int j=0; j<opposite.length; j++) {
+            for (int k=0; k< pokemonType.length; k++) {
+                if (opposite[j].equalsIgnoreCase(pokemonType[k])) {
+                    oppositeTypeIndex = k;
+                    break;
+                }
+                total *= counterMatrix[trainerMoveIndex][oppositeTypeIndex];
+            }
+        }
+        // float, double , long and short are prohibited in switch()
+        if (total == 4) {
+            System.out.println("Doubly Effective!!!!");
+            return 2.56;
+        }
+        else if (total == 2) {
+            System.out.println("Super Effective!!");
+            return 1.6;
+        }
+        else if (total == 1) {
+            return 1;
+        }
+        else if (total == 0.5 ) {
+            System.out.println("Not very effective!");
+            return 0.625;
+        }
+        else if (total == 0.25){
+            System.out.println("Not effective.");
+            return 0.39;
+        }
+        else {
+            System.out.println("Immunity");
+            return 0;
+        }
     }
 
 }

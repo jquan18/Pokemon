@@ -251,4 +251,6 @@ public class CityController {
     public static boolean isValidDirection(String direction) {
         return direction.equals("up") || direction.equals("down") || direction.equals("left") || direction.equals("right");
     }
+
+
 }
