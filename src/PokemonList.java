@@ -57,7 +57,7 @@ public class PokemonList{
         PokemonNode poke = head;
         int totalHP = 0;
         for (int i=0; i<getSize(); i++) {
-            totalHP += poke.pokemon.getHP();
+            totalHP += poke.pokemon.HP;
             poke = poke.next;
         }
 

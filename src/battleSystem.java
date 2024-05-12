@@ -1,13 +1,11 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Random;
-
+import java.util.*;
 public class battleSystem {
     private Trainer trainer;
     private Enemy enemy;
-    private Pokemon trainerCurrentPokemon = trainer.trainerBag.pokemonList.get(0);
+    private Pokemon trainerCurrentPokemon;
     private Pokemon enemyCurrentPokemon;
     private String[] enemyType = {"Wild_Pokemon", "Gym_Leader", "Gary"};
+    private HandingAbnormalInput inputchecker = new HandingAbnormalInput();
 
     public battleSystem(Trainer trainer , Enemy enemy) {
         this.trainer = new Trainer();
@@ -16,11 +14,12 @@ public class battleSystem {
 
     public void startBattle() {
         System.out.println("Battle Start: " + trainer.getName() + " and " + enemy.getName());
+        chooseEnemyPokemon("Gary");
+        chooseDefaultPokemon();
 
         while (trainer.trainerBag.pokemonList.checkStatus() && enemy.enemyBag.pokemonList.checkStatus() && trainer.isKeepStay()) {
             displayBattleStatus();
-
-//            playerTurn();
+            trainerTurn();
 //            if (!monsters.isAlive()) {
 //                System.out.println("You defeated " + monsters.getName());
 //                break;
@@ -34,7 +33,9 @@ public class battleSystem {
         }
     }
     public void displayBattleStatus() {
-        System.out.printf("%s is sent out! Its %s type is s");
+        System.out.println(trainerCurrentPokemon.getName() + " " + trainerCurrentPokemon.getHpBar());
+        System.out.println(enemyCurrentPokemon.getName() + " " + enemyCurrentPokemon.getHpBar());
+
     }
     public void chooseEnemyPokemon(String enemeyType) {
         switch (enemeyType) {
@@ -49,6 +50,38 @@ public class battleSystem {
                 System.out.printf("%s sends out %s [Level %d] !\n", enemy.getName(), enemyCurrentPokemon.getName(), enemyCurrentPokemon.getLevel());
 
         }
+    }
+    public void chooseDefaultPokemon() {
+        trainerCurrentPokemon = trainer.trainerBag.pokemonList.get(0);
+    }
+    public void chooseTrainerPokemon(int index) {
+        trainerCurrentPokemon = trainer.trainerBag.pokemonList.get(index - 1);
+        System.out.printf("%s is sent out!\n", trainerCurrentPokemon.getName());
+        trainerCurrentPokemon.getType().typeCounter(trainerCurrentPokemon, enemyCurrentPokemon);
+    }
+    public void trainerTurn() {
+        System.out.println("It's your round!");
+        System.out.printf("%s's Moves: \n", trainerCurrentPokemon.getName());
+        System.out.printf("1. %s [%s]", trainerCurrentPokemon.getMoveName(0), trainerCurrentPokemon.getMoveType(0));
+        System.out.printf("2. %s [%s]", trainerCurrentPokemon.getMoveName(1), trainerCurrentPokemon.getMoveType(1));
+
+        Scanner sc = new Scanner(System.in);
+        String input = "5070";
+        while (true) {
+            System.out.printf("Which move will %s use?", trainerCurrentPokemon.getName());
+            input = sc.nextLine();
+            if (inputchecker.checkAbnormalInput(input, "1", "2")) {
+                switch (input) {
+                    case "1":
+//                        trainerCurrentPokemon.useQuickMove()
+                    case "2":
+                    default:
+                        System.out.println("Error on battleSystem player turn");
+                }
+                break;
+            }
+        }
+
     }
 
     public void checkTypeCounter() {

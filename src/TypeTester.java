@@ -13,6 +13,6 @@ public class TypeTester {
         Type typeE2 = new Type(enemy2);
         Type typeE3 = new Type(enemy3);
         Type typeE4 = new Type(enemy4);
-        System.out.println(typeTrainer.typeCounter(enemy1));
+//        System.out.println(typeTrainer.typeCounter(enemy1));
     }
 }

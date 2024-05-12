@@ -14,10 +14,6 @@ public class Trainer {
         trainerBag.pokemonList.add(4, new Pokemon("Charizard", new String[]{"Fire", "Flyinh"}, 78, 10, "Fire Spin","Fire", 20, "Dragon Claw","Dragon", 120));
         trainerBag.pokemonList.add(5, new Pokemon("Squirtle", new String[]{"Water"}, 44, 5, "Tackle","Normal", 10, "Water Gum","Water", 80));
     }
-
-//    public boolean isAlive() {
-//
-//    }
     public boolean isKeepStay() {
         return keepStay;
     }
