@@ -10,8 +10,9 @@ public class Pokemon{
     private String name;
     private Type type, QMType, MMType;
 //    private ArrayList<Moves> moves = new ArrayList<>();
-    private QuickMove quickMove;
-    private MainMove mainMove;
+    final QuickMove quickMove;
+    final MainMove mainMove;
+
     public Pokemon() {
         this(null, null, 0, 0, null, null, 0, null, null, 0 );
     }
@@ -22,28 +23,41 @@ public class Pokemon{
         this.HP = HP;
         this.level = level;
         this.quickMove = new QuickMove(QMName, QMType, QMDamage);
-        this.mainMove = new MainMove((MMName, MMType, MMDamage);
+        this.mainMove = new MainMove(MMName, MMType, MMDamage);
     }
-    public void useQuickMove(Pokemon enemy) {
-        quickMove.QMPoint -= 1;
-        System.out.printf("%s used %s", this.name, this.quickMove.getMovesName());
-        //Check the problem here
-        int value = (int)(quickMove.getDPR() * quickMove.getMovesType().moveCounter(quickMove.getMovesTypeString(), new String[]{enemy.getType().toString()} ));
-//        System.out.printf("%s's HP drops %d points!", enemy.getName(), value);
+    public void useMove(int index, Pokemon enemy) {
+        int value = 0;
+        switch (index) {
+            case 1:
+                quickMove.QMPoint -= 1;
+                System.out.printf("%s used %s\n", this.name, this.quickMove.getMovesName());
+                //Check toString()
+                value = (int)(quickMove.getDPR() * quickMove.getMovesType().moveCounter(quickMove.getMovesTypeString(), new String[]{enemy.getType().toString()} ));
+                break;
+            case 2:
+                mainMove.MMPoint -= 1;
+                System.out.printf("%s used %s", this.name, this.mainMove.getMovesName());
+                value = (int) (mainMove.getDPR() * mainMove.getMovesType().moveCounter(mainMove.getMovesTypeString(), new String[]{enemy.getType().toString()}));
+                break;
+
+        }
         receiveDamage(value, enemy);
+//        System.out.printf("%s's HP drops %d points!", enemy.getName(), value);
     }
 
     public void receiveDamage(int value, Pokemon enemy) {
         enemy.HP -= value;
+        if (enemy.HP < 0)
+            enemy.HP = 0;
     }
     public void displayPokemonStatus() {
         System.out.println(getName());
-        System.out.printf("--HP: [ %s ](%s/%s)", getHpBar(), this.HP, this.maxHP);
+        System.out.printf("--HP: [ %s ](%s/%s)\n", getHpBar(), this.HP, this.maxHP);
     }
     public String getHpBar() {
         int barLength = 10;
-        int bar = (int) Math.round((double) this.HP / maxHP * barLength);
-        return "[" + "=".repeat(bar) + " ".repeat(barLength - bar);
+        int bar = Math.abs((int) Math.round((double) this.HP / maxHP * barLength));
+         return "=".repeat(bar) + " ".repeat(barLength - bar);
     }
     public int getLevel() {
         return level;

@@ -12,13 +12,38 @@ public class PokemonList{
     /*
     Need to test the catch pokemon. I think remove() will have some problem!
      */
-    public void add(int index, Pokemon pokemon) {
+    public void addFirst(Pokemon pokemon) {
+        PokemonNode tmp = new PokemonNode(pokemon, head, null);
+        if (head != null) {
+            head.prev = tmp;
+        }
+        head = tmp;
+        if (tail == null)
+            tail = tmp;
+        size++;
+        System.out.println(pokemon.getName() + " is added into Bag! :)");
+    }
+    public void addLast(Pokemon pokemon) {
+        PokemonNode tmp = new PokemonNode(pokemon, null, tail);
+        if (tail != null)
+            tail.next = tmp;
+        tail = tmp;
+        if (head == null)
+            head = tmp;
+        size++;
+        System.out.println(pokemon.getName() + " is added into Bag! :)");
+    }
+     public void add(int index, Pokemon pokemon) {
         if (size >= 6) {
             throw new IllegalStateException("You can have only 6 pokemon in Bag! Please remove one of them first!");
         }
         else {
-            if (index<0)
+            if (index<0 || index>size)
                 throw new NoSuchElementException("Please enter a correct places...");
+            else if (index == 0)
+                addFirst(pokemon);
+            else if (index == size)
+                addLast(pokemon);
             else {
                 PokemonNode current = head;
                 for (int i=0; i<index; i++) {
@@ -27,9 +52,8 @@ public class PokemonList{
                 PokemonNode insert = new PokemonNode(pokemon, current, current.prev);
                 current.prev.next = insert;
                 current.prev = insert;
+                size++;
             }
-            size++;
-            System.out.println(pokemon.getName() + " is added into Bag! :)");
         }
     }
     public void remove(int index) throws Exception {
