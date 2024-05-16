@@ -1,0 +1,1160 @@
+Bulbasaur
+45
+49
+49
+1
+16
+5.9
+2
+Grass
+Poison
+1
+Tackle,50
+Tackle,50
+2
+Vine Whip,45
+Take Down,90
+9
+15
+water,rock,ground,grass
+fire,bug,flying,poison,ground,psychic
+
+Ivysaur
+60
+80
+80
+16
+32
+5.9
+0
+Grass
+Poison
+2
+Tackle,50
+Vine Whip,45
+2
+Razor Leaf,55
+Double-Edge,120
+20
+31
+water,rock,ground,grass
+fire,bug,flying,poison,ground,psychic
+
+Venusaur
+80
+100
+100
+32
+101
+5.9
+0
+Grass
+Poison
+101
+Vine Whip,45
+Take Down,90
+4
+Petal Dance,90
+Sludge Bomb,90
+Solar Beam,120
+Frenzy Plant,150
+33
+45
+53
+80
+water,rock,ground,grass
+fire,bug,flying,poison,ground,psychic
+
+Charmander
+39
+60
+50
+1
+16
+5.9
+2
+Fire
+null
+4
+Scratch,50
+Scratch,50
+2
+Ember,40
+Dragon Rage,40
+7
+15
+grass,steel,bug,ice
+water,rock,ground
+
+Charmeleon
+58
+80
+65
+16
+36
+5.9
+0
+Fire
+null
+5
+Scratch,50
+Dragon Rage,40
+2
+Fire Fang,65
+Flame Burst,70
+28
+32
+grass,steel,bug,ice
+water,rock,ground
+
+Charizard
+78
+108
+85
+36
+101
+5.9
+0
+Fire
+Flying
+101
+Ember,40
+Flame Burst,70
+6
+Fly,90
+Shadow Claw,70
+Flamethrower,95
+Dragon Claw,80
+Overheat,140
+Blast Burn,150
+37
+41
+47
+56
+62
+80
+grass,steel,bug,ice
+water,rock,ground,electric,ice,bug
+
+Squirtle
+44
+50
+65
+1
+16
+5.9
+2
+Water
+null
+7
+Tackle,50
+Tackle,50
+2
+Water Gun,40
+Bite,60
+7
+15
+fire,rock,ground
+grass,electric
+
+Wartortle
+59
+65
+80
+16
+36
+5.9
+0
+Water
+null
+8
+Water Gun,40
+Bite,60
+3
+Water Pulse,60
+Aqua Tail,90
+Skull Bash,130
+20
+32
+35
+fire,rock,ground
+grass,electric
+
+Blastoise
+79
+85
+105
+36
+101
+5.9
+0
+Water
+null
+101
+Bite,60
+Skull Bash,130
+5
+Surf,90
+Flash Cannon,80
+Ice Beam,95
+Hydro Pump,120
+Hydro Cannon,150
+39
+46
+53
+60
+80
+fire,rock,ground
+grass,electric
+
+Caterpie
+45
+30
+35
+1
+7
+33.3
+1
+Bug
+null
+10
+Tackle,50
+Tackle,50
+0
+psychic,dark
+fire,flying
+
+Metapod
+50
+25
+55
+7
+10
+15.7
+1
+Bug
+null
+11
+Tackle,50
+Harden,0
+0
+psychic,dark
+fire,flying,rock
+
+Butterfree
+50
+70
+70
+10
+101
+5.9
+1
+Bug
+Flying
+101
+Confusion,50
+Confusion,50
+6
+Gust,40
+Psybeam,65
+Silver Wind,60
+Bug Buzz,90
+Psychic,90
+Fly,90
+16
+24
+28
+42
+50
+55
+psychic,dark,bug,grass
+fire,flying,rock,electric,ice
+
+Weedle
+40
+35
+30
+1
+7
+33.3
+1
+Bug
+Poison
+13
+Poison Sting,15
+Poison Sting,15
+0
+psychic,dark,grass
+fire,flying,rock,ground,psychic
+
+Kakuna
+45
+25
+50
+7
+10
+15.7
+1
+Bug
+Poison
+14
+Poison Sting,15
+Harden,0
+0
+psychic,dark,grass
+fire,flying,rock,ground,psychic
+
+Beedrill
+55
+70
+70
+10
+101
+5.9
+1
+Bug
+Poison
+101
+Fury Attack,45
+Fury Attack,45
+5
+Twineedle,25
+Pursuit,40
+Assurance,60
+Poison Jab,80
+Bug Buzz,90
+16
+22
+34
+37
+45
+psychic,dark,grass
+fire,flying,rock,ground,psychic
+
+Pidgey
+40
+45
+40
+1
+18
+33.3
+1
+Normal
+Flying
+16
+Tackle,50
+Tackle,50
+2
+Gust,40
+Quick Attack,60
+9
+13
+bug,grass
+electric,ice,rock
+
+Pidgeotto
+63
+60
+55
+18
+36
+15.7
+1
+Normal
+Flying
+17
+Tackle,50
+Quick Attack,60
+1
+Twister,40
+22
+bug,grass
+electric,ice,rock
+
+Pidgeot
+83
+80
+75
+36
+101
+5.9
+0
+Normal
+Flying
+101
+Tackle,50
+Quick Attack,60
+4
+Wing Attack,60
+Air Slash,75
+Steel Wing,70
+Hurricane,110
+38
+44
+56
+68
+bug,grass
+electric,ice,rock
+
+Rattata
+30
+56
+35
+1
+20
+33.3
+1
+Normal
+null
+19
+Tackle,50
+Tackle,50
+3
+Quick Attack,60
+Bite,60
+Hyper Fang,80
+4
+10
+16
+null
+null
+
+Raticate
+55
+81
+70
+20
+101
+0
+0
+Normal
+null
+101
+Quick Attack,60
+Hyper Fang,80
+2
+Crunch,80
+Double-Edge,120
+24
+39
+null
+null
+
+Spearow
+40
+60
+31
+1
+20
+33.3
+1
+Normal
+Flying
+21
+Peck,35
+Peck,35
+3
+Fury Attack,45
+Pursuit,40
+Aerial Ace,60
+9
+13
+17
+bug,grass
+electric,ice,rock
+
+Fearow
+65
+90
+65
+20
+101
+0
+0
+Normal
+Flying
+101
+Peck,35
+Aerial Ace,60
+4
+Drill Peck,80
+Steel Wing,70
+Fly,90
+Drill Run,80
+35
+41
+47
+53
+bug,grass
+electric,ice,rock
+
+Ekans
+35
+60
+54
+1
+22
+33.3
+1
+Poison
+null
+23
+Wrap,15
+Wrap,15
+3
+Poison Sting,15
+Bite,60
+Acid,40
+4
+9
+20
+grass
+ground,psychic
+
+Arbok
+60
+85
+79
+22
+101
+0
+0
+Poison
+null
+101
+Poison Sting,15
+Bite,60
+5
+Crunch,80
+Fire Fang,65
+Thunder Fang,65
+Ice Fang,65
+Gunk Shot,120
+22
+27
+32
+39
+50
+grass
+ground,psychic
+
+Pikachu
+35
+55
+50
+1
+30
+24.8
+1
+Electric
+null
+25
+Thunder Shock,40
+Thunder Shock,40
+2
+Quick Attack,60
+Spark,65
+10
+26
+water,flying
+rock,ground,steel
+
+Raichu
+60
+90
+80
+30
+101
+0
+0
+Electric
+null
+101
+Thunder Shock,40
+Spark,65
+5
+Thunderbolt,95
+Dig,80
+Iron Tail,100
+Brick Break,75
+Thunder,120
+37
+42
+47
+54
+60
+water,flying
+rock,ground,steel
+
+Sandshrew
+50
+75
+85
+1
+22
+33.3
+1
+Ground
+null
+27
+Scratch,40
+Scratch,40
+3
+Poison Sting,15
+Rollout,30
+Magnitude,50
+3
+7
+14
+fire,steel,rock,electric
+water,grass,bug,ice
+
+Sandslash
+75
+100
+110
+22
+101
+0
+0
+Ground
+null
+101
+Rollout,30
+Magnitude,50
+4
+Dig,80
+Crush Claw,75
+Earthquake,100
+X-Scissor,80
+23
+33
+43
+48
+fire,steel,rock,electric
+water,grass,bug,ice
+
+Nidorino
+46
+57
+40
+1
+30
+15.7
+1
+Poison
+null
+29
+Peck,35
+Peck,35
+3
+Double Kick,60
+Poison Sting,15
+Horn Attack,65
+9
+13
+23
+grass
+ground,psychic
+
+Nidoking
+81
+92
+77
+30
+101
+0
+0
+Ground
+Poison
+101
+Double Kick,60
+Horn Attack,65
+4
+Sludge Bomb,80
+Thrash,120
+Earthquake,100
+Megahorn,120
+35
+43
+50
+58
+fire,steel,rock,electric,grass
+water,grass,bug,ice,ground,psychic
+
+Kadabra
+40
+75
+55
+1
+30
+13.1
+1
+Psychic
+null
+31
+Confusion,50
+Confusion,50
+2
+Psybeam,65
+Psycho Cut,70
+21
+28
+null
+ghost,dark,bug
+
+Alakazam
+70
+135
+95
+30
+101
+0
+0
+Psychic
+null
+101
+Confusion,50
+Psycho Cut,70
+4
+Psychic,90
+Shadow Ball,80
+Energy Ball,80
+Future Sight,120
+31
+36
+41
+46
+null
+ghost,dark,bug
+
+Machoke
+52
+72
+42
+1
+30
+11.8
+1
+Fighting
+null
+33
+Karate Chop,50
+Karate Chop,50
+3
+Low Sweep,65
+Knock Off,65
+Brick Break,75
+13
+21
+25
+normal,rock,ice
+flying,psychic
+
+Machamp
+90
+130
+85
+30
+101
+0
+0
+Fighting
+null
+101
+Knock Off,65
+Brick Break,75
+4
+Submission,80
+Poison Jab,80
+Rock Slide,75
+Cross Chop,100
+37
+43
+47
+53
+normal,rock,ice
+flying,psychic
+
+Haunter
+40
+80
+40
+1
+30
+11.8
+1
+Ghost
+Poison
+35
+Lick,30
+Lick,30
+2
+Shadow Punch,60
+Dark Pulse,80
+15
+25
+psychic,grass
+dark,ground,poison
+
+Gengar
+60
+130
+75
+30
+101
+0
+0
+Ghost
+Poison
+101
+Shadow Punch,60
+Dark Pulse,80
+3
+Sludge Bomb,80
+Shadow Ball,80
+Dream Eater,100
+33
+39
+50
+psychic,grass
+dark,ground,poison
+
+Magikarp
+20
+15
+55
+1
+20
+33.3
+1
+Water
+null
+37
+Splash,0
+Splash,0
+1
+Tackle,50
+15
+fire,rock,ground
+grass,electric
+
+Gyarados
+95
+125
+100
+20
+101
+0
+0
+Water
+Flying
+101
+Tackle,50
+Tackle,50
+6
+Crunch,80
+Ice Fang,65
+Thrash,120
+Aqua Tail,90
+Hydro Pump,120
+Hyper Beam,150
+21
+29
+35
+41
+47
+60
+fire,rock,ground,bug,grass
+grass,electric,ice,rock
+
+Vaporeon
+90
+80
+65
+1
+101
+5.9
+1
+Water
+null
+101
+Tackle,50
+Tackle,50
+5
+Water Pulse,60
+Ice Beam,95
+Surf,90
+Last Resort,140
+Hydro Pump,120
+5
+17
+25
+37
+50
+fire,rock,ground
+grass,electric
+
+Jolteon
+45
+80
+65
+1
+101
+5.9
+1
+Electric
+null
+101
+Tackle,50
+Tackle,50
+6
+Thunder Shock,40
+Double Kick,60
+Discharge,80
+Thunderbolt,95
+Last Resort,140
+Thunder,120
+5
+10
+20
+30
+41
+50
+water,flying
+rock,ground,steel
+
+Flareon
+45
+90
+80
+1
+101
+5.9
+1
+Fire
+null
+101
+Tackle,50
+Tackle,50
+6
+Ember,40
+Bite,60
+Lava Plume,80
+Flamethrower,95
+Last Resort,140
+Fire Blast,120
+5
+10
+20
+30
+41
+50
+grass,steel,bug,ice
+water,rock,ground
+
+Aerodactyl
+65
+80
+60
+1
+101
+5.9
+1
+Rock
+Flying
+101
+Thunder Fang,65
+Wing Attack,60
+7
+Ancient Power,60
+Crunch,80
+Iron Head,80
+Fly,90
+Dragon Claw,80
+Stone Edge,100
+Hyper Beam,150
+9
+25
+33
+41
+49
+57
+65
+ice,flying,fire,electric,bug,grass
+water,grass,steel,electric,ice
+
+Articuno
+90
+95
+125
+1
+101
+2.0
+2
+Ice
+Flying
+101
+Fly,90
+Ice Shard,40
+4
+Ice Beam,95
+Hurricane,110
+Blizzard,120
+Sheer Cold,150
+15
+30
+50
+100
+grass,flying,bug,grass
+steel,rock,fire,electric
+
+Zapdos
+90
+125
+90
+1
+101
+2.0
+2
+Electric
+Flying
+101
+Fly,90
+Thunder Shock,40
+4
+Drill Peck,80
+Thunderbolt,95
+Zap Cannon,120
+Hurricane,110
+15
+30
+45
+60
+water,flying,bug,grass
+rock,ground,steel,ice
+
+Moltres
+90
+125
+90
+1
+101
+2.0
+2
+Fire
+Flying
+101
+Ember,40
+Wing Attack,60
+5
+Heat Wave,95
+Fire Blast,120
+Hurricane,110
+Solar Beam,120
+Sky Attack,140
+15
+30
+45
+60
+75
+grass,steel,bug,ice,bug,grass
+water,rock,ground,electric,ice
+
+Dratini
+41
+64
+50
+1
+30
+5.9
+1
+Dragon
+null
+46
+Wrap,15
+Twister,40
+1
+Slam,80
+21
+null
+ice
+
+Dragonair
+71
+94
+80
+30
+55
+0
+0
+Dragon
+null
+47
+Slam,80
+Twister,40
+3
+Dragon Tail,60
+Aqua Tail,90
+Dragon Rush,100
+33
+39
+47
+null
+ice
+
+Dragonite
+198
+204
+167
+55
+100
+0
+0
+Dragon
+Flying
+101
+Dragon Rush,100
+Slam,80
+5
+Outrage,120
+Hurricane,110
+Draco Meteor,130
+Hyper Beam,150
+Sky Attack,140
+56
+61
+67
+75
+81
+bug,grass
+ice
+
+Mewtwo
+106
+154
+90
+1
+101
+2.0
+2
+Psychic
+null
+101
+Confusion,50
+Confusion,50
+6
+Psychic,90
+Aura Sphere,80
+Future Sight,120
+Shadow Ball,80
+Energy Ball,80
+Focus Blast,120
+15
+22
+29
+36
+43
+50
+null
+ghost,dark,bug
