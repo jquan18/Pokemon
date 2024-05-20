@@ -14,6 +14,7 @@ public class Pokemon{
     final QuickMove quickMove;
     final MainMove mainMove;
     LevelSystem levelSystem;
+    String master;
 
 
     public Pokemon() {
@@ -30,6 +31,7 @@ public class Pokemon{
         this.quickMove = new QuickMove(QMName, QMType, QMDamage);
         this.mainMove = new MainMove(MMName, MMType, MMDamage);
         this.levelSystem = new LevelSystem();
+        this.master = "";
     }
     public void useMove(int index, Pokemon enemy) {
         int value = 0;
@@ -93,10 +95,12 @@ public class Pokemon{
     }
     public int getAttack() {
         return this.attack;
-
     }
     public int getDefense() { return this.defense; }
     public void gainEXP(Pokemon enemy) {
         this.levelSystem.addEXP(this, enemy.levelSystem.currentLevel * 4);
+    }
+    public void setMaster(String master) {
+        this.master = master;
     }
 }

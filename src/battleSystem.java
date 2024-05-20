@@ -67,14 +67,15 @@ public class battleSystem {
         }
     }
     public void enemyChangePokemon() {
-         PokemonNode current = enemy.enemyBag.pokemonList.head;
-         while (current != null) {
-             if (current.pokemon.getName().equalsIgnoreCase(enemyCurrentPokemon.getName())){
-                 enemyCurrentPokemon = current.next.pokemon;
+
+         for (int i=0; i<enemy.enemyBag.pokemonList.list.size(); i++) {
+             Pokemon current = enemy.enemyBag.pokemonList.list.get(i);
+             if (current.getName().equalsIgnoreCase(enemyCurrentPokemon.getName())) {
+                 enemyCurrentPokemon = enemy.enemyBag.pokemonList.list.get(i + 1);
                  break;
              }
-             current = current.next;
          }
+
         System.out.printf("%s sends out %s[Level %d] !", enemy.getName(), enemyCurrentPokemon.getName(), enemyCurrentPokemon.getLevel());
     }
     public void chooseDefaultPokemon() {
@@ -88,8 +89,10 @@ public class battleSystem {
             index = sc.nextLine();
             if (inputChecker.checkAbnormalInput(index, "1", "6")) {
                 int position = Integer.parseInt(index);
-                if (trainer.trainerBag.pokemonList.get(position-1).HP == 0)
+                if (trainer.trainerBag.pokemonList.list.get(position-1) == null)
                     System.out.println("This pokemon is not available now.");
+                else if (trainer.trainerBag.pokemonList.get(position-1).HP == 0 )
+                    System.out.println("That is no pokemon on this place");
                 else {
                     trainerCurrentPokemon = trainer.trainerBag.pokemonList.get(position - 1);
                     System.out.printf("%s is sent out!\n", trainerCurrentPokemon.getName());
@@ -97,11 +100,14 @@ public class battleSystem {
                     break;
                 }
             }
+            else {
+                System.out.println("Developer: Huh...? I remember I just set 6 position only....");
+            }
         }
     }
     public void trainerTurn() {
         if (trainerCurrentPokemon.HP <= 0) {
-            checkAvailablePokemon();
+            trainer.checkAvailablePokemon(trainerCurrentPokemon);
             chooseTrainerPokemon();
         }
         else {
@@ -128,20 +134,23 @@ public class battleSystem {
                             trainerCurrentPokemon.useMove(2, enemyCurrentPokemon);
                             break;
                         case "3":
-                            checkAvailablePokemon();
+                            trainer.checkAvailablePokemon(trainerCurrentPokemon);
                             chooseTrainerPokemon();
                             break;
                         case "4":
                             trainer.tryEscaped();
                             break;
                         case "5":
-                            trainer.tryCatch();
+                            if (enemyCurrentPokemon.master.isEmpty())
+                                trainer.tryCatch(trainerCurrentPokemon, enemyCurrentPokemon);
+                            else
+                                System.out.printf("%s: Don't underestimate the bond between me and my Pokémon! \n", enemy.getName());
                             break;
                         default:
                             System.out.println("Error on battleSystem player turn");
                     }
                     if (enemyCurrentPokemon.HP <= 0) {
-                        trainerCurrentPokemon.
+                        trainerCurrentPokemon.gainEXP(enemyCurrentPokemon);
                     }
                     break;
                 }
@@ -168,29 +177,5 @@ public class battleSystem {
 
     }
 
-    public void checkAvailablePokemon() {
-        PokemonNode pokemon = trainer.trainerBag.pokemonList.head;
-        int i=1;
-        System.out.println();
-        while (pokemon != null) {
-            if (pokemon.pokemon.getName().equalsIgnoreCase(trainerCurrentPokemon.getName())) {
-                System.out.printf("%d. %s Lv.%d",i, pokemon.pokemon.getName(), pokemon.pokemon.getLevel());
-                System.out.printf("[ %s ] (%d/%d)", Arrays.toString(pokemon.pokemon.getType().getTypeName()), pokemon.pokemon.HP, pokemon.pokemon.maxHP);
-                System.out.println("[Current Use]");
-            }
-            else if (pokemon.pokemon.HP == 0){
-                System.out.printf("%d. %s Lv.%d",i, pokemon.pokemon.getName(), pokemon.pokemon.getLevel());
-                System.out.printf("[ %s ] (%d/%d)", Arrays.toString(pokemon.pokemon.getType().getTypeName()), pokemon.pokemon.HP, pokemon.pokemon.maxHP);
-                System.out.println("[Cannot Use]");
-            }
-            else {
-                System.out.printf("%d. %s Lv.%d",i, pokemon.pokemon.getName(), pokemon.pokemon.getLevel());
-                System.out.printf("[ %s ] (%d/%d)\n", Arrays.toString(pokemon.pokemon.getType().getTypeName()), pokemon.pokemon.HP, pokemon.pokemon.maxHP);
 
-            }
-            pokemon = pokemon.next;
-            i++;
-        }
-
-    }
 }

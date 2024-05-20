@@ -3,7 +3,7 @@ import java.util.logging.Level;
 
 public class LevelSystem {
     int[] RequiredEXP = new int[50];
-    int currentEXP = 0,previousLevel=0, currentLevel =0;
+    int currentEXP = 0,previousLevel=0, currentLevel = 5;
 
     public LevelSystem() {
         RequiredEXP();
