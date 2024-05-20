@@ -1,11 +1,11 @@
 import java.util.*;
 public class battleSystem {
-    private Trainer trainer;
-    private Enemy enemy;
+    private final Trainer trainer;
+    private final Enemy enemy;
     private Pokemon trainerCurrentPokemon;
     private Pokemon enemyCurrentPokemon;
-    private String[] enemyType = {"Wild_Pokemon", "Gym_Leader", "Gary"};
-    private HandingAbnormalInput inputchecker = new HandingAbnormalInput();
+    private final String[] enemyType = {"Wild_Pokemon", "Gym_Leader", "Gary"};
+    private final HandingAbnormalInput inputChecker = new HandingAbnormalInput();
 
     public battleSystem(Trainer trainer , Enemy enemy) {
         this.trainer = trainer;
@@ -19,26 +19,34 @@ public class battleSystem {
 
         while (trainer.trainerBag.pokemonList.checkStatus() && enemy.enemyBag.pokemonList.checkStatus() && trainer.isKeepStay()) {
             displayBattleStatus();
-            trainerTurn();
-            if (enemyCurrentPokemon.HP <= 0) {
-                enemyChangePokemon();
+            if (enemyCurrentPokemon.speed > trainerCurrentPokemon.speed) {
+                enemyTurn();
+                if (!trainer.trainerBag.pokemonList.checkStatus()) {
+                    System.out.println("You are defeated by " + enemy.getName());
+                    break;
+                }
+                trainerTurn();
+                if (!trainer.isKeepStay())
+                    break;
+                if (!enemy.enemyBag.pokemonList.checkStatus()) {
+                    System.out.println("You are Win!");
+                    break;
+                }
             }
-            if (!enemy.enemyBag.pokemonList.checkStatus()) {
-                System.out.println("You are Win!");
-                break;
+            else {
+                trainerTurn();
+                if (!trainer.isKeepStay())
+                    break;
+                if (!enemy.enemyBag.pokemonList.checkStatus()) {
+                    System.out.println("You are Win!");
+                    break;
+                }
+                enemyTurn();
+                if (!trainer.trainerBag.pokemonList.checkStatus()) {
+                    System.out.println("You are defeated by " + enemy.getName());
+                    break;
+                }
             }
-
-            System.out.printf("\n\n%s Turn now!\n", enemy.getName());
-            enemyTurn();
-            if (trainerCurrentPokemon.HP <= 0) {
-                checkAvailablePokemon();
-                chooseTrainerPokemon();
-            }
-            if (!trainer.trainerBag.pokemonList.checkStatus()) {
-                System.out.println("You are defeated by " + enemy.getName());
-                break;
-            }
-
         }
     }
     public void displayBattleStatus() {
@@ -67,6 +75,7 @@ public class battleSystem {
              }
              current = current.next;
          }
+        System.out.printf("%s sends out %s[Level %d] !", enemy.getName(), enemyCurrentPokemon.getName(), enemyCurrentPokemon.getLevel());
     }
     public void chooseDefaultPokemon() {
         trainerCurrentPokemon = trainer.trainerBag.pokemonList.get(0);
@@ -77,7 +86,7 @@ public class battleSystem {
         while (true) {
             System.out.print("Choose Pokemon: ");
             index = sc.nextLine();
-            if (inputchecker.checkAbnormalInput(index, "1", "6")) {
+            if (inputChecker.checkAbnormalInput(index, "1", "6")) {
                 int position = Integer.parseInt(index);
                 if (trainer.trainerBag.pokemonList.get(position-1).HP == 0)
                     System.out.println("This pokemon is not available now.");
@@ -91,50 +100,70 @@ public class battleSystem {
         }
     }
     public void trainerTurn() {
-        System.out.println("It's your round!");
-        System.out.printf("%s's Moves: \n", trainerCurrentPokemon.getName());
-        System.out.printf("1. %s [%s] (%d/100)\n", trainerCurrentPokemon.getMoveName(0), trainerCurrentPokemon.getMoveType(0), trainerCurrentPokemon.quickMove.QMPoint) ;
-        System.out.printf("2. %s [%s] (%d/8)\n", trainerCurrentPokemon.getMoveName(1), trainerCurrentPokemon.getMoveType(1), trainerCurrentPokemon.mainMove.MMPoint);
-        System.out.println("3. Bag");
-        System.out.println("4. Escape");
+        if (trainerCurrentPokemon.HP <= 0) {
+            checkAvailablePokemon();
+            chooseTrainerPokemon();
+        }
+        else {
+            System.out.print("It's your round! ");
+            System.out.printf("%s's Moves: \n", trainerCurrentPokemon.getName());
+            System.out.printf("1. %s [%s] (%d/100)\n", trainerCurrentPokemon.getMoveName(0), trainerCurrentPokemon.getMoveType(0), trainerCurrentPokemon.quickMove.QMPoint);
+            System.out.printf("2. %s [%s] (%d/8)\n", trainerCurrentPokemon.getMoveName(1), trainerCurrentPokemon.getMoveType(1), trainerCurrentPokemon.mainMove.MMPoint);
+            System.out.println("3. Bag");
+            System.out.println("4. Escape");
+            System.out.println("5. Catch");
 
-        Scanner sc = new Scanner(System.in);
-        String input = "5070";
-        System.out.printf("Which move will %s use?", trainerCurrentPokemon.getName());
-        while (true) {
-            input = sc.nextLine();
-            if (inputchecker.checkAbnormalInput(input, "1", "3")) {
-                switch (input) {
-                    case "1":
-                        trainerCurrentPokemon.useMove(1, enemyCurrentPokemon);
-                        break;
-                    case "2":
-                        trainerCurrentPokemon.useMove(2, enemyCurrentPokemon);
-                        break;
-                    case "3":
-                        checkAvailablePokemon();
-                        chooseTrainerPokemon();
-                        break;
-                    case "4":
-                        trainer.tryEscaped();
-                        break;
-                    default:
-                        System.out.println("Error on battleSystem player turn");
+            Scanner sc = new Scanner(System.in);
+            String input = "5070";
+            System.out.printf("Which move will %s use?\n", trainerCurrentPokemon.getName());
+            while (true) {
+                System.out.print(">>> ");
+                input = sc.nextLine();
+                if (inputChecker.checkAbnormalInput(input, "1", "5")) {
+                    switch (input) {
+                        case "1":
+                            trainerCurrentPokemon.useMove(1, enemyCurrentPokemon);
+                            break;
+                        case "2":
+                            trainerCurrentPokemon.useMove(2, enemyCurrentPokemon);
+                            break;
+                        case "3":
+                            checkAvailablePokemon();
+                            chooseTrainerPokemon();
+                            break;
+                        case "4":
+                            trainer.tryEscaped();
+                            break;
+                        case "5":
+                            trainer.tryCatch();
+                            break;
+                        default:
+                            System.out.println("Error on battleSystem player turn");
+                    }
+                    if (enemyCurrentPokemon.HP <= 0) {
+                        trainerCurrentPokemon.
+                    }
+                    break;
                 }
-                break;
             }
         }
 
     }
     public void enemyTurn() {
-        int action = new Random().nextInt(2);
-        switch (action) {
-            case 0:
-                enemyCurrentPokemon.useMove(1, trainerCurrentPokemon);
-                break;
-            case 1:
-                enemyCurrentPokemon.useMove(2, trainerCurrentPokemon);
-                break;
+        System.out.printf("%s Turn now!", enemy.getName());
+        if (enemyCurrentPokemon.HP <= 0) {
+            enemyChangePokemon();
+        }
+        else {
+            int action = new Random().nextInt(3);
+            switch (action) {
+                case 0, 2:
+                    enemyCurrentPokemon.useMove(1, trainerCurrentPokemon);
+                    break;
+                case 1:
+                    enemyCurrentPokemon.useMove(2, trainerCurrentPokemon);
+                    break;
+            }
         }
 
     }
