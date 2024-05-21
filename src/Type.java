@@ -31,12 +31,12 @@ public class Type {
     }
 
     public void typeCounter(Pokemon own, Pokemon enemy) {
-        double total = 1;
         int trainerTypeIndex = 0;
         int enemyTypeIndex = 0;
 
         for (int i=0; i< own.getType().type.length; i++) {
             // Get the Trainer First Type Index
+            double total = 1;
                 for (int j=0; j< pokemonType.length; j++) {
                     if (own.getType().type[i].equalsIgnoreCase(pokemonType[j])) {
                         trainerTypeIndex = j;
@@ -53,10 +53,12 @@ public class Type {
                     total *= counterMatrix[trainerTypeIndex][enemyTypeIndex];
                 }
                 if (total > 1) {
-                    System.out.printf("%s's %s type is strong against the opponent's %s",own.getName(), own.getType().type[i], enemy.getName());
+                    System.out.printf("%s's %s type is strong against the opponent's %s\n",own.getName(), own.getType().type[i], enemy.getName());
                 }
+                else if (total == 1)
+                    System.out.print("");
                 else if (total < 1) {
-                    System.out.printf("%s's %S type is counter by the opponent's %s", own.getName(), own.getType().type[i], enemy.getName());
+                    System.out.printf("%s's %S type is counter by the opponent's %s\n", own.getName(), own.getType().type[i], enemy.getName());
                 }
         }
     }
@@ -77,11 +79,13 @@ public class Type {
             for (int k=0; k< pokemonType.length; k++) {
                 if (opposite[j].equalsIgnoreCase(pokemonType[k])) {
                     oppositeTypeIndex = k;
+                    total *= counterMatrix[trainerMoveIndex][oppositeTypeIndex];
                     break;
                 }
-                total *= counterMatrix[trainerMoveIndex][oppositeTypeIndex];
+
             }
         }
+        System.out.println();
         // float, double , long and short are prohibited in switch()
         if (total == 4) {
             System.out.println("Doubly Effective");
@@ -92,6 +96,7 @@ public class Type {
             return 1.6;
         }
         else if (total == 1) {
+            System.out.println("Normal Effective");
             return 1;
         }
         else if (total == 0.5 ) {
@@ -110,8 +115,4 @@ public class Type {
     public String[] getMovesTypeString() {
         return type;
     }
-//    public String checkSuitableType(Pokemon pokemon, String[] enemyType) {
-//
-//    }
-
 }

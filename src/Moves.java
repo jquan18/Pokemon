@@ -36,6 +36,9 @@ class QuickMove extends Moves {
     public QuickMove(String movesName, String movesType, int DPR) {
         super(movesName, movesType, DPR);
     }
+    public int getQMPoint() {
+        return QMPoint;
+    }
 }
 class MainMove extends  Moves {
     int MMPoint = 8;
