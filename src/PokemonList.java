@@ -1,6 +1,7 @@
 
-import java.util.ArrayList;
-import java.util.NoSuchElementException;
+import java.io.*;
+import java.util.*;
+
 
 public class PokemonList{
 
@@ -55,5 +56,43 @@ public class PokemonList{
             throw new NoSuchElementException("PokemonList get(): Index is out of bound.");
         }
         return list.get(index);
+    }
+
+    public void useCheatCode() {
+        for (int i = 0; i < 6; i++) {
+            list.set(i, null);
+        }
+        try {
+            Scanner reader = new Scanner(new FileInputStream("src/res/Pokemon_dataBase/pokemon_special.txt"));
+            int i = 0;
+            reader.nextLine();
+            while (reader.hasNextLine()) {
+                String[] line = reader.nextLine().split(",");
+                String[] arr;
+                if (line[2] != null && !line[2].isEmpty()) {
+                    arr = new String[2];
+                    arr[0] = line[1];
+                    arr[1] = line[2];
+                } else {
+                    arr = new String[1];
+                    arr[0] = line[1];
+                }
+
+                list.add(i, new Pokemon(line[0], arr, Integer.parseInt(line[3]),
+                        Integer.parseInt(line[4]), Integer.parseInt(line[5]), Integer.parseInt(line[6]), line[7], line[8],
+                        Integer.parseInt(line[9]), line[10], line[11], Integer.parseInt(line[12])));
+                i++;
+                if (i == 6) break;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (Pokemon pokemon : list) {
+            if (pokemon != null) {
+                pokemon.setMaster("Trainer");
+                pokemon.setLevel("Cheating");
+            }
+
+        }
     }
 }

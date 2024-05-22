@@ -1,0 +1,18 @@
+[Pewter City]-----------------------[Cerulean City]-----------------|
+     | 					                   |  	                    |
+     | 					                   |        			    |
+     | 					                   |         			    |
+     | 					                   |	         		    |
+     | 		       [Celadon City]----[Saffron City]-----[Lavender Town]
+     | 			           |               |                        |
+[Viridian City]            |               |                        |
+     |                     |               |                        |
+     |                     |               |                        |
+     |                     |        [Vermillion City]---------------|
+     |                     |                                        |
+[Pallet Town]              |                                        |
+     |                     |                                        |
+     |               [Fuchsia City]---------------------------------|
+     |                     |
+     |                     |
+[Cinnabar Island]----------|

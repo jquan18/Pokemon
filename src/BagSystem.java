@@ -4,10 +4,11 @@ import java.util.LinkedList;
 
 public class BagSystem {
     PokemonList pokemonList;
-    LinkedList badgeList;
+    LinkedList<String> badgeList;
 
     public BagSystem() {
         this.pokemonList = new PokemonList();
-        this.badgeList = new LinkedList();
+        this.badgeList = new LinkedList<>();
     }
+
 }

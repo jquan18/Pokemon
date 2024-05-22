@@ -33,6 +33,7 @@ public class LevelSystem {
     public void LevelUp(Pokemon pokemon) {
         int i=0;
         previousLevel = currentLevel;
+        //Set level 50 stop growth
         while (currentEXP>RequiredEXP[i]) {
             currentLevel = i+1;
             i++;
@@ -124,13 +125,17 @@ public class LevelSystem {
                 currentLevel = new Random().nextInt(10)+28;
                 break;
             }
+            case "Cheating": {
+                currentLevel = 50;
+                break;
+            }
             default:
                 System.out.println("Error on Pokemon Set Level!");
         }
     }
     public void attributesIncrease(Pokemon pokemon) {
         int evPoint = currentLevel - previousLevel;
-        pokemon.HP += (evPoint*2);
+        pokemon.HP += (evPoint*2) ;
         pokemon.maxHP += (evPoint*2);
         pokemon.speed += (evPoint);
         pokemon.attack += evPoint;

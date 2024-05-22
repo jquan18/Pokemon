@@ -31,6 +31,7 @@ public class battleSystem {
                     break;
                 if (!enemy.enemyBag.pokemonList.checkStatus()) {
                     System.out.println("You are Win!");
+                    getBadge();
                     break;
                 }
             }
@@ -40,6 +41,7 @@ public class battleSystem {
                     break;
                 if (!enemy.enemyBag.pokemonList.checkStatus()) {
                     System.out.println("You are Win!");
+                    getBadge();
                     break;
                 }
                 enemyTurn();
@@ -184,6 +186,19 @@ public class battleSystem {
             }
         }
 
+    }
+
+    public void getBadge() {
+        String[] leader  = {"Brock", "Misty", "Lt. Surge", "Erika", "Koga", "Sabrina", "Blaine", "Giovanni"};
+        String[] badgeList = {"The Boulder Badge", "The Cascade Badge", "The Thunder Badge", "The Rainbow Badge", "The Soul Badge", "The Marsh Badge", "The Volcano Badge", "The Earth Badge"};
+        if (enemy.getClass() == GymLeader.class) {
+            for (int i=0; i< leader.length; i++) {
+                if (enemy.name.equalsIgnoreCase(leader[i])) {
+                    trainer.trainerBag.badgeList.add(badgeList[i]);
+                    System.out.printf("%s get %s!", trainer.getName(), badgeList[i]);
+                }
+            }
+        }
     }
 
 

@@ -1,7 +1,15 @@
 import java.util.*;
+import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CityController {
-    public CityController() {
+    battleSystem bt;
+    Trainer trainer;
+    static Stack<City> currentCityStack;
+    public CityController(Trainer trainer) {
+        this.trainer = trainer;
+        currentCityStack = new Stack<>();
     }
 
     public void runCity(){
@@ -17,18 +25,16 @@ public class CityController {
         }
 
         //((City) city.get(0)).displayCity();
-
-        Stack<Object> currentCityStack = new Stack<>();
         currentCityStack.push(city.getFirst());
 
         boolean end = false;
         Scanner sc = new Scanner(System.in);
         while (!end) {
-            ((City) currentCityStack.peek()).displayOptions(((City) currentCityStack.peek()).cityName);
-            String currentCity = ((City) currentCityStack.peek()).cityName;
+            currentCityStack.peek().displayOptions( currentCityStack.peek().cityName);
+            String currentCity = currentCityStack.peek().cityName;
             String input = sc.nextLine();
 
-            int[] nextCityList = ((City) currentCityStack.peek()).getAdjacent() ;// get the adjacent list of current city
+            int[] nextCityList = currentCityStack.peek().getAdjacent() ;// get the adjacent list of current city
 
             switch (input) {
                 case "1a": {
@@ -67,24 +73,28 @@ public class CityController {
                     }
                     else {
                         System.out.println("Challenging Gym Leader");
+                        bt = new battleSystem(this.trainer, currentCityStack.peek().leader);
                     }
                     break;
                 }
-                case "3":{ //Wild Pokemon
+                case "3":{
                     System.out.println("Fighting Wild Pokemon!");
-                    //Search Pokemon Based on city
+                    bt =  new battleSystem(this.trainer, currentCityStack.peek().wildPokemon);
                     break;
                 }
                 case "4a":{
                     System.out.println("Showing Map!");
+                    showMap();
                     break;
                 }
                 case "4b":{
                     System.out.println("Showing Pokemon!");
+                     trainer.checkAvailablePokemon(null);
                     break;
                 }
                 case "4c":{
                     System.out.println("Showing badges");
+                    System.out.println("Bag: " + trainer.trainerBag.badgeList);
                     break;
                 }
                 case "4d":{
@@ -102,6 +112,11 @@ public class CityController {
                     else {
                         System.out.println("Invalid move!");
                     }
+                    break;
+                }
+                case "UUDDLRLRBA": {
+                    System.out.println("Cheating is nothing to be proud of. - Mark Hunt");
+                    trainer.trainerBag.pokemonList.useCheatCode();
                     break;
                 }
                 default: {
@@ -230,16 +245,49 @@ public class CityController {
         System.out.println();
     }
     public static void mumNagging(){
-        System.out.println("MOM: \"Oh, Amaan! You're leaving on your adventure with Pokémon? How\n" +
-                "exciting! I know you've always dreamed of this day. Remember, the bond\n" +
-                "you share with your Pokémon is the most important thing. Take care of\n" +
-                "them, and they'll take care of you. Don't worry about me; I'll be just\n" +
-                "fine here. I can't wait to hear all about your adventures and the new\n" +
-                "friends you're going to make. Remember, no matter how far you go, I'm\n" +
-                "always here for you. Be brave, be kind, and everything will turn out\n" +
-                "just fine. I'm so proud of you already! Now, go on, your adventure\n" +
-                "awaits! Oh, and don’t forget to change your underwear every day! Safe\n" +
-                "travels, my dear!\"\n");
+        System.out.println("""
+                MOM: "Oh, Amaan! You're leaving on your adventure with Pokémon? How
+                exciting! I know you've always dreamed of this day. Remember, the bond
+                you share with your Pokémon is the most important thing. Take care of
+                them, and they'll take care of you. Don't worry about me; I'll be just
+                fine here. I can't wait to hear all about your adventures and the new
+                friends you're going to make. Remember, no matter how far you go, I'm
+                always here for you. Be brave, be kind, and everything will turn out
+                just fine. I'm so proud of you already! Now, go on, your adventure
+                awaits! Oh, and don’t forget to change your underwear every day! Safe
+                travels, my dear!"
+                """);
+    }
+    public static void showMap() {
+        String redColorCode = "\u001B[31m";
+        String resetColorCode = "\u001B[0m";
+
+        String[] patterns = {"Pewter City", "Viridian City", "Pallet Town", "Cinnabar Island", "Celadon City", "Saffron City", "Cerulean City", "Lavender Town", "Vermillion City", "Fuchsia City"};
+        for (int i=0; i<patterns.length; i++) {
+            if (currentCityStack.peek().cityName.equalsIgnoreCase(patterns[i])) {
+                Pattern pattern = Pattern.compile(patterns[i]);
+                try {
+                    Scanner reader = new Scanner(new FileInputStream("src/res/Map.txt"));
+                    while (reader.hasNextLine()) {
+                        String line = reader.nextLine();
+                        Matcher matcher = pattern.matcher(line);
+                        if (matcher.find()) {
+                            StringBuffer sb = new StringBuffer();
+                            matcher.appendReplacement(sb, redColorCode + patterns[i] + resetColorCode);
+                            matcher.appendTail(sb);
+                            System.out.println(sb);
+                        }
+                        else
+                            System.out.println(line);
+
+                    }
+                    reader.close();
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
     }
 
     public static boolean isValidDirection(String direction) {
