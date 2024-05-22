@@ -6,7 +6,7 @@ Misty
 Staryu,Water,,30,45,55,85,Rapid Spin,Normal,50,Water Gun,Water,40
 Starmie,Water,Psychic,60,75,85,115,Brine,Water,65,Psybeam,Psychic,65
 
-Lt.Surge
+Lt. Surge
 Voltorb,Electric,,40,30,50,100,Tackle,Normal,40,Thunder Shock,Electric,40
 Pikachu,Electric,,35,55,40,90,Nuzzle,Electric,20,Spark,Electric,65
 Raichu,Electric,,60,90,55,110,Nuzzle,Electirc,20,Iron Tail,Steel,100

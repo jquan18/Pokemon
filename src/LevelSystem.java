@@ -3,7 +3,7 @@ import java.util.logging.Level;
 
 public class LevelSystem {
     int[] RequiredEXP = new int[50];
-    int currentEXP = 0,previousLevel=0, currentLevel = 5;
+    int currentEXP = 0,previousLevel=1, currentLevel;
 
     public LevelSystem() {
         RequiredEXP();
@@ -29,7 +29,6 @@ public class LevelSystem {
         System.out.println(pokemon.getName() + " earn "+ EXP + " EXP points");
         currentEXP += EXP;
         LevelUp(pokemon);
-        attributesIncrease(pokemon);
     }
     public void LevelUp(Pokemon pokemon) {
         int i=0;
@@ -39,6 +38,7 @@ public class LevelSystem {
             i++;
         }
         if (currentLevel > previousLevel) {
+            System.out.printf("%s [ Level.%d ] --> [ Level.%d ]",pokemon.getName(),previousLevel,currentLevel);
             attributesIncrease(pokemon);
         }
     }
@@ -56,68 +56,72 @@ public class LevelSystem {
                 currentLevel = 5;
                 break;
             }
-            case "Pewter_Wild": {
+            case "Pewter City": {
                 currentLevel = new Random().nextInt(2)+4;
                 break;
             }
-            case "Pewter_Gym": {
+            case "Brock": {
                 currentLevel = 10;
                 break;
             }
-            case "Cerulean_Wild": {
+            case "Cerulean City": {
                 currentLevel = new Random().nextInt(5)+8;
                 break;
             }
-            case "Cerulean_Gym": {
+            case "Misty": {
                 currentLevel = 15;
                 break;
             }
-            case "Vermilion_Wild": {
+            case "Vermilion City": {
                 currentLevel = new Random().nextInt(5)+13;
                 break;
             }
-            case "Vermilion_Gym": {
+            case "Lt. Surge": {
                 currentLevel = 20;
                 break;
             }
-            case "Celadon_Wild": {
+            case "Celadon City": {
                 currentLevel = new Random().nextInt(5)+18;
                 break;
             }
-            case "Celadon_Gym": {
+            case "Erika": {
                 currentLevel = 25;
                 break;
             }
-            case "Fuchsia_Wild": {
+            case "Fuchsia City": {
                 currentLevel = new Random().nextInt(5)+23;
                 break;
-            }case "Fuchsia_Gym": {
+            }case "Koga": {
                 currentLevel = 30;
                 break;
             }
-            case "Saffron_Wild": {
+            case "Saffron City": {
                 currentLevel = new Random().nextInt(5)+28;
                 break;
-            }case "Saffron_Gym": {
+            }case "Sabrina": {
                 currentLevel = 35;
                 break;
-            }case "Cinnabar_Wild": {
+            }case "Cinnabar Island": {
                 currentLevel = new Random().nextInt(5)+33;
                 break;
-            }case "Cinnabar_Gym": {
+            }case "Blaine": {
                 currentLevel = 40;
                 break;
             }
-            case "Viridian_Wild": {
+            case "Viridian City": {
                 currentLevel = new Random().nextInt(5)+38;
                 break;
             }
-            case "Viridian_Gym": {
+            case "Giovanni": {
                 currentLevel = 45;
                 break;
             }
             case "Gary": {
                 currentLevel = new Random().nextInt(5)+45;
+                break;
+            }
+            case "Lavender Town": {
+                currentLevel = new Random().nextInt(10)+28;
                 break;
             }
             default:
@@ -127,6 +131,7 @@ public class LevelSystem {
     public void attributesIncrease(Pokemon pokemon) {
         int evPoint = currentLevel - previousLevel;
         pokemon.HP += (evPoint*2);
+        pokemon.maxHP += (evPoint*2);
         pokemon.speed += (evPoint);
         pokemon.attack += evPoint;
         pokemon.defense += evPoint;

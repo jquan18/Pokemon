@@ -7,9 +7,8 @@ MM = Main move (High damage, but less change)
  */
 public class Pokemon{
     int maxHP, HP, speed, attack, defense;
-    int evPoint=0;
     private final String name;
-    private Type type, QMType, MMType;
+    private Type type;
 //    private ArrayList<Moves> moves = new ArrayList<>();
     final QuickMove quickMove;
     final MainMove mainMove;
@@ -48,6 +47,9 @@ public class Pokemon{
                 value = (int)((((2*getLevel())/2 + 2) * quickMove.getDPR() * (getAttack()/enemy.getDefense())/ 50) * quickMove.getMovesType().moveCounter(quickMove.getMovesTypeString(), enemy.getType().getMovesTypeString()));
                 break;
 
+        }
+        if (value < 5) {
+            value = 5;
         }
         receiveDamage(value, enemy);
     }

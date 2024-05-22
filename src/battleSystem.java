@@ -4,17 +4,18 @@ public class battleSystem {
     private final Enemy enemy;
     private Pokemon trainerCurrentPokemon;
     private Pokemon enemyCurrentPokemon;
-    private final String[] enemyType = {"Wild_Pokemon", "Gym_Leader", "Gary"};
+//    private final String[] enemyType = {"Wild_Pokemon", "Gym_Leader", "Gary"};
     private final HandingAbnormalInput inputChecker = new HandingAbnormalInput();
 
     public battleSystem(Trainer trainer , Enemy enemy) {
         this.trainer = trainer;
         this.enemy = enemy;
+        startBattle();
     }
 
     public void startBattle() {
         System.out.println("Battle Start: " + trainer.getName() + " and " + enemy.getName());
-        chooseEnemyPokemon("Gary");
+        chooseEnemyPokemon(enemy);
         chooseDefaultPokemon();
 
         while (trainer.trainerBag.pokemonList.checkStatus() && enemy.enemyBag.pokemonList.checkStatus() && trainer.isKeepStay()) {
@@ -53,13 +54,21 @@ public class battleSystem {
         trainerCurrentPokemon.displayPokemonStatus();
         enemyCurrentPokemon.displayPokemonStatus();
     }
-    public void chooseEnemyPokemon(String enemyType) {
-        switch (enemyType) {
-            /*
-            For the "Wild_Pokemon", need to check current city first
-             */
-//            case "Wild_Pokemon" :
-//                enemyCurrentPokemon =
+    public void chooseEnemyPokemon(Enemy enemy) {
+        String enemyClass = enemy.getClass().getSimpleName();
+        switch (enemyClass) {
+            case "GymLeader", "Gary": {
+                enemyCurrentPokemon = enemy.enemyBag.pokemonList.get(0);
+                System.out.printf("%s sends out %s [Level %d] !\n", enemy.getName(), enemyCurrentPokemon.getName(), enemyCurrentPokemon.getLevel());
+                break;
+            }
+            case "Wild_Pokemon": {
+                int index = new Random().nextInt(enemy.enemyBag.pokemonList.list.size());
+                enemyCurrentPokemon = enemy.enemyBag.pokemonList.list.get(index);
+                System.out.printf("%s is exploring the wild\n",trainer.getName());
+                System.out.printf("Suddenly, the %s jumps out!\n",enemyCurrentPokemon.getName());
+                break;
+            }
             default :
                 enemyCurrentPokemon = enemy.enemyBag.pokemonList.get(0);
                 System.out.printf("%s sends out %s [Level %d] !\n", enemy.getName(), enemyCurrentPokemon.getName(), enemyCurrentPokemon.getLevel());

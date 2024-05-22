@@ -1,6 +1,4 @@
 import java.util.*;
-import java.util.Scanner;
-import java.util.Stack;
 
 public class CityController {
     public CityController() {
@@ -21,7 +19,7 @@ public class CityController {
         //((City) city.get(0)).displayCity();
 
         Stack<Object> currentCityStack = new Stack<>();
-        currentCityStack.push(city.get(0));
+        currentCityStack.push(city.getFirst());
 
         boolean end = false;
         Scanner sc = new Scanner(System.in);
@@ -64,21 +62,17 @@ public class CityController {
                         mumNagging();
                     }
                     else if (currentCity.equalsIgnoreCase("Lavender Town")){
-                        System.out.println("Fighting Wild Pokemon!");
+                        System.out.println("Welcome to the pokemon maze!");
+                        pokemaze();
                     }
                     else {
                         System.out.println("Challenging Gym Leader");
                     }
                     break;
                 }
-                case "3":{
-                    if (currentCity.equalsIgnoreCase("Lavender Town")){
-                        System.out.println("Welcome to the pokemon maze!");
-                        pokemaze();
-                    }
-                    else{
-                        System.out.println("Fighting Wild Pokemon!");
-                    }
+                case "3":{ //Wild Pokemon
+                    System.out.println("Fighting Wild Pokemon!");
+                    //Search Pokemon Based on city
                     break;
                 }
                 case "4a":{
@@ -115,7 +109,7 @@ public class CityController {
                     break;
                 }
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -148,51 +142,51 @@ public class CityController {
                 // Game loop
                 Scanner scanner = new Scanner(System.in);
                 while (maze[playerRow][playerCol] != 'E') {
-                    System.out.print("Enter direction (up, down, left, right): ");
+                    System.out.print("Enter direction (W(up), S(Down), A(left), D(Right)): ");
                     String direction = scanner.nextLine();
 
                     // Validate input
                     if (isValidDirection(direction)) {
                         // Update player position
                         switch (direction) {
-                            case "up":
+                            case "W":
                                 if (maze[playerRow - 1][playerCol] != '#') {
                                     maze[playerRow][playerCol] = hold;
                                     playerRow--;
-                                    path.push("up");
+                                    path.push("W");
                                 }
                                 else {
                                     maze[playerRow][playerCol] = hold;
                                     System.out.println("You've hit a wall!");
                                 }
                                 break;
-                            case "down":
+                            case "S":
                                 if (maze[playerRow + 1][playerCol] != '#') {
                                     maze[playerRow][playerCol] = hold;
                                     playerRow++;
-                                    path.push("down");
+                                    path.push("S");
                                 }
                                 else {
                                     maze[playerRow][playerCol] = hold;
                                     System.out.println("You've hit a wall!");
                                 }
                                 break;
-                            case "left":
+                            case "A":
                                 if (maze[playerRow][playerCol - 1] != '#') {
                                     maze[playerRow][playerCol] = hold;
                                     playerCol--;
-                                    path.push("left");
+                                    path.push("A");
                                 }
                                 else {
                                     maze[playerRow][playerCol] = hold;
                                     System.out.println("You've hit a wall!");
                                 }
                                 break;
-                            case "right":
+                            case "D":
                                 if (maze[playerRow][playerCol + 1] != '#') {
                                     maze[playerRow][playerCol] = hold;
                                     playerCol++;
-                                    path.push("right");
+                                    path.push("D");
                                 }
                                 else {
                                     maze[playerRow][playerCol] = hold;
@@ -218,7 +212,7 @@ public class CityController {
                         maze[playerRow][playerCol] = 'Y';
                         displayMaze(maze);
                     } else {
-                        System.out.println("Invalid direction! Please enter up, down, left, or right.");
+                        System.out.println("Invalid direction! Please enter W, S, A, D only!");
                     }
                 }
 
@@ -249,7 +243,7 @@ public class CityController {
     }
 
     public static boolean isValidDirection(String direction) {
-        return direction.equals("up") || direction.equals("down") || direction.equals("left") || direction.equals("right");
+        return direction.equals("w") || direction.equals("S") || direction.equals("A") || direction.equals("D");
     }
 
 

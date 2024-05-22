@@ -79,4 +79,4 @@ Muk,Poison,,105,105,75,50,Mud-Slap,Ground,20,Sludge,Poison,60
 Dewgong,Water,Ice,90,70,80,70,Headbutt,Normal,70,Aurora Beam,Ice,65
 Kabuto,Rock,Water,30,80,90,55,Scratch,Normal,40,Aqua Jet,Water,40
 Aerodactyl,Rock,Flying,65,80,60,90,Thunder Fang,Electric,65,Wing Attack,Flying,60
-
+===

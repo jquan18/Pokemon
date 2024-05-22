@@ -10,10 +10,4 @@ public class BagSystem {
         this.pokemonList = new PokemonList();
         this.badgeList = new LinkedList();
     }
-//    public boolean checkCurrentCityStatus(String cityName) {
-//        return false;
-//    }
-    public void chooseDefaultPokemon() {
-
-    }
 }
