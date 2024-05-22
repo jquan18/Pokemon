@@ -3,12 +3,13 @@ import java.io.IOException;
 import java.util.*;
 
 public class Trainer {
-    private final String name = "Ash";
+    String name ;
     private boolean keepStay = true;
     HandingAbnormalInput inputChecker = new HandingAbnormalInput();
 
     BagSystem trainerBag = new BagSystem();
-    public Trainer () {
+    public Trainer (String name) {
+        this.name = name;
         try {
             Scanner reader = new Scanner(new FileInputStream("src/res/Pokemon_dataBase/pokemon_database.txt"));
             int i=0;
