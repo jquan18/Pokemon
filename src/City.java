@@ -1,14 +1,26 @@
 import java.util.*;
 
 public class City {
-    public static String[] cityList;
+    public static String[] cityList = {"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island"};
+    public static String[] leaderList = {"", "Giovanni", "Brock", "Misty", "Lt. Surge", "", "Erika", "Koga", "Sabrina", "Blaine"};
     public String cityName;
     public int[][] adjacent;
+    Wild_Pokemon wildPokemon;
+    GymLeader leader;
 
 
     public City(String name) {
-        cityList = new String[]{"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island"};
+
         this.cityName = name;
+
+        for (int i=0; i<cityList.length; i++) {
+            if (this.cityName.equalsIgnoreCase(cityList[i]))
+                leader = new GymLeader(leaderList[i]);
+        }
+
+        wildPokemon = new Wild_Pokemon(this.cityName);
+
+
     }
 
     public void setAdjacent(int[][] adjacent) {
@@ -56,46 +68,34 @@ public class City {
         switch(currentCity){
             case "Pallet Town":
                 System.out.println("[2] Talk to Mom [Your hometown has no Gym]");
-                System.out.println("[3] Fight Wild Pokemon");
-                System.out.println("[4] Player Options");
-                System.out.println("    a.Show map   b.Show My Pokemon   c.Show My Badges   d.Save and Exit");
-                System.out.println("+--------------------------------------------+");
-                System.out.println("Your choice: ");
+                displayDefaultOptions();
                 break;
             case "Fuchsia City":
                 System.out.println("[2] Challenge Gym Leader");
-                System.out.println("[3] Fight Wild Pokemon");
-                System.out.println("[4] Player Options");
-                System.out.println("    a.Show map   b.Show My Pokemon   c.Show My Badges   d.Save and Exit");
+                displayDefaultOptions();
                 System.out.println("[5] Safari Zone");
-                System.out.println("+--------------------------------------------+");
-                System.out.println("Your choice: ");
                 break;
             case "Lavender Town":
-                System.out.println("[2] Fight Wild Pokemon");
-                System.out.println("[3] PokeMaze");
-                System.out.println("[4] Player Options");
-                System.out.println("    a.Show map   b.Show My Pokemon   c.Show My Badges   d.Save and Exit");
-                System.out.println("+--------------------------------------------+");
-                System.out.println("Your choice: ");
+                System.out.println("[2] PokeMaze");
+                displayDefaultOptions();
                 break;
             case "Final":
                 System.out.println("[2] Challenge Gym Leader");
-                System.out.println("[3] Fight Wild Pokemon");
-                System.out.println("[4] Player Options");
-                System.out.println("    a.Show map   b.Show My Pokemon   c.Show My Badges   d.Save and Exit");
+                displayDefaultOptions();
                 System.out.println("[5] Rival's Race");
-                System.out.println("+--------------------------------------------+");
-                System.out.println("Your choice: ");
+                break;
             default:
                 System.out.println("[2] Challenge Gym Leader");
-                System.out.println("[3] Fight Wild Pokemon");
-                System.out.println("[4] Player Options");
-                System.out.println("    a.Show map   b.Show My Pokemon   c.Show My Badges   d.Save and Exit");
-                System.out.println("+--------------------------------------------+");
-                System.out.println("Your choice: ");
-                break;
+                displayDefaultOptions();
         }
+        System.out.println("+--------------------------------------------+");
+        System.out.println("Your choice: ");
+    }
+    public void displayDefaultOptions() {
+        System.out.print("[3] Fight Wild Pokemon ");
+        wildPokemon.showPokemon();
+        System.out.println("[4] Player Options");
+        System.out.println("    a.Show map   b.Show My Pokemon   c.Show My Badges   d.Save and Exit");
     }
 
     public int findCityIndex(Object City){
