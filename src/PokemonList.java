@@ -14,6 +14,7 @@ public class PokemonList{
     /*
     Need to test the catch pokemon. I think remove() will have some problem!
      */
+
      public void add(int index, Pokemon pokemon) {
          if (index<0 || index> 6)
              throw new NoSuchElementException("Please enter a correct places...");

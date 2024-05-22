@@ -131,4 +131,10 @@ public class LevelSystem {
         pokemon.attack += evPoint;
         pokemon.defense += evPoint;
     }
+
+    public void PokemonCheatCode(Pokemon pokemon) {
+        previousLevel = currentLevel;
+        currentLevel = 50;
+        attributesIncrease(pokemon);
+    }
 }
