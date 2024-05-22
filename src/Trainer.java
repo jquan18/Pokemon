@@ -5,7 +5,7 @@ import java.util.*;
 public class Trainer {
     private final String name = "Ash";
     private boolean keepStay = true;
-    HandingAbnormalInput inputchecker = new HandingAbnormalInput();
+    HandingAbnormalInput inputChecker = new HandingAbnormalInput();
 
     BagSystem trainerBag = new BagSystem();
     public Trainer () {
@@ -62,7 +62,7 @@ public class Trainer {
             System.out.print("Enter the place of Pokemon(): ");
             String pos = "5040";
             checkAvailablePokemon(current);
-            while (inputchecker.checkAbnormalInput(pos, "1", "6")) {
+            while (inputChecker.checkAbnormalInput(pos, "1", "6")) {
                 pos = sc.next();
                 if (trainerBag.pokemonList.list.get(Integer.parseInt(pos) - 1) != null) {
                     System.out.print("Pokemon on place will be transfer (YES/NO): ");
