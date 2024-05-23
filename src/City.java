@@ -1,12 +1,14 @@
 import java.util.*;
 
 public class City {
-    public static String[] cityList = {"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island"};
-    public static String[] leaderList = {"", "Giovanni", "Brock", "Misty", "Lt. Surge", "", "Erika", "Koga", "Sabrina", "Blaine"};
+    public static String[] cityList = {"Pallet Town", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island", "Viridian City"};
+    public static String[] leaderList = {"", "Brock", "Misty", "Lt. Surge", "", "Erika", "Koga", "Sabrina", "Blaine","Giovanni"};
+    public static String[] badge = {"", "Boulder Badge", "Cascade Badge", "Thunder Badge", "", "Rainbow Badge", "Soul Badge", "Marsh Badge", "Volcano Badge", "Earth Badge"};
     public String cityName;
     public int[][] adjacent;
     Wild_Pokemon wildPokemon;
     GymLeader leader;
+    String cityBadge;
 
 
     public City(String name) {
@@ -14,8 +16,9 @@ public class City {
         this.cityName = name;
 
         for (int i=0; i<cityList.length; i++) {
-            if (this.cityName.equalsIgnoreCase(cityList[i]))
+            if (this.cityName.equalsIgnoreCase(cityList[i]) && !leaderList[i].isEmpty())
                 leader = new GymLeader(leaderList[i]);
+            this.cityBadge = badge[i];
         }
 
         wildPokemon = new Wild_Pokemon(this.cityName);

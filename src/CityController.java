@@ -73,7 +73,11 @@ public class CityController {
                     }
                     else {
                         System.out.println("Challenging Gym Leader");
-                        bt = new battleSystem(this.trainer, currentCityStack.peek().leader);
+                        if (trainer.trainerBag.badgeList.contains(currentCityStack.peek().cityBadge)) {
+                            System.out.println("You have defeated thisG幽默Leader.");
+                        }
+                        else
+                            bt = new battleSystem(this.trainer, currentCityStack.peek().leader);
                     }
                     break;
                 }

@@ -190,7 +190,7 @@ public class battleSystem {
 
     public void getBadge() {
         String[] leader  = {"Brock", "Misty", "Lt. Surge", "Erika", "Koga", "Sabrina", "Blaine", "Giovanni"};
-        String[] badgeList = {"The Boulder Badge", "The Cascade Badge", "The Thunder Badge", "The Rainbow Badge", "The Soul Badge", "The Marsh Badge", "The Volcano Badge", "The Earth Badge"};
+        String[] badgeList = {"Boulder Badge", "Cascade Badge", "Thunder Badge", "Rainbow Badge", "Soul Badge", "Marsh Badge", "Volcano Badge", "Earth Badge"};
         if (enemy.getClass() == GymLeader.class) {
             for (int i=0; i< leader.length; i++) {
                 if (enemy.name.equalsIgnoreCase(leader[i])) {
