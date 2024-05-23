@@ -28,7 +28,7 @@ Saffron City
 Nidoran,Poison,,55,47,52,41,Poison Sting,Poison,15,Earth Power,Ground,90
 Machoke,Fighting,,52,72,42,25,Karate Chop,Fighting,50,Karate Chop,Fighting,50
 Meowth,Normal,,40,45,35,90,Fake Out,Normal,40,Bite,Dark,60
-Jigglypuff,Normal,Fairy,115l,45,20,20,Pound,Normal,40,Disarming Voice,Fairy,40
+Jigglypuff,Normal,Fairy,115,45,20,20,Pound,Normal,40,Disarming Voice,Fairy,40
 Hitmonlee,Fighting,,50,120,53,87,Double Kick,Fighting,30,Low Sweep,Fightingm,65
 Hitmonchan,Fighting,,50,105,79,76,Fake Out,Normal,40,Close Combat,Fighting,120
 
