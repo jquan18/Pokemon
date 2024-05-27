@@ -100,4 +100,7 @@ public class PokemonList{
 
         }
     }
+	public ArrayList<Pokemon> getAllPokemon() {
+        return new ArrayList<>(list);
+    }
 }

@@ -10,11 +10,11 @@ public class Script {
     static String resetColorCode = "\u001B[0m";
     static HandingAbnormalInput inputChecker = new HandingAbnormalInput();
 
-    public  static void prologue() {
+    public void prologue() {
         String s1 = """
                 BRICH   : Hi! Sorry to keep you waiting!
                 BRICH   : Welcome to the world of POKEMON!
-                BRICH   : My name is BRICH! But everyone calls me the PPKEMON PROG!\n     
+                BRICH   : My name is BRICH! But everyone calls me the PPKEMON PROG!\n
                 """;
         typeWriterEffect1(s1);
 
@@ -34,7 +34,7 @@ public class Script {
         typeWriterEffect1(s3);
     }
 
-    public static String getTrainerName() {
+    public String getTrainerName() {
         while (true) {
             String s = "BRICH  : First, what is your name? \n";
             typeWriterEffect2(s);
@@ -55,7 +55,7 @@ public class Script {
         return name;
     }
 
-    public static void continueScript() {
+    public void continueScript() {
         String s1 =
                 "BRICH   : Right! So your're " + name + "who's moving to my hometown of LITTLEROOT.\n" + " I get it now!\n";
         typeWriterEffect2(s1);
@@ -64,7 +64,7 @@ public class Script {
                 "BRICH   : All right, are you ready?\n";
         typeWriterEffect1(s2);
     }
-    public static Pokemon choosePartner() {
+    public Pokemon choosePartner() {
         String s1 = "BRICH  : You can choose one of the POKEMON over there. \n\n" +
                 "1. " + greenColorCode + "Bulbasaur" + resetColorCode + ", the Grass-type POKEMON!\n" +
                 "2. " + redColorCode + "Charmander" + resetColorCode + ", the Fire-type POKEMON!\n" +
@@ -122,7 +122,7 @@ public class Script {
                 ..
                 ...
                 ....!
-                Nurse Joy   : Thank you for waiting. We hope to see you again!  
+                Nurse Joy   : Thank you for waiting. We hope to see you again!
                 """;
         typeWriterEffect2(s1);
     }
