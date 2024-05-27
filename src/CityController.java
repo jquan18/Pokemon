@@ -74,7 +74,7 @@ public class CityController {
                     else {
                         System.out.println("Challenging Gym Leader");
                         if (trainer.trainerBag.badgeList.contains(currentCityStack.peek().cityBadge)) {
-                            System.out.println("You have defeated thisG幽默Leader.");
+                            System.out.println("You have defeated this Gym Leader.");
                         }
                         else
                             bt = new battleSystem(this.trainer, currentCityStack.peek().leader);
@@ -82,6 +82,7 @@ public class CityController {
                     break;
                 }
                 case "3":{
+                    currentCityStack.peek().wildPokemon.enemyBag.healPokemon();
                     System.out.println("Fighting Wild Pokemon!");
                     bt =  new battleSystem(this.trainer, currentCityStack.peek().wildPokemon);
                     break;
@@ -93,7 +94,7 @@ public class CityController {
                 }
                 case "4b":{
                     System.out.println("Showing Pokemon!");
-                     trainer.checkAvailablePokemon(null);
+                     trainer.checkAvailablePokemon(trainer.trainerBag.pokemonList.get(0));
                     break;
                 }
                 case "4c":{
@@ -106,7 +107,12 @@ public class CityController {
                     end = true;
                     break;
                 }
-                case "5":{
+                case "5": {
+                    Script.healthCareScript();
+                    trainer.trainerBag.healPokemon();
+                    break;
+                }
+                case "6":{
                     if(currentCity.equalsIgnoreCase("Final")){
                         System.out.println("Run Rivalry Race!");
                     }
