@@ -1,10 +1,18 @@
 Pallet Town
-Magikarp,Water,,20,15,55,80,Splash,Normal,0,Tackle,Normal,50
+Magikarp,Water,,20,15,55,80,Splash,Normal,0,Tackle,Normal,20
+Poliwag,Water,,40,50,40,90,Pound,Normal,25,Water Gun,Water,25
+Tentacool,Water,Poison,40,40,35,70,Poison Sting,Poison,15,Acid,Poison,30
+Staryu,Water,,30,45,55,85,Tackle,Normal,10,Brine,Water,65
+Pidgey,Normal,Flying,40,45,40,56,Tackle,Normal,20,Tackle,Normal,25
+Rattata,Normal,,30,56,35,72,Tackle,Normal,15,Hyper Fang,Normal,20
+
+Viridian City
 Poliwag,Water,,40,50,40,90,Pound,Normal,40,Water Gun,Water,40
-Tentacool,Water,Poison,40,40,35,70,Poison Sting,Poison,15,Acid,Poison,40
-Staryu,Water,,30,45,55,85,Tackle,Normal,40,Brine,Water,65
-Pidgey,Normal,Flying,40,45,40,56,Tackle,Normal,50,Tackle,Normal,50
-Rattata,Normal,,30,56,35,72,Tackle,Normal,50,Hyper Fang,Normal,80
+Fearow,Normal,Flying,65,90,65,100,Peck,Flying,35,Drill,Ground,80
+Arbok,Poison,,60,85,69,80,Poison Sting,Poison,15,Crunch,Dark,80
+Nidorino,Poison,,61,72,57,65,Fury Attack,Normal,15,Poison Jab,Poison,80
+Primeape,Fighting,,65,105,60,95,Scratch,Normal,40,Assurance,Dark,60
+Golbat,Poison,Flying,75,80,70,90,Astonish,Ghost,30,Poison Fang,Flying,60
 
 Pewter City
 Weedle,Bug,Poison,40,35,30,50,Poison Sting,Poison,15,Poison Sting,Poison,15
@@ -69,7 +77,6 @@ Kangaskhan,Normal,,105,95,80,90,Stomp,Normal,60,Headbutt,Normal,70
 Cubone,Ground,,50,50,95,35,False Swipe,Normal,40,Stomping Tantrum,Ground,75
 Marowak,Ground,,60,80,110,45,False Swipe,Normal,40,Bonemerang,Ground,50
 
-
 Cinnabar Island
 Electrode,Electric,,60,50,70,140,Tackle,Normal,40,Spark,Electric,65
 Seel,Water,,65,45,55,45,Icy Wind,Ice,40,Headbutt,Normal,70
@@ -79,4 +86,6 @@ Muk,Poison,,105,105,75,50,Mud-Slap,Ground,20,Sludge,Poison,60
 Dewgong,Water,Ice,90,70,80,70,Headbutt,Normal,70,Aurora Beam,Ice,65
 Kabuto,Rock,Water,30,80,90,55,Scratch,Normal,40,Aqua Jet,Water,40
 Aerodactyl,Rock,Flying,65,80,60,90,Thunder Fang,Electric,65,Wing Attack,Flying,60
+
+
 ===

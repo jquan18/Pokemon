@@ -10,7 +10,7 @@ public class Script {
     static String resetColorCode = "\u001B[0m";
     static HandingAbnormalInput inputChecker = new HandingAbnormalInput();
 
-    public  static void prologue() throws InterruptedException {
+    public  static void prologue() {
         String s1 = """
                 BRICH   : Hi! Sorry to keep you waiting!
                 BRICH   : Welcome to the world of POKEMON!
@@ -34,7 +34,7 @@ public class Script {
         typeWriterEffect1(s3);
     }
 
-    public static String getTrainerName() throws InterruptedException {
+    public static String getTrainerName() {
         while (true) {
             String s = "BRICH  : First, what is your name? \n";
             typeWriterEffect2(s);
@@ -55,7 +55,7 @@ public class Script {
         return name;
     }
 
-    public static void continueScript() throws InterruptedException {
+    public static void continueScript() {
         String s1 =
                 "BRICH   : Right! So your're " + name + "who's moving to my hometown of LITTLEROOT.\n" + " I get it now!\n";
         typeWriterEffect2(s1);
@@ -64,7 +64,7 @@ public class Script {
                 "BRICH   : All right, are you ready?\n";
         typeWriterEffect1(s2);
     }
-    public static Pokemon choosePartner() throws InterruptedException {
+    public static Pokemon choosePartner() {
         String s1 = "BRICH  : You can choose one of the POKEMON over there. \n\n" +
                 "1. " + greenColorCode + "Bulbasaur" + resetColorCode + ", the Grass-type POKEMON!\n" +
                 "2. " + redColorCode + "Charmander" + resetColorCode + ", the Fire-type POKEMON!\n" +
@@ -80,7 +80,7 @@ public class Script {
                 if (response.equalsIgnoreCase("Y")) {
                     switch (sel) {
                         case "1": {
-                            return new Pokemon("Bulbasaur", new String[]{"Grass", "Poison"}, 45, 49, 49, 45, "Vine Whip", "Grass", 45, "Venoshock", "Poison", 60);
+                            return new Pokemon("Bulbasaur", new String[]{"Grass", "Poison"}, 45, 49, 49, 45, "Vine Whip", "Grass", 100, "Venoshock", "Poison", 60);
                         }
                         case "2": {
                             return new Pokemon("Charmander", new String[]{"Fire"},39, 52, 43, 65, "Scratch", "Fire Fang", 40, "Ember", "Fire", 65);
@@ -103,7 +103,7 @@ public class Script {
             }
         }
     }
-    public static void continueScript2() throws InterruptedException {
+    public static void continueScript2() {
         String s1 =
                 "BRICH  : Your very own adventure is about to unfold.\n\n";
         typeWriterEffect1(s1);
@@ -113,21 +113,42 @@ public class Script {
                           dreams, adventure, and friendships await!\n\n""";
         typeWriterEffect1(s2);
     }
-    public static void typeWriterEffect1(String str ) throws InterruptedException {
+    public static void healthCareScript(){
+        String s1 = """
+                Nurse Joy   : Welcome to our POKEMON CENTER!\n
+                Nurse Joy   : We can heal your POKEMON to perfect health.\n
+                Nurse Joy   : Okay, I'll take your POKEMON for a few seconds.\n
+                .
+                ..
+                ...
+                ....!
+                Nurse Joy   : Thank you for waiting. We hope to see you again!  
+                """;
+        typeWriterEffect2(s1);
+    }
+    public static void typeWriterEffect1(String str ) {
         char[] c = str.toCharArray();
         for (int i = 0; i < c.length; i++) {
             System.out.print(c[i]);
-            Thread.sleep(1);
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         System.out.println("[ Press ENTER to continue...]");
         sc.nextLine();
     }
 
-    public static void typeWriterEffect2(String str ) throws InterruptedException {
+    public static void typeWriterEffect2(String str ) {
         char[] c = str.toCharArray();
         for (int i = 0; i < c.length; i++) {
             System.out.print(c[i]);
-            Thread.sleep(1);
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

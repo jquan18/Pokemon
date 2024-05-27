@@ -32,11 +32,11 @@ public class PokemonList{
          else {
              Pokemon pokemon = list.get(index);
              list.set(index, null);
-             System.out.println(pokemon.getName() + "had been transfer!");
+             System.out.print(pokemon.getName() + "had been transfer!");
          }
 
     }
-    public boolean checkStatus() {
+    public boolean checkStatus(Pokemon pokemon) {
         int totalHP = 0;
         for (int i=0; i<list.size(); i++) {
             if (list.get(i) == null )
@@ -44,9 +44,15 @@ public class PokemonList{
             totalHP += list.get(i).HP;
         }
 
-        if (totalHP == 0) {
-            System.out.println("All your Pokemon have been defeated....");
-            System.out.println("Good try...");
+        if (totalHP == 0 ) {
+            if (pokemon.master.equalsIgnoreCase("trainer")) {
+                System.out.println("All your Pokemon have been defeated....");
+                System.out.println("Good try...");
+            }
+            else {
+                System.out.println("You have defeat the enemy!");
+                System.out.println("Good Job!");
+            }
             return false;
         }
         return true;
@@ -65,7 +71,6 @@ public class PokemonList{
         try {
             Scanner reader = new Scanner(new FileInputStream("src/res/Pokemon_dataBase/pokemon_special.txt"));
             int i = 0;
-            reader.nextLine();
             while (reader.hasNextLine()) {
                 String[] line = reader.nextLine().split(",");
                 String[] arr;

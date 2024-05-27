@@ -3,24 +3,22 @@ import java.util.logging.Level;
 
 public class LevelSystem {
     int[] RequiredEXP = new int[50];
-    int currentEXP = 0,previousLevel=1, currentLevel;
+    int currentEXP = 0,previousLevel=1, currentLevel=1;
 
     public LevelSystem() {
-        RequiredEXP();
+        initializeRequiredEXP();
     }
-    public void RequiredEXP() {
-        for (int i=0, j= 0; i<RequiredEXP.length; i++) {
+    public void initializeRequiredEXP() {
+        for (int i=1; i<RequiredEXP.length; i++) {
+            RequiredEXP[0] = 100;
             if (i>=30) {
-                j = 300;
-                RequiredEXP[i] = j;
+                RequiredEXP[i] = RequiredEXP[i-1] + 300;
             }
             else if (i>=20) {
-                j = 200;
-                RequiredEXP[i] = j;
+                RequiredEXP[i] = RequiredEXP[i-1] + 200;
             }
             else {
-                j = 100;
-                RequiredEXP[i] = j;
+                RequiredEXP[i] = RequiredEXP[i-1] + 100;
             }
         }
     }
@@ -31,15 +29,16 @@ public class LevelSystem {
         LevelUp(pokemon);
     }
     public void LevelUp(Pokemon pokemon) {
-        int i=0;
         previousLevel = currentLevel;
         //Set level 50 stop growth
-        while (currentEXP>RequiredEXP[i]) {
-            currentLevel = i+1;
-            i++;
+        for (int i=currentLevel; i<RequiredEXP.length; i++) {
+            if (currentEXP >= RequiredEXP[i]) {
+                currentLevel = i + 1;
+                break;
+            }
         }
         if (currentLevel > previousLevel) {
-            System.out.printf("%s [ Level.%d ] --> [ Level.%d ]",pokemon.getName(),previousLevel,currentLevel);
+            System.out.printf("%s [ Level.%d ] --> [ Level.%d ]\n",pokemon.getName(),previousLevel,currentLevel);
             attributesIncrease(pokemon);
         }
     }
@@ -51,7 +50,8 @@ public class LevelSystem {
     public void setCurrentEXP(int EXP) {
         this.currentEXP = EXP;
     }
-    public void setDefaultLevel(String location) {
+
+    public void setDefaultLevel(String location, Pokemon pokemon) {
         switch (location) {
             case "Pallet Town": {
                 currentLevel = 5;
@@ -132,6 +132,8 @@ public class LevelSystem {
             default:
                 System.out.println("Error on Pokemon Set Level!");
         }
+        this.currentEXP = RequiredEXP[currentLevel-1];
+        attributesIncrease(pokemon);
     }
     public void attributesIncrease(Pokemon pokemon) {
         int evPoint = currentLevel - previousLevel;
@@ -142,9 +144,4 @@ public class LevelSystem {
         pokemon.defense += evPoint;
     }
 
-    public void PokemonCheatCode(Pokemon pokemon) {
-        previousLevel = currentLevel;
-        currentLevel = 50;
-        attributesIncrease(pokemon);
-    }
 }
