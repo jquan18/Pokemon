@@ -1,0 +1,47 @@
+-- Create the database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS pokemon_game;
+
+-- Use the created database
+USE pokemon_game;
+
+
+
+USE sql12709702;
+
+-- Create the users table
+CREATE TABLE IF NOT EXISTS users (
+    username VARCHAR(50) PRIMARY KEY,
+    password VARCHAR(50) NOT NULL
+);
+
+-- Create the game_saves table
+CREATE TABLE IF NOT EXISTS game_saves (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    slot INT,
+    location VARCHAR(50),
+    UNIQUE (username, slot),
+    FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
+);
+
+-- Create the pokemon table
+CREATE TABLE IF NOT EXISTS pokemon (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    save_id INT,
+    name VARCHAR(50),
+    type VARCHAR(50),
+    hp INT,
+    maxHP INT,
+    attack INT,
+    defense INT,
+    speed INT,
+    quickMoveName VARCHAR(50),
+    quickMoveType VARCHAR(50),
+    quickMoveDamage INT,
+    quickMovePoints INT,
+    mainMoveName VARCHAR(50),
+    mainMoveType VARCHAR(50),
+    mainMoveDamage INT,
+    mainMovePoints INT,
+    FOREIGN KEY (save_id) REFERENCES game_saves(id) ON DELETE CASCADE
+);

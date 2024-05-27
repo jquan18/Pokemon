@@ -35,6 +35,23 @@ public class Pokemon{
         this.master = "";
         this.typeString = type;
     }
+
+	//for savegame loadgame
+	public Pokemon(String name, String[] type,int maxHP, int HP,int attack, int defense, int speed, String QMName,String QMType, int QMDamage, String MMName, String MMType, int MMDamage) {
+        this.name = name;
+        this.type = new Type(type);
+        this.attack = attack;
+        this.defense = defense;
+        this.speed = speed;
+        this.maxHP = maxHP;
+        this.HP = HP;
+        this.quickMove = new QuickMove(QMName, QMType, QMDamage);
+        this.mainMove = new MainMove(MMName, MMType, MMDamage);
+        this.levelSystem = new LevelSystem();
+        this.master = "Trainer";
+        this.typeString = type;
+    }
+
     public void useMove(int index, Pokemon enemy) {
         int value = 0;
         switch (index) {
@@ -71,32 +88,32 @@ public class Pokemon{
         int bar = Math.abs((int) Math.round((double) this.HP / maxHP * barLength));
          return "=".repeat(bar) + " ".repeat(barLength - bar);
     }
-    public String getName() {
-        return this.name;
-    }
-    public int getLevel() {
-        return levelSystem.currentLevel;
-    }
-    public Type getType() {
-        return type;
-    }
     public String getMoveName(int index) {
-        if (index == 0)
-            return quickMove.getMovesName();
+		if (index == 0)
+		return quickMove.getMovesName();
         else
-            return mainMove.getMovesName();
+		return mainMove.getMovesName();
     }
     public String getMoveType(int index) {
-        ArrayList<String> arr = new ArrayList<>();
+		ArrayList<String> arr = new ArrayList<>();
         if (index == 0)
-            arr.addAll(Arrays.asList(quickMove.getMovesTypeString()));
+		arr.addAll(Arrays.asList(quickMove.getMovesTypeString()));
         else if (index == 1)
-            arr.addAll(Arrays.asList(mainMove.getMovesTypeString()));
+		arr.addAll(Arrays.asList(mainMove.getMovesTypeString()));
 
-        return arr.getFirst();
+        return arr.get(0);
     }
+	public String getName() {
+		return this.name;
+	}
+	public int getLevel() {
+		return levelSystem.currentLevel;
+	}
+	public Type getType() {
+		return type;
+	}
     public void setLevel(String location) {
-        this.levelSystem.setDefaultLevel(location, this);
+		this.levelSystem.setDefaultLevel(location, this);
     }
     public int getAttack() {
         return this.attack;
@@ -108,4 +125,13 @@ public class Pokemon{
     public void setMaster(String master) {
         this.master = master;
     }
+	public int getHP(){
+		return this.HP;
+	}
+	public int getMaxHP(){
+		return this.maxHP;
+	}
+	public int getSpeed(){
+		return this.speed;
+	}
 }
