@@ -502,3 +502,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 *.iml
+.vscode/
