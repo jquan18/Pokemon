@@ -4,9 +4,9 @@ import org.json.*;
 
 public class SaveGame {
 
-    private static final String DB_URL = "jdbc:mysql://172.23.240.1:3306/pokemon_game";
-    private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "root";
+    private static final String DB_URL = "jdbc:mysql://sql12.freesqldatabase.com:3306/sql12709702";
+    private static final String DB_USERNAME = "sql12709702";
+    private static final String DB_PASSWORD = "dMq5bLJnEt";
 
     private Scanner scanner = new Scanner(System.in);
     private Script script = new Script();
