@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class City {
-    public static String[] cityList = {"Pallet Town", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island", "Viridian City"};
-    public static String[] leaderList = {"", "Brock", "Misty", "Lt. Surge", "", "Erika", "Koga", "Sabrina", "Blaine","Giovanni"};
-    public static String[] badge = {"", "Boulder Badge", "Cascade Badge", "Thunder Badge", "", "Rainbow Badge", "Soul Badge", "Marsh Badge", "Volcano Badge", "Earth Badge"};
+    public static String[] cityList = {"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island"};
+    public static String[] leaderList = {"", "Giovanni", "Brock", "Misty", "Lt. Surge", "", "Erika", "Koga", "Sabrina", "Blaine"};
+    public static String[] badge = {"", "Earth Badge", "Boulder Badge", "Cascade Badge", "Thunder Badge", "", "Rainbow Badge", "Soul Badge", "Marsh Badge", "Volcano Badge"};
     public String cityName;
     public int[][] adjacent;
     Wild_Pokemon wildPokemon;
@@ -16,9 +16,10 @@ public class City {
         this.cityName = name;
 
         for (int i=0; i<cityList.length; i++) {
-            if (this.cityName.equalsIgnoreCase(cityList[i]) && !leaderList[i].isEmpty())
+            if (this.cityName.equalsIgnoreCase(cityList[i]) && !leaderList[i].isEmpty()) {
                 leader = new GymLeader(leaderList[i]);
-            this.cityBadge = badge[i];
+                this.cityBadge = badge[i];
+            }
         }
 
         wildPokemon = new Wild_Pokemon(this.cityName);
@@ -76,7 +77,7 @@ public class City {
             case "Fuchsia City":
                 System.out.println("[2] Challenge Gym Leader");
                 displayDefaultOptions();
-                System.out.println("[5] Safari Zone");
+                System.out.println("[6] Safari Zone");
                 break;
             case "Lavender Town":
                 System.out.println("[2] PokeMaze");
@@ -85,7 +86,7 @@ public class City {
             case "Final":
                 System.out.println("[2] Challenge Gym Leader");
                 displayDefaultOptions();
-                System.out.println("[5] Rival's Race");
+                System.out.println("[6] Rival's Race");
                 break;
             default:
                 System.out.println("[2] Challenge Gym Leader");
@@ -99,6 +100,7 @@ public class City {
         wildPokemon.showPokemon();
         System.out.println("[4] Player Options");
         System.out.println("    a.Show map   b.Show My Pokemon   c.Show My Badges   d.Save and Exit");
+        System.out.println("[5] HealthCare");
     }
 
     public int findCityIndex(Object City){

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 /*
 QM = quick move (low damage, but more change )
@@ -7,13 +8,14 @@ MM = Main move (High damage, but less change)
  */
 public class Pokemon{
     int maxHP, HP, speed, attack, defense;
-    private final String name;
-    private Type type;
+    String name;
+    Type type;
 //    private ArrayList<Moves> moves = new ArrayList<>();
-    final QuickMove quickMove;
-    final MainMove mainMove;
+    QuickMove quickMove;
+    MainMove mainMove;
     LevelSystem levelSystem;
     String master;
+    String[] typeString;
 
 
     public Pokemon() {
@@ -31,6 +33,7 @@ public class Pokemon{
         this.mainMove = new MainMove(MMName, MMType, MMDamage);
         this.levelSystem = new LevelSystem();
         this.master = "";
+        this.typeString = type;
     }
     public void useMove(int index, Pokemon enemy) {
         int value = 0;
@@ -49,7 +52,7 @@ public class Pokemon{
 
         }
         if (value < 5) {
-            value = 5;
+            value = new Random().nextInt(5)+1;
         }
         receiveDamage(value, enemy);
     }
@@ -60,7 +63,7 @@ public class Pokemon{
             enemy.HP = 0;
     }
     public void displayPokemonStatus() {
-        System.out.print(getName());
+        System.out.print(this.name);
         System.out.printf("--HP: [ %s ](%s/%s)\n", getHpBar(), this.HP, this.maxHP);
     }
     public String getHpBar() {
@@ -68,14 +71,14 @@ public class Pokemon{
         int bar = Math.abs((int) Math.round((double) this.HP / maxHP * barLength));
          return "=".repeat(bar) + " ".repeat(barLength - bar);
     }
+    public String getName() {
+        return this.name;
+    }
     public int getLevel() {
         return levelSystem.currentLevel;
     }
     public Type getType() {
         return type;
-    }
-    public String getName() {
-        return name;
     }
     public String getMoveName(int index) {
         if (index == 0)
@@ -93,7 +96,7 @@ public class Pokemon{
         return arr.getFirst();
     }
     public void setLevel(String location) {
-        this.levelSystem.setDefaultLevel(location);
+        this.levelSystem.setDefaultLevel(location, this);
     }
     public int getAttack() {
         return this.attack;

@@ -25,11 +25,12 @@ public class inputReader {
                             continue;  // Ensure there are enough elements in the split array
                         }
                         String[] arr;
-                        if (str[2] != null) {
+                        if (!str[2].equalsIgnoreCase("")) {
                             arr = new String[]{str[1], str[2]};
                         } else {
                             arr = new String[]{str[1]};
                         }
+
                         enemy.enemyBag.pokemonList.list.add(i, new Pokemon(str[0], arr, Integer.parseInt(str[3]),
                                 Integer.parseInt(str[4]), Integer.parseInt(str[5]), Integer.parseInt(str[6]), str[7], str[8],
                                 Integer.parseInt(str[9]), str[10], str[11], Integer.parseInt(str[12])
@@ -52,7 +53,7 @@ public class inputReader {
                 else if (enemy.getClass() == Gary.class)
                     enemy.enemyBag.pokemonList.list.get(i).setMaster("Gary");
 
-                enemy.enemyBag.pokemonList.list.get(i).levelSystem.setDefaultLevel(enemy.name);
+                enemy.enemyBag.pokemonList.list.get(i).levelSystem.setDefaultLevel(enemy.name, enemy.enemyBag.pokemonList.list.get(i));
                 //If pokemon atrributes is problem, I think will be here
                 enemy.enemyBag.pokemonList.list.get(i).levelSystem.attributesIncrease(enemy.enemyBag.pokemonList.list.get(i));
             }

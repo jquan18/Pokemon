@@ -43,9 +43,9 @@ public class Trainer {
 
     }
     public void choosePartnerPokemon(Pokemon pokemon) {
-        pokemon.levelSystem.setDefaultLevel("Pallet Town");
+        pokemon.levelSystem.setDefaultLevel("Pallet Town", pokemon);
         pokemon.setMaster("Trainer");
-        trainerBag.pokemonList.list.add(pokemon);
+        trainerBag.pokemonList.list.set(0, pokemon);
     }
     public boolean isKeepStay() {
         return keepStay;
@@ -59,36 +59,41 @@ public class Trainer {
         else
             System.out.println("Failed to escape");
     }
-    public void tryCatch(Pokemon current, Pokemon pokemon) {
+    public boolean tryCatch(Pokemon current, Pokemon pokemon) {
         Scanner sc = new Scanner(System.in);
         int change = new Random().nextInt(11) ;
-
-        if (change > 3) {
-            System.out.println("Gotcha!");
-            System.out.print("Enter the place of Pokemon(): ");
-            String pos = "5040";
-            checkAvailablePokemon(current);
-            while (inputChecker.checkAbnormalInput(pos, "1", "6")) {
-                pos = sc.next();
-                if (trainerBag.pokemonList.list.get(Integer.parseInt(pos) - 1) != null) {
-                    System.out.print("Pokemon on place will be transfer (YES/NO): ");
-                    String str = sc.next();
-                    if (str.equalsIgnoreCase("YES")) {
+        if (pokemon.HP >= (0.5*pokemon.maxHP)) {
+            System.out.println(" Escaped ( Ensure the pokemon HP is less than 50%)");
+            return false;
+        }
+        else {
+            if (change > 3) {
+                System.out.println("Gotcha!");
+                System.out.print("Enter the place of Pokemon(): ");
+                String pos = "5040";
+                checkAvailablePokemon(current);
+                while (inputChecker.checkAbnormalInput(pos, "1", "6")) {
+                    pos = sc.next();
+                    if (trainerBag.pokemonList.list.get(Integer.parseInt(pos) - 1) != null) {
+                        System.out.print("Pokemon on place will be transfer (YES/NO): ");
+                        String str = sc.next();
+                        if (str.equalsIgnoreCase("YES")) {
+                            pokemon.setMaster("Trainer");
+                            trainerBag.pokemonList.list.set(Integer.parseInt(pos) - 1, null);
+                            trainerBag.pokemonList.list.set(Integer.parseInt(pos) - 1, pokemon);
+                            return true;
+                        }
+                    } else {
                         pokemon.setMaster("Trainer");
-                        trainerBag.pokemonList.list.set(Integer.parseInt(pos) - 1, null);
                         trainerBag.pokemonList.list.set(Integer.parseInt(pos) - 1, pokemon);
-                        break;
+                        return true;
                     }
-                }
-                else {
-                    pokemon.setMaster("Trainer");
-                    trainerBag.pokemonList.list.set(Integer.parseInt(pos) - 1, pokemon);
-                    break;
-                }
 
+
+                }
 
             }
-
+            return false;
         }
 
     }
