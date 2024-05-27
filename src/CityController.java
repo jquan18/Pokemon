@@ -6,14 +6,22 @@ import java.util.regex.Pattern;
 public class CityController {
     battleSystem bt;
     Trainer trainer;
+    static ArrayList<City> city;
     static Stack<City> currentCityStack;
+    static Stack<City> DJKCityStack;
+
+    public CityController() {
+
+    }
+
     public CityController(Trainer trainer) {
         this.trainer = trainer;
         currentCityStack = new Stack<>();
     }
 
     public void runCity(){
-        ArrayList<City> city = new ArrayList<>();
+        currentCityStack = new Stack<>();
+        city = new ArrayList<>();
         String[] cityList = new String[]{"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island"};
         int[][][] adjacent = new int[][][]{{{1, 5}, {9, 7}}, {{0, 5}, {2, 8}}, {{1, 8}, {3, 12}}, {{2, 12}, {8, 6}, {5, 9}}, {{8, 4}, {5, 5}, {7, 7}}, {{3, 9}, {8, 3}, {4, 5}, {7, 11}}, {{7, 10}, {8, 4}}, {{4, 7}, {6, 10}, {5, 11}, {9, 5}}, {{3, 6}, {5, 3}, {4, 3}, {6, 4}}, {{0, 7}, {7, 5}}};
 
@@ -304,5 +312,107 @@ public class CityController {
         return direction.equals("w") || direction.equals("S") || direction.equals("A") || direction.equals("D");
     }
 
+
+
+    public void rivalRace(){
+        System.out.println("Welcome to the race you Punkhead! Let's see who reaches the ending first HAHAHAHA!");
+
+        //picking a random destination (must be city not adjacent to Saffron city
+        int [] availableCities = new int[]{0,1,2,7,9};
+        int destination = availableCities[new Random().nextInt(5)];
+
+
+        System.out.println("The battle has begun! Your rival Gary has challenged you to a race to  " + currentCityStack.peek().numToString(destination));
+
+        dijkstra(destination);
+    }
+
+    //Dijkstra's algorithm (find shortest path)
+    public void dijkstra(int destinationIndex) {
+        DJKCityStack = new Stack<>();
+        int sourceIndex = 8;
+
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(pair -> pair[1]));
+        int[] distances = new int[10];
+        boolean[] visited = new boolean[10];
+        int[] previous = new int[10];
+
+        Arrays.fill(distances, Integer.MAX_VALUE);
+        Arrays.fill(visited, false);
+        Arrays.fill(previous, -1);
+
+        distances[sourceIndex] = 0;
+        pq.offer(new int[]{sourceIndex, 0});
+
+        while (!pq.isEmpty()) {
+            int[] current = pq.poll();
+            int u = current[0];
+            DJKCityStack.push(city.get(u));
+
+            if (visited[u]) continue;
+            visited[u] = true;
+
+            if (u == destinationIndex) break;
+
+
+            for (int[] neighbor : DJKCityStack.peek().adjacent) {
+                int v = neighbor[0];
+                int weight = neighbor[1];
+
+                if (!visited[v] && distances[u] + weight < distances[v]) {
+                    distances[v] = distances[u] + weight;
+                    pq.offer(new int[]{v, distances[v]});
+                    previous[v] = u;
+                }
+            }
+        }
+
+        printShortestPath(sourceIndex, destinationIndex, distances, previous);
+    }
+
+    private void printShortestPath(int sourceIndex, int destinationIndex, int[] distances, int[] previous) {
+        if (distances[destinationIndex] == Integer.MAX_VALUE) {
+            System.out.println("No path exists from " + City.cityList[sourceIndex] + " to " + City.cityList[destinationIndex]);
+            return;
+        }
+
+        System.out.println("Shortest path from " + City.cityList[sourceIndex] + " to " + City.cityList[destinationIndex] + " is " + distances[destinationIndex] + " units");
+
+        List<Integer> path = new ArrayList<>();
+        for (int at = destinationIndex; at != -1; at = previous[at]) {
+            path.add(at);
+        }
+        Collections.reverse(path);
+
+        System.out.print("Shortest Path: ");
+        for (int i = 0; i < path.size(); i++) {
+            System.out.print(City.cityList[path.get(i)]);
+            if (i < path.size() - 1) {
+                System.out.print(" -> ");
+            }
+        }
+        System.out.println();
+    }
+// tester for shortest path
+//    public static void main(String[] args) {
+//        CityController hi = new CityController();
+//        city = new ArrayList<>();
+//        currentCityStack = new Stack<>();
+//        String[] cityList = new String[]{"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island"};
+//        int[][][] adjacent = new int[][][]{{{1, 5}, {9, 7}}, {{0, 5}, {2, 8}}, {{1, 8}, {3, 12}}, {{2, 12}, {8, 6}, {5, 9}}, {{8, 4}, {5, 5}, {7, 7}}, {{3, 9}, {8, 3}, {4, 5}, {7, 11}}, {{7, 10}, {8, 4}}, {{4, 7}, {6, 10}, {5, 11}, {9, 5}}, {{3, 6}, {5, 3}, {4, 3}, {6, 4}}, {{0, 7}, {7, 5}}};
+//
+//        //add cities to ArrayList
+//        for (int i = 0; i < 10; i++) {
+//            City newCity = new City(cityList[i]); // Create new City object
+//            newCity.setAdjacent(adjacent[i]); // Set adjacent array
+//            city.add(newCity);
+//        }
+//
+//        //((City) city.get(0)).displayCity();
+//        currentCityStack.push(city.getFirst());
+//
+//        hi.dijkstra(0);
+//
+//    }
 
 }
