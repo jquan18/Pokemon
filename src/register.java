@@ -94,7 +94,7 @@ public class register extends JFrame {
 
         // Show Password Checkbox
         showPasswordCheckBox = new JCheckBox("Show Password");
-        showPasswordCheckBox.setFont(new Font("Arial", Font.PLAIN, 25));
+        showPasswordCheckBox.setFont(new Font("Arial", Font.PLAIN, 18));
         showPasswordCheckBox.setForeground(Color.WHITE);
         showPasswordCheckBox.setOpaque(false);
         gbc.gridx = 1;
