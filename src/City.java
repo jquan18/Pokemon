@@ -103,7 +103,7 @@ public class City {
         System.out.println("[5] HealthCare");
     }
 
-    public int findCityIndex(Object City){
+    public int findCityIndex(String City){
         for (int i = 0; i < cityList.length; i++) {
             if (cityList[i].equals(City)){
                 return i;
@@ -111,4 +111,18 @@ public class City {
         }
         return -1;
     }
+
+    public String convertString(City City){
+        for (int i = 0; i < cityList.length; i++) {
+            if (cityList[i].equals(City.cityName)){
+                return cityList[i];
+            }
+        }
+        return "no such city";
+    }
+
+    public String numToString(int index) {
+        return cityList[index];
+    }
+
 }
