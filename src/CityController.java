@@ -4,8 +4,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CityController {
-    battleSystem bt;
-    Trainer trainer;
+
+    private battleSystem bt;
+    private Trainer trainer;
+    private SaveGame saveGame;
+    private String username;
+    private int slot;
+    private String currentLocation;
+    private PokemonList pokemonList;
     static ArrayList<City> city;
     static Stack<City> currentCityStack;
     static Stack<City> DJKCityStack;
@@ -14,8 +20,20 @@ public class CityController {
 
     }
 
+
     public CityController(Trainer trainer) {
         this.trainer = trainer;
+        currentCityStack = new Stack<>();
+    }
+
+
+    public CityController(Trainer trainer, SaveGame saveGame, String username, int slot, String currentLocation, PokemonList pokemonList) {
+        this.trainer = trainer;
+        this.saveGame = saveGame;
+        this.username = username;
+        this.slot = slot;
+        this.currentLocation = currentLocation;
+        this.pokemonList = pokemonList;
         currentCityStack = new Stack<>();
     }
 
@@ -32,17 +50,22 @@ public class CityController {
             city.add(newCity);
         }
 
-        //((City) city.get(0)).displayCity();
-        currentCityStack.push(city.getFirst());
+        // Set initial city
+        for (City c : city) {
+            if (c.cityName.equalsIgnoreCase(currentLocation)) {
+                currentCityStack.push(c);
+                break;
+            }
+        }
 
         boolean end = false;
         Scanner sc = new Scanner(System.in);
         while (!end) {
-            currentCityStack.peek().displayOptions( currentCityStack.peek().cityName);
+            currentCityStack.peek().displayOptions(currentCityStack.peek().cityName);
             String currentCity = currentCityStack.peek().cityName;
             String input = sc.nextLine();
 
-            int[] nextCityList = currentCityStack.peek().getAdjacent() ;// get the adjacent list of current city
+            int[] nextCityList = currentCityStack.peek().getAdjacent(); // get the adjacent list of current city
 
             switch (input) {
                 case "1a": {
@@ -54,7 +77,6 @@ public class CityController {
                     currentCityStack.pop();
                     currentCityStack.push(city.get(nextCityList[1]));
                     break;
-
                 case "1c":
                     if (nextCityList.length < 3) {
                         System.out.println("No such city!");
@@ -64,54 +86,52 @@ public class CityController {
                     }
                     break;
                 case "1d":
-                    if (nextCityList.length < 3) {
+                    if (nextCityList.length < 4) {
                         System.out.println("No such city!");
                     } else {
                         currentCityStack.pop();
                         currentCityStack.push(city.get(nextCityList[3]));
                     }
                     break;
-                case "2":{
-                    if (currentCity.equalsIgnoreCase("Pallet Town")){
+                case "2": {
+                    if (currentCity.equalsIgnoreCase("Pallet Town")) {
                         mumNagging();
-                    }
-                    else if (currentCity.equalsIgnoreCase("Lavender Town")){
+                    } else if (currentCity.equalsIgnoreCase("Lavender Town")) {
                         System.out.println("Welcome to the pokemon maze!");
                         pokemaze();
-                    }
-                    else {
+                    } else {
                         System.out.println("Challenging Gym Leader");
                         if (trainer.trainerBag.badgeList.contains(currentCityStack.peek().cityBadge)) {
                             System.out.println("You have defeated this Gym Leader.");
-                        }
-                        else
+                        } else
                             bt = new battleSystem(this.trainer, currentCityStack.peek().leader);
                     }
                     break;
                 }
-                case "3":{
+                case "3": {
                     currentCityStack.peek().wildPokemon.enemyBag.healPokemon();
                     System.out.println("Fighting Wild Pokemon!");
-                    bt =  new battleSystem(this.trainer, currentCityStack.peek().wildPokemon);
+                    bt = new battleSystem(this.trainer, currentCityStack.peek().wildPokemon);
                     break;
                 }
-                case "4a":{
+                case "4a": {
                     System.out.println("Showing Map!");
                     showMap();
                     break;
                 }
-                case "4b":{
+                case "4b": {
                     System.out.println("Showing Pokemon!");
-                     trainer.checkAvailablePokemon(trainer.trainerBag.pokemonList.get(0));
+                    trainer.checkAvailablePokemon(trainer.trainerBag.pokemonList.get(0));
                     break;
                 }
-                case "4c":{
+                case "4c": {
                     System.out.println("Showing badges");
                     System.out.println("Bag: " + trainer.trainerBag.badgeList);
                     break;
                 }
-                case "4d":{
+                case "4d": {
                     System.out.println("Saving progress......");
+                    saveGame.saveGame(username, slot, currentCityStack.peek().cityName, pokemonList);
                     end = true;
                     break;
                 }
@@ -120,14 +140,12 @@ public class CityController {
                     trainer.trainerBag.healPokemon();
                     break;
                 }
-                case "6":{
-                    if(currentCity.equalsIgnoreCase("Final")){
+                case "6": {
+                    if (currentCity.equalsIgnoreCase("Final")) {
                         System.out.println("Run Rivalry Race!");
-                    }
-                    else if (currentCity.equalsIgnoreCase("Fuchsia City")){
+                    } else if (currentCity.equalsIgnoreCase("Fuchsia City")) {
                         System.out.println("Welcome to the Safari Zone!");
-                    }
-                    else {
+                    } else {
                         System.out.println("Invalid move!");
                     }
                     break;
@@ -146,7 +164,7 @@ public class CityController {
         }
     }
 
-    public static void pokemaze(){
+    public static void pokemaze() {
         char[][] maze = {
                 {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
                 {'#', 'S', '.', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '.', '.', '.', '#'},
@@ -159,100 +177,96 @@ public class CityController {
                 {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', 'E', '#'}
         };
 
+        // Display initial maze
+        displayMaze(maze);
 
-                // Display initial maze
-                displayMaze(maze);
+        // Player position
+        int playerRow = 1;
+        int playerCol = 1;
 
-                // Player position
-                int playerRow = 1;
-                int playerCol = 1;
+        // Stack to keep track of the path
+        Stack<String> path = new Stack<>();
 
-                // Stack to keep track of the path
-                Stack<String> path = new Stack<>();
+        char hold = 'S';
 
-                char hold = 'S';
+        // Game loop
+        Scanner scanner = new Scanner(System.in);
+        while (maze[playerRow][playerCol] != 'E') {
+            System.out.print("Enter direction (W(up), S(Down), A(left), D(Right)): ");
+            String direction = scanner.nextLine();
 
-                // Game loop
-                Scanner scanner = new Scanner(System.in);
-                while (maze[playerRow][playerCol] != 'E') {
-                    System.out.print("Enter direction (W(up), S(Down), A(left), D(Right)): ");
-                    String direction = scanner.nextLine();
-
-                    // Validate input
-                    if (isValidDirection(direction)) {
-                        // Update player position
-                        switch (direction) {
-                            case "W":
-                                if (maze[playerRow - 1][playerCol] != '#') {
-                                    maze[playerRow][playerCol] = hold;
-                                    playerRow--;
-                                    path.push("W");
-                                }
-                                else {
-                                    maze[playerRow][playerCol] = hold;
-                                    System.out.println("You've hit a wall!");
-                                }
-                                break;
-                            case "S":
-                                if (maze[playerRow + 1][playerCol] != '#') {
-                                    maze[playerRow][playerCol] = hold;
-                                    playerRow++;
-                                    path.push("S");
-                                }
-                                else {
-                                    maze[playerRow][playerCol] = hold;
-                                    System.out.println("You've hit a wall!");
-                                }
-                                break;
-                            case "A":
-                                if (maze[playerRow][playerCol - 1] != '#') {
-                                    maze[playerRow][playerCol] = hold;
-                                    playerCol--;
-                                    path.push("A");
-                                }
-                                else {
-                                    maze[playerRow][playerCol] = hold;
-                                    System.out.println("You've hit a wall!");
-                                }
-                                break;
-                            case "D":
-                                if (maze[playerRow][playerCol + 1] != '#') {
-                                    maze[playerRow][playerCol] = hold;
-                                    playerCol++;
-                                    path.push("D");
-                                }
-                                else {
-                                    maze[playerRow][playerCol] = hold;
-                                    System.out.println("You've hit a wall!");
-                                }
-                                break;
+            // Validate input
+            if (isValidDirection(direction)) {
+                // Update player position
+                switch (direction) {
+                    case "W":
+                        if (maze[playerRow - 1][playerCol] != '#') {
+                            maze[playerRow][playerCol] = hold;
+                            playerRow--;
+                            path.push("W");
+                        } else {
+                            maze[playerRow][playerCol] = hold;
+                            System.out.println("You've hit a wall!");
                         }
-
-                        // Check if player touched Ghastly
-                        if (maze[playerRow][playerCol] == 'G') {
-                            System.out.println("You got caught by Ghastly! Game over.");
-                            return;
+                        break;
+                    case "S":
+                        if (maze[playerRow + 1][playerCol] != '#') {
+                            maze[playerRow][playerCol] = hold;
+                            playerRow++;
+                            path.push("S");
+                        } else {
+                            maze[playerRow][playerCol] = hold;
+                            System.out.println("You've hit a wall!");
                         }
-
-                        if(maze[playerRow][playerCol] == 'E'){
-                            maze[playerRow][playerCol] = 'Y';
-                            displayMaze(maze);
-                            break;
+                        break;
+                    case "A":
+                        if (maze[playerRow][playerCol - 1] != '#') {
+                            maze[playerRow][playerCol] = hold;
+                            playerCol--;
+                            path.push("A");
+                        } else {
+                            maze[playerRow][playerCol] = hold;
+                            System.out.println("You've hit a wall!");
                         }
-
-                        // Update maze and display
-                        hold = maze[playerRow][playerCol];
-                        maze[playerRow][playerCol] = 'Y';
-                        displayMaze(maze);
-                    } else {
-                        System.out.println("Invalid direction! Please enter W, S, A, D only!");
-                    }
+                        break;
+                    case "D":
+                        if (maze[playerRow][playerCol + 1] != '#') {
+                            maze[playerRow][playerCol] = hold;
+                            playerCol++;
+                            path.push("D");
+                        } else {
+                            maze[playerRow][playerCol] = hold;
+                            System.out.println("You've hit a wall!");
+                        }
+                        break;
                 }
 
-                // Player reached the end point
-                System.out.println("Congratulations! You reached the end point 'E'!");
-                System.out.println("Path taken: " + path);
+                // Check if player touched Ghastly
+                if (maze[playerRow][playerCol] == 'G') {
+                    System.out.println("You got caught by Ghastly! Game over.");
+                    return;
+                }
+
+                if (maze[playerRow][playerCol] == 'E') {
+                    maze[playerRow][playerCol] = 'Y';
+                    displayMaze(maze);
+                    break;
+                }
+
+                // Update maze and display
+                hold = maze[playerRow][playerCol];
+                maze[playerRow][playerCol] = 'Y';
+                displayMaze(maze);
+            } else {
+                System.out.println("Invalid direction! Please enter W, S, A, D only!");
             }
+        }
+
+        // Player reached the end point
+        System.out.println("Congratulations! You reached the end point 'E'!");
+        System.out.println("Path taken: " + path);
+    }
+
     public static void displayMaze(char[][] maze) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 17; j++) {
@@ -262,7 +276,8 @@ public class CityController {
         }
         System.out.println();
     }
-    public static void mumNagging(){
+
+    public static void mumNagging() {
         System.out.println("""
                 MOM: "Oh, Amaan! You're leaving on your adventure with Pokémon? How
                 exciting! I know you've always dreamed of this day. Remember, the bond
@@ -276,12 +291,13 @@ public class CityController {
                 travels, my dear!"
                 """);
     }
+
     public static void showMap() {
         String redColorCode = "\u001B[31m";
         String resetColorCode = "\u001B[0m";
 
         String[] patterns = {"Pewter City", "Viridian City", "Pallet Town", "Cinnabar Island", "Celadon City", "Saffron City", "Cerulean City", "Lavender Town", "Vermillion City", "Fuchsia City"};
-        for (int i=0; i<patterns.length; i++) {
+        for (int i = 0; i < patterns.length; i++) {
             if (currentCityStack.peek().cityName.equalsIgnoreCase(patterns[i])) {
                 Pattern pattern = Pattern.compile(patterns[i]);
                 try {
@@ -294,13 +310,12 @@ public class CityController {
                             matcher.appendReplacement(sb, redColorCode + patterns[i] + resetColorCode);
                             matcher.appendTail(sb);
                             System.out.println(sb);
-                        }
-                        else
+                        } else
                             System.out.println(line);
 
                     }
                     reader.close();
-                }catch (IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -309,8 +324,9 @@ public class CityController {
     }
 
     public static boolean isValidDirection(String direction) {
-        return direction.equals("w") || direction.equals("S") || direction.equals("A") || direction.equals("D");
+        return direction.equals("W") || direction.equals("S") || direction.equals("A") || direction.equals("D");
     }
+
 
 
 
@@ -539,5 +555,4 @@ public class CityController {
 //
 //        hi.safariZone();
 //    }
-
 }
