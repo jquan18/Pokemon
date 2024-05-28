@@ -4,7 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CityController {
-
     private battleSystem bt;
     private Trainer trainer;
     private SaveGame saveGame;
@@ -19,7 +18,6 @@ public class CityController {
     public CityController() {
 
     }
-
 
     public CityController(Trainer trainer) {
         this.trainer = trainer;
