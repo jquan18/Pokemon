@@ -370,7 +370,7 @@ public class CityController {
         printShortestPath(sourceIndex, destinationIndex, distances, previous);
     }
 
-    private void printShortestPath(int sourceIndex, int destinationIndex, int[] distances, int[] previous) {
+    public void printShortestPath(int sourceIndex, int destinationIndex, int[] distances, int[] previous) {
         if (distances[destinationIndex] == Integer.MAX_VALUE) {
             System.out.println("No path exists from " + City.cityList[sourceIndex] + " to " + City.cityList[destinationIndex]);
             return;
@@ -393,6 +393,124 @@ public class CityController {
         }
         System.out.println();
     }
+
+    public void safariZone() {
+        System.out.println("+--------------------------------------------+");
+        System.out.println("Welcome to the Safari Zone! Today's challenge: Sort the Pokemon!");
+        System.out.println("+--------------------------------------------+");
+        System.out.println("Enter the Pokemon in your party (seperated by a comma): ");
+
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+
+        //splitting into array and
+        input = input.replace(" ", "");
+        String[] pokemonList = input.split(",");
+
+        ArrayList<String> sortList = new ArrayList<String>();
+
+        //transfer from array to ArrayList
+        for (int i = 0; i < pokemonList.length; i++) {
+            sortList.addLast(pokemonList[i]);
+        }
+
+        System.out.print("You entered: ");
+        printList(sortList);
+
+        System.out.println("Sorting your Pokemon according to their unique preferences...");
+
+        //Step 1 (Eevee)
+        System.out.println("Step 1: Eevee insists on being positioned either at the beginning of the lineup to showcase its adaptability");
+
+        int eeveePosition = sortList.indexOf((String) "Eevee");
+        String remove1 = sortList.remove(eeveePosition);
+        sortList.addFirst(remove1);
+
+        System.out.println("Partial Sort: ");
+        printList(sortList);
+
+        //Step 2 (Snorlax)
+        System.out.println("Step 2: Snorlax insists on being positioned at the end of the lineup to ensure maximum relaxation.");
+
+        int snorlaxPosition = sortList.indexOf((String) "Snorlax");
+        String remove2 = sortList.remove(snorlaxPosition);
+        sortList.addLast(remove2);
+
+        System.out.println("Partial Sort: ");
+        printList(sortList);
+
+        //Step 3 (Machop)
+        System.out.println("Step 3: Machop demands to be placed next to the heaviest Pokemon in the lineup to show off its strength. ");
+
+        int machopPosition = sortList.indexOf((String) "Machop");
+        String remove3 = sortList.remove(machopPosition);
+        sortList.add(sortList.size() - 1, remove3);
+
+        System.out.println("Partial Sort: ");
+        printList(sortList);
+
+        //Step 4 (Bulbasaur)
+        System.out.println("Step 4: Bulbasaur refuses to be placed next to Charmander, his fire burns too hot");
+
+        //find location of Charmander
+        int Charmander = sortList.indexOf("Charmander");
+        int Bulbasaur = sortList.indexOf("Bulbasaur");
+
+        if (Charmander - Bulbasaur == -1 || Charmander - Bulbasaur == 1) {
+            if (Charmander == 2 || Charmander == 3) {
+                String remove4 = sortList.remove(Bulbasaur);
+                sortList.add(4, remove4);
+        }   else {
+                String remove5 = sortList.remove(Bulbasaur);
+                sortList.add(1, remove5);
+        }
+    }
+
+        System.out.println("Partial Sort: ");
+        printList(sortList);
+
+        //Step 5 (Pikachu)
+        System.out.println("Step 5: Pikachu demands to be placed at the center of the arrangement because, well, it's Pikachu!");
+
+        int pikachuPosition = sortList.indexOf((String) "Pikachu");
+        String remove6 = sortList.remove(pikachuPosition);
+        sortList.add(sortList.size() /2, remove6); //place pikachu at the centre
+
+        System.out.println("Partial Sort: ");
+        printList(sortList);
+
+        //Step 6 (Jigglypuff)
+        System.out.println("Step 6: Jigglypuff prefers to be surrounded by other \"cute\" Pokémon for morale purposes.");
+
+        pikachuPosition = sortList.indexOf((String) "Pikachu");
+        int jigglypuffPosition = sortList.indexOf((String) "Jigglypuff");
+
+        //check if jigglypuff is beside pikachu
+        if (!(jigglypuffPosition - pikachuPosition == 1 || jigglypuffPosition - pikachuPosition == -1)){
+            String remove7 = sortList.remove(jigglypuffPosition);
+            sortList.add(pikachuPosition -1, remove7); //place pikachu at the centre
+        }
+
+        System.out.println("Final Sorted List: ");
+        printList(sortList);
+
+        System.out.println("+--------------------------------------------+");
+        System.out.println("Your Pokemon are now sorted! Enjoy your adventure in the Safari Zone!");
+        System.out.println("+--------------------------------------------+");
+    }
+
+    public void printList(ArrayList<String> sortList){
+        for (int i = 0; i < sortList.size(); i++) {
+            System.out.print(sortList.get(i));
+            if(i < sortList.size() -1){
+                System.out.print(", ");
+            }
+        }
+        System.out.println("\n");
+    }
+
+
+
 // tester for shortest path
 //    public static void main(String[] args) {
 //        CityController hi = new CityController();
@@ -413,6 +531,13 @@ public class CityController {
 //
 //        hi.dijkstra(0);
 //
+//    }
+
+    //Safari Zone tester class
+//    public static void main(String[] args) {
+//        CityController hi = new CityController();
+//
+//        hi.safariZone();
 //    }
 
 }
