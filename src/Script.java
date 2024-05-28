@@ -10,7 +10,7 @@ public class Script {
     static String resetColorCode = "\u001B[0m";
     static HandingAbnormalInput inputChecker = new HandingAbnormalInput();
 
-    public void prologue() {
+    public static void prologue() {
         String s1 = """
                 BRICH   : Hi! Sorry to keep you waiting!
                 BRICH   : Welcome to the world of POKEMON!
@@ -34,7 +34,7 @@ public class Script {
         typeWriterEffect1(s3);
     }
 
-    public String getTrainerName() {
+    public static String getTrainerName() {
         while (true) {
             String s = "BRICH  : First, what is your name? \n";
             typeWriterEffect2(s);
@@ -55,7 +55,7 @@ public class Script {
         return name;
     }
 
-    public void continueScript() {
+    public static void continueScript() {
         String s1 =
                 "BRICH   : Right! So your're " + name + "who's moving to my hometown of LITTLEROOT.\n" + " I get it now!\n";
         typeWriterEffect2(s1);
@@ -64,7 +64,7 @@ public class Script {
                 "BRICH   : All right, are you ready?\n";
         typeWriterEffect1(s2);
     }
-    public Pokemon choosePartner() {
+    public static Pokemon choosePartner() {
         String s1 = "BRICH  : You can choose one of the POKEMON over there. \n\n" +
                 "1. " + greenColorCode + "Bulbasaur" + resetColorCode + ", the Grass-type POKEMON!\n" +
                 "2. " + redColorCode + "Charmander" + resetColorCode + ", the Fire-type POKEMON!\n" +
@@ -126,6 +126,7 @@ public class Script {
                 """;
         typeWriterEffect2(s1);
     }
+	
     public static void typeWriterEffect1(String str ) {
         char[] c = str.toCharArray();
         for (int i = 0; i < c.length; i++) {

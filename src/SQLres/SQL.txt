@@ -25,23 +25,27 @@ CREATE TABLE IF NOT EXISTS game_saves (
 );
 
 -- Create the pokemon table
-CREATE TABLE IF NOT EXISTS pokemon (
+CREATE TABLE pokemon (
     id INT AUTO_INCREMENT PRIMARY KEY,
     save_id INT,
-    name VARCHAR(50),
-    type VARCHAR(50),
+    slot INT,
+    name VARCHAR(255),
+    type VARCHAR(255),
     hp INT,
     maxHP INT,
     attack INT,
     defense INT,
     speed INT,
-    quickMoveName VARCHAR(50),
-    quickMoveType VARCHAR(50),
+    quickMoveName VARCHAR(255),
+    quickMoveType VARCHAR(255),
     quickMoveDamage INT,
     quickMovePoints INT,
-    mainMoveName VARCHAR(50),
-    mainMoveType VARCHAR(50),
+    mainMoveName VARCHAR(255),
+    mainMoveType VARCHAR(255),
     mainMoveDamage INT,
     mainMovePoints INT,
+    UNIQUE (save_id, slot),
     FOREIGN KEY (save_id) REFERENCES game_saves(id) ON DELETE CASCADE
 );
+
+

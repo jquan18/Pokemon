@@ -22,6 +22,7 @@ public class CityController {
     public CityController(Trainer trainer) {
         this.trainer = trainer;
         currentCityStack = new Stack<>();
+		this.currentLocation = "Pallet Town";
     }
 
 
