@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Intro extends JFrame {
     private JButton registerButton;
@@ -12,11 +12,11 @@ public class Intro extends JFrame {
     public Intro() {
         setTitle("Choose Your Action");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(700, 600);
+        setSize(2000, 1800);
         setLocationRelativeTo(null);
 
         // Load the background image
-        ImageIcon backgroundImage = new ImageIcon("C:/Users/SCSM11/IdeaProjects/Pokemon/src/res/background.jpg");
+        ImageIcon backgroundImage = new ImageIcon("C:/Users/SCSM11/IdeaProjects/Pokemon/src/res/GUI usage/background.jpg");
         JLabel backgroundLabel = new JLabel(backgroundImage);
 
         // Create a layered pane
@@ -30,7 +30,7 @@ public class Intro extends JFrame {
         JLabel chooseActionLabel = new JLabel("Choose Your Action:");
         chooseActionLabel.setFont(new Font("Arial", Font.BOLD, 30));
         chooseActionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        chooseActionLabel.setBounds(130, 280, 400, 50);
+        chooseActionLabel.setBounds(120, 270, 400, 50);
         chooseActionLabel.setForeground(Color.WHITE);
 
         // Create buttons
@@ -42,14 +42,32 @@ public class Intro extends JFrame {
         loginButton.setFont(new Font("Arial", Font.PLAIN, 30));
 
         // Set the bounds for the buttons
-        registerButton.setBounds(230, 350, 200, 50);
-        loginButton.setBounds(230, 500, 200, 50);
+        registerButton.setBounds(210, 385, 200, 50);
+        loginButton.setBounds(210, 490, 200, 50);
 
         // Add components to the layered pane
         layeredPane.add(backgroundLabel, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(chooseActionLabel, JLayeredPane.PALETTE_LAYER);
         layeredPane.add(registerButton, JLayeredPane.MODAL_LAYER);
         layeredPane.add(loginButton, JLayeredPane.MODAL_LAYER);
+
+        // Add a label for the "No, I would like to leave" option
+        JLabel leaveLabel = new JLabel("No, I would like to leave");
+        leaveLabel.setFont(new Font("Arial", Font.PLAIN, 25));
+        leaveLabel.setForeground(Color.WHITE);
+        leaveLabel.setBounds(210, 600, 480, 30);
+        leaveLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Change cursor to hand when hovering over label
+
+        // Add a MouseListener to the leaveLabel
+        leaveLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                leaveMousePressed(e);
+            }
+        });
+
+        // Add the leaveLabel to the layered pane
+        layeredPane.add(leaveLabel, JLayeredPane.MODAL_LAYER);
 
         // Set the layered pane as the content pane
         setContentPane(layeredPane);
@@ -58,7 +76,7 @@ public class Intro extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Create an instance of the "register" class
-                register rg = new register(Intro.this);
+                register rg = new register(Intro.this, getSize());
 
                 // Hide the current Intro GUI
                 setVisible(false);
@@ -67,25 +85,30 @@ public class Intro extends JFrame {
                 rg.setVisible(true);
             }
         });
+
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Create an instance of the "login" class
+                login lg = new login(Intro.this, getSize());
+
+                // Hide the current Intro GUI
+                setVisible(false);
+
+                // Show the login GUI
+                lg.setVisible(true);
+            }
+        });
+
         setVisible(true);
+    }
+
+    private void leaveMousePressed(MouseEvent evt) {
+        JOptionPane.showMessageDialog(this, "Thank you!\nHave A Nice Day!");
+        this.dispose(); // Dispose the Intro GUI
+    }
 
 
-registerButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // Create an instance of the "register" class
-            login lg = new login(Intro.this);
-
-            // Hide the current Intro GUI
-            setVisible(false);
-
-            // Show the register GUI
-            lg.setVisible(true);
-        }
-    });
-    setVisible(true);
-
-}
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
