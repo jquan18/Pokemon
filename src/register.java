@@ -128,11 +128,14 @@ public class register extends JFrame {
         // Add ActionListener to the submit button
         submitButton.addActionListener(e -> {
             // Perform registration logic here************************havent set requirements for register acc*****************
+            String username=usernameField.getText();
             String password = new String(passwordField.getPassword());
             String confirmPassword = new String(confirmPasswordField.getPassword());
 
             if (password.equals(confirmPassword)) {
                 JOptionPane.showMessageDialog(register.this, "Registration successful!");
+                new ScriptGUI(username);
+                dispose();
             } else {
                 JOptionPane.showMessageDialog(register.this, "Passwords do not match. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
             }
