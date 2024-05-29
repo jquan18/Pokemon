@@ -7,8 +7,6 @@ public class CityController {
     private battleSystem bt;
     private Trainer trainer;
     private SaveGame saveGame;
-    private String username;
-    private int slot;
     private String currentLocation;
     private PokemonList pokemonList;
     static ArrayList<City> city;
@@ -26,11 +24,9 @@ public class CityController {
     }
 
 
-    public CityController(Trainer trainer, SaveGame saveGame, String username, int slot, String currentLocation, PokemonList pokemonList) {
+    public CityController(Trainer trainer, SaveGame saveGame, String currentLocation, PokemonList pokemonList) {
         this.trainer = trainer;
         this.saveGame = saveGame;
-        this.username = username;
-        this.slot = slot;
         this.currentLocation = currentLocation;
         this.pokemonList = pokemonList;
         currentCityStack = new Stack<>();
@@ -130,7 +126,7 @@ public class CityController {
                 }
                 case "4d": {
                     System.out.println("Saving progress......");
-                    saveGame.saveGame(username, slot, currentCityStack.peek().cityName, pokemonList);
+                    saveGame.saveGame(currentCityStack.peek().cityName, pokemonList, trainer.trainerBag.badgeList);
                     end = true;
                     break;
                 }

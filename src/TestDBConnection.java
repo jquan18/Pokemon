@@ -4,7 +4,9 @@ import java.sql.SQLException;
 
 public class TestDBConnection {
     private Connection connection;
-
+	private static final String DB_URL = "jdbc:mysql://pokemon-jquan-pokemon.h.aivencloud.com:20245/pokemon_game";
+	private static final String DB_USERNAME = "avnadmin";
+	private static final String DB_PASSWORD = "AVNS_DZSw_zX_KzacaJnoOj7";
     public static void main(String[] args) {
         TestDBConnection testDBConnection = new TestDBConnection();
         testDBConnection.connect();
@@ -15,8 +17,7 @@ public class TestDBConnection {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-
-            connection = DriverManager.getConnection("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12709702", "sql12709702", "dMq5bLJnEt");
+            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             System.out.println("Successfully connected to MySQL database.");
         } catch (ClassNotFoundException e) {
             System.out.println("Error: MySQL JDBC Driver not found.");

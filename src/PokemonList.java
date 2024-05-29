@@ -69,7 +69,7 @@ public class PokemonList{
             list.set(i, null);
         }
         try {
-            Scanner reader = new Scanner(new FileInputStream("src/res/Pokemon_dataBase/pokemon_special.txt"));
+            Scanner reader = new Scanner(new FileInputStream("src/res/Pokemon_database/pokemon_special.txt"));
             int i = 0;
             while (reader.hasNextLine()) {
                 String[] line = reader.nextLine().split(",");
