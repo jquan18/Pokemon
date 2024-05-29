@@ -39,6 +39,7 @@ public class SaveGame {
 			case 2:
 				login();
 				if (!this.isLoggedIn) {
+					System.out.println("isloggedin: " + isLoggedIn);
 					System.out.println("Do you want to register a new account? (Y/N)");
 					String response = sc.next();
 					if (response.equalsIgnoreCase("Y")) {
@@ -56,13 +57,19 @@ public class SaveGame {
 
 	private boolean firstTimeRegister() {
 		Script.prologue();
-		Script.getTrainerName();
-		return register();
+		String name = Script.getTrainerName();
+		return register(name);
 	}
 
 	private boolean register() {
 		System.out.print("Enter username: ");
 		String username = sc.nextLine();
+
+		return register(username);
+
+	}
+	
+	private boolean register(String username) {
 		System.out.print("Enter password: ");
 		String password = sc.nextLine();
 
@@ -119,11 +126,13 @@ public class SaveGame {
 	}
 
 	private void login() {
-		System.out.println("Welcome Back Trainer!");
-		System.out.print("Enter username: ");
-		String username = sc.nextLine();
-		System.out.print("Enter password: ");
-		String password = sc.nextLine();
+        System.out.println("Welcome Back Trainer!");
+        System.out.print("Enter username: ");
+		System.out.flush();
+        String username = sc.nextLine().trim(); // Read the username and trim any extra spaces/newlines
+        System.out.print("Enter password: ");
+		System.out.flush();
+        String password = sc.nextLine().trim();
 
 		login(username, password);
 	}
@@ -162,9 +171,9 @@ public class SaveGame {
 		pokemonList.add(0, partner);
 
 		String location = "Pallet Town";
-		saveGame(location, pokemonList, trainer.trainerBag.badgeList);
+		saveGame(location, trainer.trainerBag.pokemonList, trainer.trainerBag.badgeList);
 
-		CityController controlPanel = new CityController(trainer, this, location, pokemonList);
+		CityController controlPanel = new CityController(trainer, this, location);
 		controlPanel.runCity();
 	}
 
@@ -210,7 +219,7 @@ public class SaveGame {
 					}
 				}
 
-				String savePokemonQuery = "REPLACE INTO pokemon (save_id, slot, name, type, hp, maxHP, attack, defense, speed, " +
+				String savePokemonQuery = "REPLACE INTO pokemon (save_id, pokeslot, name, type, hp, maxHP, attack, defense, speed, " +
 						"quickMoveName, quickMoveType, quickMoveDamage, quickMovePoints, mainMoveName, mainMoveType, mainMoveDamage, mainMovePoints) " +
 						"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				try (PreparedStatement savePokemonStmt = connection.prepareStatement(savePokemonQuery)) {
@@ -264,6 +273,7 @@ public class SaveGame {
 		System.out.print("Choose a save slot (1, 2, 3): ");
 		int slot = sc.nextInt();
 		sc.nextLine();
+		this.slot = slot;
 
 		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
 
@@ -274,16 +284,17 @@ public class SaveGame {
 				ResultSet gameResultSet = loadGameStmt.executeQuery();
 
 				if (gameResultSet.next()) {
+					Trainer trainer = new Trainer(username);
 					int saveId = gameResultSet.getInt("id");
 					String location = gameResultSet.getString("location");
 
-					String loadPokemonQuery = "SELECT * FROM pokemon WHERE save_id = ? ORDER BY slot";
+					String loadPokemonQuery = "SELECT * FROM pokemon WHERE save_id = ? ORDER BY pokeslot";
 					try (PreparedStatement loadPokemonStmt = connection.prepareStatement(loadPokemonQuery)) {
 						loadPokemonStmt.setInt(1, saveId);
 						ResultSet pokemonResultSet = loadPokemonStmt.executeQuery();
 
-						PokemonList pokemonList = new PokemonList();
 						while (pokemonResultSet.next()) {
+							int slotPokemon = pokemonResultSet.getInt("pokeslot");
 							String name = pokemonResultSet.getString("name");
 							String[] type = pokemonResultSet.getString("type").split(",");
 							int hp = pokemonResultSet.getInt("hp");
@@ -306,7 +317,7 @@ public class SaveGame {
 							pokemon.quickMove.QMPoint = quickMovePoints;
 							pokemon.mainMove.MMPoint = mainMovePoints;
 
-							pokemonList.add(pokemonList.getAllPokemon().size(), pokemon);
+							trainer.trainerBag.pokemonList.list.set(slotPokemon - 1, pokemon);
 						}
 
 						String loadBadgeQuery = "SELECT badge_name FROM badges WHERE save_id = ?";
@@ -321,9 +332,8 @@ public class SaveGame {
 
 							System.out.println("Load successful.");
 
-							Trainer trainer = new Trainer(username);
 							trainer.trainerBag.badgeList.addAll(badges);
-							CityController controlPanel = new CityController(trainer, this, location, pokemonList);
+							CityController controlPanel = new CityController(trainer, this, location);
 							controlPanel.runCity();
 						}
 					}
@@ -336,4 +346,5 @@ public class SaveGame {
 			System.out.println("Failed to load game.");
 		}
 	}
+
 }
