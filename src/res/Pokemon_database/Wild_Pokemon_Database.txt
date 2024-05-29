@@ -37,7 +37,7 @@ Nidoran,Poison,,55,47,52,41,Poison Sting,Poison,15,Earth Power,Ground,90
 Machoke,Fighting,,52,72,42,25,Karate Chop,Fighting,50,Karate Chop,Fighting,50
 Meowth,Normal,,40,45,35,90,Fake Out,Normal,40,Bite,Dark,60
 Jigglypuff,Normal,Fairy,115,45,20,20,Pound,Normal,40,Disarming Voice,Fairy,40
-Hitmonlee,Fighting,,50,120,53,87,Double Kick,Fighting,30,Low Sweep,Fightingm,65
+Hitmonlee,Fighting,,50,120,53,87,Double Kick,Fighting,30,Low Sweep,Fighting,65
 Hitmonchan,Fighting,,50,105,79,76,Fake Out,Normal,40,Close Combat,Fighting,120
 
 Celadon City
@@ -51,8 +51,8 @@ Bellsprout,Grass,Poison,50,75,35,40,Vine Whip,Grass,45,Acid,Poison,40
 Lavender Town
 Gastly,Ghost,Poison,30,35,30,80,Lick,Ghost,30,Hex,Ghost,65
 Cubone,Ground,,50,50,95,35,False Swipe,Normal,40,Stomping Tantrum,Ground,75
-Haunter,Ghost,Poison,40,50,45,95,Lick,Ghost,30,Dark PULSE,Dark,80
-Horsea,Water,,30,40,70,60,Water Gun,Water,40,Draon Breath,Dragon,60
+Haunter,Ghost,Poison,40,50,45,95,Lick,Ghost,30,Dark Pulse,Dark,80
+Horsea,Water,,30,40,70,60,Water Gun,Water,40,Dragon Breath,Dragon,60
 Ekans,Poison,,35,60,54,55,Wrap,Normal,15,Wrap,Normal,15
 Onix,Rock,Ground,35,45,160,70,Rock Throw,Rock,50,Dragon Breath,Dragon,60
 Muk,Poison,,105,105,75,50,Mud-Slap,Ground,20,Sludge,Poison,60
@@ -60,7 +60,7 @@ Grimer,Poison,,80,80,50,25,Pound,Normal,40,Sludge,Poison,60
 
 Vermilion City
 Shellder,Water,,35,65,100,40,Ice Shard,Ice,40,Water Gun,Water,40
-Krabby,Wtare,,30,105,90,50,Metal Claw,Steel,50,Bubble Beam,Water,65
+Krabby,Water,,30,105,90,50,Metal Claw,Steel,50,Bubble Beam,Water,65
 Tentacool,Water,Poison,40,40,35,70,Poison Sting,Poison,15,Acid,Poison,40
 Squirtle,Water,,44,50,65,43,Tackle,Normal,50,Bite,Dark,60
 Farfetch'd,Normal,Flying,52,65,55,60,Peck,Flying,35,Air Cutter,Flying,60
@@ -86,6 +86,4 @@ Muk,Poison,,105,105,75,50,Mud-Slap,Ground,20,Sludge,Poison,60
 Dewgong,Water,Ice,90,70,80,70,Headbutt,Normal,70,Aurora Beam,Ice,65
 Kabuto,Rock,Water,30,80,90,55,Scratch,Normal,40,Aqua Jet,Water,40
 Aerodactyl,Rock,Flying,65,80,60,90,Thunder Fang,Electric,65,Wing Attack,Flying,60
-
-
 ===
