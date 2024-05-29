@@ -9,7 +9,7 @@ Starmie,Water,Psychic,60,75,85,115,Brine,Water,65,Psybeam,Psychic,65
 Lt. Surge
 Voltorb,Electric,,40,30,50,100,Tackle,Normal,40,Thunder Shock,Electric,40
 Pikachu,Electric,,35,55,40,90,Nuzzle,Electric,20,Spark,Electric,65
-Raichu,Electric,,60,90,55,110,Nuzzle,Electirc,20,Iron Tail,Steel,100
+Raichu,Electric,,60,90,55,110,Nuzzle,Electric,20,Iron Tail,Steel,100
 
 Erika
 Victreebal,Grass,Poison,80,105,65,70,Vine Whip,Grass,45,Razor Leaf,Grass,55
@@ -24,7 +24,7 @@ Weezing,Poison,,65,90,120,60,Smog,Normal,30,Heat Wave,Fire,95
 
 Sabrina
 Kadabra,Psychic,,40,35,30,105,Confusion,Psychic,50,Psybeam,Psychic,65
-Mr.Mime,Psychic,Fairy,40,45,65,90,Pound,Normal,540,Confusion,Psychic,50
+Mr.Mime,Psychic,Fairy,40,45,65,90,Pound,Normal,40,Confusion,Psychic,50
 Venomoth,Bug,Poison,70,65,60,90,Poison Fang,Poison,50,Leech Life,Bug,80
 Alakazam,Psychic,,55,50,45,120,Confusion,Psychic,50,Psycho Cut,Psychic,70
 
@@ -32,7 +32,7 @@ Blaine
 Growlithe,Fire,,55,70,45,60,Ember,Fire,40,Flame Wheel,Fire,60
 Ponyta,Fire,,50,80,55,90,Tackle,Normal,40,Ember,Fire,40
 Rapidash,Fire,,65,100,70,105,Smart Strike,Steel,20,Inferno,Fire,70
-Arcanine.Fire,,95,115,80,90,Flame Wheel,Fire,35,Flamethrower,Fire,55
+Arcanine,Fire,,95,115,80,90,Flame Wheel,Fire,35,Flamethrower,Fire,55
 
 Giovanni
 Rhyhorn,Ground,Rock,80,85,95,25,Take Down,Normal,50,Earthquake,Ground,70
