@@ -9,6 +9,7 @@ public class City {
     Wild_Pokemon wildPokemon;
     GymLeader leader;
     String cityBadge;
+    static String fateBattle = "";
 
 
     public City(String name) {
@@ -83,7 +84,7 @@ public class City {
                 System.out.println("[2] PokeMaze");
                 displayDefaultOptions();
                 break;
-            case "Final":
+            case "Saffron City":
                 System.out.println("[2] Challenge Gym Leader");
                 displayDefaultOptions();
                 System.out.println("[6] Rival's Race");
@@ -91,6 +92,11 @@ public class City {
             default:
                 System.out.println("[2] Challenge Gym Leader");
                 displayDefaultOptions();
+        }
+        if (currentCity.equalsIgnoreCase(fateBattle)) {
+            System.out.println("====================");
+            System.out.println("[0] Challenge Gary! ");
+            System.out.println("====================");
         }
         System.out.println("+--------------------------------------------+");
         System.out.println("Your choice: ");
@@ -123,6 +129,9 @@ public class City {
 
     public String numToString(int index) {
         return cityList[index];
+    }
+    public static void setFateBattle(String cityName) {
+        fateBattle = cityName;
     }
 
 }

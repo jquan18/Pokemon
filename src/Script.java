@@ -126,6 +126,19 @@ public class Script {
                 """;
         typeWriterEffect2(s1);
     }
+    public static void GaryDescription() {
+        String s1 = """
+                In the heart of Saffron City, an epic rivarly unfolds as Gary,
+                your lifelong rival, the day he started out on his Pokémon journey, 
+                he came off as an arrogant Trainer. He want to challenges you to race. 
+                The stakes are high, and victory is within reach! 
+                .
+                ..
+                ....
+                For now, are you get ready to challenges your lifelong rival?
+                """;
+        typeWriterEffect2(s1);
+    }
 	
     public static void typeWriterEffect1(String str ) {
         char[] c = str.toCharArray();
