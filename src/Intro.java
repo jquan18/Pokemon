@@ -9,7 +9,7 @@ public class Intro extends JFrame {
     private JButton registerButton;
     private JButton loginButton;
 
-    public Intro() {
+    public Intro(JFrame parent, Dimension size) {
         setTitle("Choose Your Action");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(2000, 1800);
@@ -109,12 +109,12 @@ public class Intro extends JFrame {
     }
 
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Intro();
-            }
-        });
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                new Intro();
+//            }
+//        });
+//    }
 }
