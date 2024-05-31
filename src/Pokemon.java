@@ -66,16 +66,18 @@ public class Pokemon{
                 System.out.printf("%s used %s", this.name, this.mainMove.getMovesName());
                 value = (int)((((2*getLevel())/2 + 2) * quickMove.getDPR() * (getAttack()/enemy.getDefense())/ 50) * quickMove.getMovesType().moveCounter(quickMove.getMovesTypeString(), enemy.getType().getMovesTypeString()));
                 break;
-
         }
+
         if (value < 5) {
             value = new Random().nextInt(5)+1;
         }
+
         receiveDamage(value, enemy);
     }
 
     public void receiveDamage(int value, Pokemon enemy) {
         enemy.HP -= value;
+        System.out.printf("%s received %d points damage!", enemy.getName(), value);
         if (enemy.HP < 0)
             enemy.HP = 0;
     }
@@ -90,9 +92,9 @@ public class Pokemon{
     }
     public String getMoveName(int index) {
 		if (index == 0)
-		return quickMove.getMovesName();
+		    return quickMove.getMovesName();
         else
-		return mainMove.getMovesName();
+            return mainMove.getMovesName();
     }
     public String getMoveType(int index) {
 		ArrayList<String> arr = new ArrayList<>();
