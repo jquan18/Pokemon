@@ -14,7 +14,7 @@ public class Script {
         String s1 = """
                 BRICH   : Hi! Sorry to keep you waiting!
                 BRICH   : Welcome to the world of POKEMON!
-                BRICH   : My name is BRICH! But everyone calls me the PPKEMON PROG!\n
+                BRICH   : My name is BRICH! But everyone calls me the POKEMON PROG!\n
                 """;
         typeWriterEffect1(s1);
 
@@ -29,7 +29,7 @@ public class Script {
                 BRICH  : And sometimes, we band together and battle others like us.
                 BRICH  : But despite our closeness, we don't know everything about POKEMON.
                 BRICH  : In fact, there are many, many secret surrouding POKEMON. To unravel
-                         POKEMON mysteries, I've been undertaking research. That's what I do."""
+                         POKEMON mysteries, I've been undertaking research. That's what I do.\n\n"""
                 ;
         typeWriterEffect1(s3);
     }
@@ -126,6 +126,7 @@ public class Script {
                 """;
         typeWriterEffect2(s1);
     }
+
     public static void GaryDescription() {
         String s1 = """
                 In the heart of Saffron City, an epic rivarly unfolds as Gary,

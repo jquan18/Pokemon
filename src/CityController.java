@@ -8,7 +8,6 @@ public class CityController {
     private Trainer trainer;
     private SaveGame saveGame;
     private String currentLocation;
-    private PokemonList pokemonList;
     static ArrayList<City> city;
     static Stack<City> currentCityStack;
     static Stack<City> DJKCityStack;
@@ -24,11 +23,10 @@ public class CityController {
     }
 
 
-    public CityController(Trainer trainer, SaveGame saveGame, String currentLocation, PokemonList pokemonList) {
+    public CityController(Trainer trainer, SaveGame saveGame, String currentLocation) {
         this.trainer = trainer;
         this.saveGame = saveGame;
         this.currentLocation = currentLocation;
-        this.pokemonList = pokemonList;
         currentCityStack = new Stack<>();
     }
 
@@ -126,7 +124,7 @@ public class CityController {
                 }
                 case "4d": {
                     System.out.println("Saving progress......");
-                    saveGame.saveGame(currentCityStack.peek().cityName, pokemonList, trainer.trainerBag.badgeList);
+                    saveGame.saveGame(currentCityStack.peek().cityName, trainer.trainerBag.pokemonList, trainer.trainerBag.badgeList);
                     end = true;
                     break;
                 }
@@ -427,7 +425,7 @@ public class CityController {
         System.out.println("+--------------------------------------------+");
         System.out.println("Welcome to the Safari Zone! Today's challenge: Sort the Pokemon!");
         System.out.println("+--------------------------------------------+");
-        System.out.println("Enter the Pokemon in your party (seperated by a comma): ");
+        System.out.println("Enter the Pokemon in your party (seperated by a comma)(List of Pokemon:[Pikachu, Bulbasaur, Charmander, Snorlax, Jigglypuff, Eevee, Machop] ");
 
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
@@ -472,8 +470,9 @@ public class CityController {
         System.out.println("Step 3: Machop demands to be placed next to the heaviest Pokemon in the lineup to show off its strength. ");
 
         int machopPosition = sortList.indexOf((String) "Machop");
+        snorlaxPosition = sortList.indexOf((String) "Snorlax");
         String remove3 = sortList.remove(machopPosition);
-        sortList.add(sortList.size() - 1, remove3);
+        sortList.add(snorlaxPosition - 1, remove3);
 
         System.out.println("Partial Sort: ");
         printList(sortList);

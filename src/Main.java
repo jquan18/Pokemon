@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
-
 //        Script.prologue();
 //        String name = Script.getTrainerName();
 //        Trainer trainer = new Trainer(name);
@@ -17,7 +16,5 @@ public class Main {
 
 		 SaveGame saveGame = new SaveGame();
 		 saveGame.saveGameMain();
-
-
     }
 }
