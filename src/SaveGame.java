@@ -68,7 +68,7 @@ public class SaveGame {
 		return register(username);
 
 	}
-	
+
 	private boolean register(String username) {
 		System.out.print("Enter password: ");
 		String password = sc.nextLine();
@@ -121,8 +121,8 @@ public class SaveGame {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Failed to login.");
+			this.isLoggedIn = false;
 		}
-		this.isLoggedIn = false;
 	}
 
 	private void login() {
