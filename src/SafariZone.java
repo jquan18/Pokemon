@@ -94,6 +94,9 @@ public class SafariZone {
         if (pikachu && !isPikachuMiddle()){
             movePikachu();
         }
+
+        System.out.println("Final sorted list: ");
+        printList(pokemonList);
     }
 
     public boolean isPikachuMiddle(){
@@ -119,7 +122,7 @@ public class SafariZone {
         }
     }
     public void moveJigglypuff(){
-        System.out.println("Step 6: Jigglypuff prefers to be surrounded by other \"cute\" Pokémon for morale purposes.");
+        System.out.println("Jigglypuff prefers to be surrounded by other \"cute\" Pokémon for morale purposes.");
 
         int pikachuPosition = pokemonList.indexOf((String) "Pikachu");
         System.out.println("Pikachu Position = " + pikachuPosition);
@@ -133,7 +136,7 @@ public class SafariZone {
     }
 
     public void movePikachu(){
-    System.out.println("Step 5: Pikachu demands to be placed at the center of the arrangement because, well, it's Pikachu!");
+    System.out.println("Pikachu demands to be placed at the center of the arrangement because, well, it's Pikachu!");
 
         int centre = size/2;
         int pikachuPosition = pokemonList.indexOf((String) "Pikachu");
@@ -145,7 +148,7 @@ public class SafariZone {
 
     }
     public void moveEevee(){
-        System.out.println("Step 1: Eevee insists on being positioned either at the beginning of the lineup to showcase its adaptability");
+        System.out.println("Eevee insists on being positioned either at the beginning of the lineup to showcase its adaptability");
 
         int eeveePosition = pokemonList.indexOf((String) "Eevee");
         String remove = pokemonList.remove(eeveePosition);
@@ -156,7 +159,7 @@ public class SafariZone {
     }
 
     public void moveSnorlax(){
-        System.out.println("Step 2: Snorlax insists on being positioned at the end of the lineup to ensure maximum relaxation.");
+        System.out.println("Snorlax insists on being positioned at the end of the lineup to ensure maximum relaxation.");
 
         int snorlaxPosition = pokemonList.indexOf((String) "Snorlax");
         String remove = pokemonList.remove(snorlaxPosition);
@@ -179,7 +182,7 @@ public class SafariZone {
     }
 
     public void moveBulbasaur(){
-        System.out.println("Step 4: Bulbasaur refuses to be placed next to Charmander, his fire burns too hot");
+        System.out.println("Bulbasaur refuses to be placed next to Charmander, his fire burns too hot");
 
         int charmanderIndex = pokemonList.indexOf("Charmander");
         if((charmanderIndex < (size/2)+1)){
@@ -216,7 +219,7 @@ public class SafariZone {
     }
 
     public void moveMachop(){
-        System.out.println("Step 3: Machop demands to be placed next to the heaviest Pokemon in the lineup to show off its strength. ");
+        System.out.println("Machop demands to be placed next to the heaviest Pokemon in the lineup to show off its strength. ");
 
         if (snorlax) {
             int machopPosition = pokemonList.indexOf((String) "Machop");
