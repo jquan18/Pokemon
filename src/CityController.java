@@ -136,12 +136,22 @@ public class CityController {
                     break;
                 }
                 case "6": {
-                    if (currentCity.equalsIgnoreCase("Final")) {
-                        System.out.println("Run Rivalry Race!");
-                    } else if (currentCity.equalsIgnoreCase("Fuchsia City")) {
+                    if (currentCity.equalsIgnoreCase("Saffron City")) {
+                        Script.GaryDescription();
+                        if (trainer.trainerBag.badgeList.size() == 8) {
+                            int[] index = {0, 1, 2, 7, 9};
+                            int pos = index[new Random().nextInt(5)];
+                            City.setFateBattle(cityList[pos]);
+                            dijkstra(pos);
+                        }
+                        else
+                            System.out.println("Gary   : You have no enough strength to challenge me!");
+                    }
+                    else if (currentCity.equalsIgnoreCase("Fuchsia City")) {
                         SafariZone safari = new SafariZone();
                         safari.playSafariZone();
-                    } else {
+                    }
+                    else {
                         System.out.println("Invalid move!");
                     }
                     break;
@@ -150,6 +160,14 @@ public class CityController {
                     System.out.println("Cheating is nothing to be proud of. - Mark Hunt");
                     trainer.trainerBag.pokemonList.useCheatCode();
                     break;
+                }
+                case "0": {
+                    if (currentCity.equalsIgnoreCase(City.fateBattle)) {
+                        bt = new battleSystem(this.trainer, new Gary("Gary"));
+                    }
+                    else {
+                        System.out.println("Invalid move!");
+                    }
                 }
                 default: {
                     System.out.println("Invalid move!");
@@ -406,6 +424,8 @@ public class CityController {
         System.out.println();
     }
 
+
+
 // tester for shortest path
 //    public static void main(String[] args) {
 //        CityController hi = new CityController();
@@ -426,5 +446,12 @@ public class CityController {
 //
 //        hi.dijkstra(0);
 //
+//    }
+
+    //Safari Zone tester class
+//    public static void main(String[] args) {
+//        CityController hi = new CityController();
+//
+//        hi.safariZone();
 //    }
 }

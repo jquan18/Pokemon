@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Trainer {
     String name ;
-    private boolean keepStay = true;
+    boolean keepStay = true;
     HandingAbnormalInput inputChecker = new HandingAbnormalInput();
 
     BagSystem trainerBag = new BagSystem();
