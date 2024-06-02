@@ -427,11 +427,4 @@ public class CityController {
 //        hi.dijkstra(0);
 //
 //    }
-
-    //Safari Zone tester class
-    public static void main(String[] args) {
-        CityController hi = new CityController();
-
-        hi.safariZone();
-    }
 }
