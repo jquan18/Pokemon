@@ -239,6 +239,7 @@ public class battleSystem {
             System.out.println("Battle Start: " + trainer.getName() + " vs. " + enemy.getName());
         }
         chooseEnemyPokemon();
+        trainer.keepStay = true;
         while (keepBattle && trainer.trainerBag.pokemonList.checkStatus(trainerCurrentPokemon) && enemy.enemyBag.pokemonList.checkStatus(enemyCurrentPokemon) && trainer.isKeepStay() && !catched) {
             displayBattleStatus();
             if (enemyCurrentPokemon.speed > trainerCurrentPokemon.speed) {
