@@ -9,14 +9,14 @@ public class Intro extends JFrame {
     private JButton registerButton;
     private JButton loginButton;
 
-    public Intro() {
+    public Intro(JFrame parent, Dimension size) {
         setTitle("Choose Your Action");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(2000, 1800);
         setLocationRelativeTo(null);
 
         // Load the background image
-        ImageIcon backgroundImage = new ImageIcon("C:/Users/SCSM11/IdeaProjects/Pokemon/src/res/GUI usage/background.jpg");
+        ImageIcon backgroundImage = new ImageIcon("C:\\Users\\User\\IdeaProjects\\Pokemon2\\src\\res\\GUI usage\\background.jpg");
         JLabel backgroundLabel = new JLabel(backgroundImage);
 
         // Create a layered pane
@@ -109,12 +109,12 @@ public class Intro extends JFrame {
     }
 
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Intro();
-            }
-        });
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                new Intro();
+//            }
+//        });
+//    }
 }
