@@ -24,66 +24,66 @@ Pidgeotto,Normal,Flying,63,60,55,71,Gust,Flying,40,Quick Attack,Normal,60
 Diglett,Ground,,10,55,25,95,Scratch,Normal,40,Mud-Slap,Ground,20
 
 Cerulean City
-Zubat,Poison,Flying,40,45,35,55,Astonish,Ghost,30,Air Cutter,Flying,60
-Geodude,Rock,Ground,40,80,100,20,Rollout,Rock,30,Bulldoze,Ground,60
-Paras,Bug,Grass,35,70,55,25,Slash,Normal,70,Absorb,Grass,20
-Clefairy,Fairy,,70,45,48,35,Pound,Normal,40,Disarming Voice,Fairy,40
-Mankey,Fighting,,40,80,35,70,Covet,Normal,60,Cross Chop,Fighting,100
-Psyduck,Water,,50,52,48,55,Scratch,Normal,40,Water Pulse,Water,60
-Jynx,Ice,Psychic,65,50,35,95,Powder Snow,Ice,40,Psychic,Psychic,90
+Zubat,Poison,Flying,40,40,35,55,Astonish,Ghost,30,Air Cutter,Flying,60
+Geodude,Rock,Ground,40,30,50,20,Rollout,Rock,30,Bulldoze,Ground,60
+Paras,Bug,Grass,35,35,55,25,Slash,Normal,70,Absorb,Grass,20
+Clefairy,Fairy,,45,35,40,35,Pound,Normal,40,Disarming Voice,Fairy,40
+Mankey,Fighting,,40,35,35,70,Covet,Normal,60,Cross Chop,Fighting,100
+Psyduck,Water,,35,42,38,55,Scratch,Normal,40,Water Pulse,Water,60
+Jynx,Ice,Psychic,45,50,35,95,Powder Snow,Ice,40,Psychic,Psychic,90
 
 Saffron City
 Nidoran,Poison,,55,47,52,41,Poison Sting,Poison,15,Earth Power,Ground,90
-Machoke,Fighting,,52,72,42,25,Karate Chop,Fighting,50,Karate Chop,Fighting,50
+Machoke,Fighting,,52,52,42,25,Karate Chop,Fighting,50,Karate Chop,Fighting,50
 Meowth,Normal,,40,45,35,90,Fake Out,Normal,40,Bite,Dark,60
-Jigglypuff,Normal,Fairy,115,45,20,20,Pound,Normal,40,Disarming Voice,Fairy,40
-Hitmonlee,Fighting,,50,120,53,87,Double Kick,Fighting,30,Low Sweep,Fighting,65
-Hitmonchan,Fighting,,50,105,79,76,Fake Out,Normal,40,Close Combat,Fighting,120
+Jigglypuff,Normal,Fairy,45,45,20,20,Pound,Normal,40,Disarming Voice,Fairy,40
+Hitmonlee,Fighting,,50,30,53,87,Double Kick,Fighting,30,Low Sweep,Fighting,65
+Hitmonchan,Fighting,,35,50,40,76,Fake Out,Normal,40,Close Combat,Fighting,120
 
 Celadon City
 Poliwag,Water,,40,50,40,90,Pound,Normal,40,Water Gun,Water,40
-Poliwhirl,Water,,65,65,65,90,Pound,Normal,40,Hydro Pump,Water,110
-Slowpoke,Water,Psychic,90,65,65,15,Water Gun,Water,40,Confusion,Psychic,50
-Eevee,Normal,,65,75,70,75,Covet,Normal,60,Take Down,Normal,90
-Snorlax,Normal,160,110,65,30,Covet,Normal,60,Last Resort,Normal,140
-Bellsprout,Grass,Poison,50,75,35,40,Vine Whip,Grass,45,Acid,Poison,40
+Poliwhirl,Water,,35,45,45,90,Pound,Normal,40,Hydro Pump,Water,110
+Slowpoke,Water,Psychic,50,35,64,15,Water Gun,Water,40,Confusion,Psychic,50
+Eevee,Normal,,44,40,46,75,Covet,Normal,60,Take Down,Normal,90
+Snorlax,Normal,60,45,25,30,Covet,Normal,60,Last Resort,Normal,140
+Bellsprout,Grass,Poison,50,55,35,40,Vine Whip,Grass,45,Acid,Poison,40
 
 Lavender Town
 Gastly,Ghost,Poison,30,35,30,80,Lick,Ghost,30,Hex,Ghost,65
-Cubone,Ground,,50,50,95,35,False Swipe,Normal,40,Stomping Tantrum,Ground,75
-Haunter,Ghost,Poison,40,50,45,95,Lick,Ghost,30,Dark Pulse,Dark,80
+Cubone,Ground,,50,50,40,35,False Swipe,Normal,40,Stomping Tantrum,Ground,75
+Haunter,Ghost,Poison,45,50,45,95,Lick,Ghost,30,Dark Pulse,Dark,80
 Horsea,Water,,30,40,70,60,Water Gun,Water,40,Dragon Breath,Dragon,60
 Ekans,Poison,,35,60,54,55,Wrap,Normal,15,Wrap,Normal,15
-Onix,Rock,Ground,35,45,160,70,Rock Throw,Rock,50,Dragon Breath,Dragon,60
-Muk,Poison,,105,105,75,50,Mud-Slap,Ground,20,Sludge,Poison,60
-Grimer,Poison,,80,80,50,25,Pound,Normal,40,Sludge,Poison,60
+Onix,Rock,Ground,35,45,60,70,Rock Throw,Rock,50,Dragon Breath,Dragon,60
+Muk,Poison,,36,49,55,50,Mud-Slap,Ground,20,Sludge,Poison,60
+Grimer,Poison,,45,45,50,25,Pound,Normal,40,Sludge,Poison,60
 
 Vermilion City
-Shellder,Water,,35,65,100,40,Ice Shard,Ice,40,Water Gun,Water,40
-Krabby,Water,,30,105,90,50,Metal Claw,Steel,50,Bubble Beam,Water,65
-Tentacool,Water,Poison,40,40,35,70,Poison Sting,Poison,15,Acid,Poison,40
+Shellder,Water,,35,35,30,40,Ice Shard,Ice,40,Water Gun,Water,40
+Krabby,Water,,30,50,40,50,Metal Claw,Steel,50,Bubble Beam,Water,65
+Tentacool,Water,Poison,40,40,40,70,Poison Sting,Poison,15,Acid,Poison,40
 Squirtle,Water,,44,50,65,43,Tackle,Normal,50,Bite,Dark,60
 Farfetch'd,Normal,Flying,52,65,55,60,Peck,Flying,35,Air Cutter,Flying,60
 Venonat,Bug,Poison,60,55,50,45,Tackle,Normal,40,Psybeam,Psychic,65
 
 Fuschia City
-Gyarados,Water,Flying,55,125,100,81,Splash,Normal,30,Tackle,Normal,50
-Exeggcute,Grass,Psychic,60,40,80,40,Bullet Seed,Grass,25,Mega Drain,Grass,40
-Pinsir,Bug,,65,125,100,85,Bug Bite,Bug,60,Storm Throw,Fighting,60
-Chansey,Normal,,250,5,5,50,Take Down,Normal,90,Covet,Normal,60
+Gyarados,Water,Flying,55,55,30,81,Splash,Normal,30,Tackle,Normal,50
+Exeggcute,Grass,Psychic,60,40,40,40,Bullet Seed,Grass,25,Mega Drain,Grass,40
+Pinsir,Bug,,45,60,50,85,Bug Bite,Bug,60,Storm Throw,Fighting,60
+Chansey,Normal,,250,25,15,50,Take Down,Normal,90,Covet,Normal,60
 Paras,Bug,Grass,35,70,55,25,Slash,Normal,70,Absorb,Grass,20
-Tauros,Normal,,75,100,95,110,Tackle,Normal,40,Payback,Dark,60
-Kangaskhan,Normal,,105,95,80,90,Stomp,Normal,60,Headbutt,Normal,70
-Cubone,Ground,,50,50,95,35,False Swipe,Normal,40,Stomping Tantrum,Ground,75
-Marowak,Ground,,60,80,110,45,False Swipe,Normal,40,Bonemerang,Ground,50
+Tauros,Normal,,45,55,45,110,Tackle,Normal,40,Payback,Dark,60
+Kangaskhan,Normal,,56,42,42,90,Stomp,Normal,60,Headbutt,Normal,70
+Cubone,Ground,,50,50,45,35,False Swipe,Normal,40,Stomping Tantrum,Ground,75
+Marowak,Ground,,60,46,50,45,False Swipe,Normal,40,Bonemerang,Ground,50
 
 Cinnabar Island
 Electrode,Electric,,60,50,70,140,Tackle,Normal,40,Spark,Electric,65
 Seel,Water,,65,45,55,45,Icy Wind,Ice,40,Headbutt,Normal,70
-Tangela,Grass,,65,55,75,60,Absorb,Grass,20,Vine Whip,Grass,45
-Rhydon,Ground,Rock,75,90,60,40,Smack Down,Rock,50,Bullzone,Ground,60
-Muk,Poison,,75,35,75,50,Mud-Slap,Ground,20,Sludge,Poison,60
-Dewgong,Water,Ice,50,70,80,70,Headbutt,Normal,70,Aurora Beam,Ice,65
-Kabuto,Rock,Water,30,80,90,55,Scratch,Normal,40,Aqua Jet,Water,40
-Aerodactyl,Rock,Flying,65,80,60,90,Thunder Fang,Electric,65,Wing Attack,Flying,60
+Tangela,Grass,,65,55,47,60,Absorb,Grass,20,Vine Whip,Grass,45
+Rhydon,Ground,Rock,75,45,60,40,Smack Down,Rock,50,Bullzone,Ground,60
+Muk,Poison,,56,35,45,50,Mud-Slap,Ground,20,Sludge,Poison,60
+Dewgong,Water,Ice,50,61,48,70,Headbutt,Normal,70,Aurora Beam,Ice,65
+Kabuto,Rock,Water,30,66,70,55,Scratch,Normal,40,Aqua Jet,Water,40
+Aerodactyl,Rock,Flying,55,60,60,90,Thunder Fang,Electric,65,Wing Attack,Flying,60
 ===
