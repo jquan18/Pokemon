@@ -14,11 +14,13 @@ public class Start extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(2000, 1800);
         setLocationRelativeTo(null);
-        playMusic("C:\\Users\\User\\IdeaProjects\\Pokemon2\\src\\Pokémon partners of different generations dancing _POKÉDANCE_ Animation Music Video.wav");
+
+		String currentWorkingDir = System.getProperty("user.dir");
+        // playMusic(currentWorkingDir + "/src/res/GUI usage/Pokémon partners of different generations dancing _POKÉDANCE_ Animation Music Video.wav");
 
 
         // Load the background image
-        ImageIcon backgroundImage = new ImageIcon("C:\\Users\\User\\IdeaProjects\\Pokemon2\\src\\GameBackground.png");
+        ImageIcon backgroundImage = new ImageIcon(currentWorkingDir + "/src/res/GUI usage/GameBackground.png");
         JLabel backgroundLabel = new JLabel(backgroundImage);
 
         // Create a layered pane

@@ -23,9 +23,10 @@ public class ScriptGUI extends JFrame {
         setSize(2000, 1800);
         setLocationRelativeTo(null);
 
+		String currentWorkingDir = System.getProperty("user.dir");
         // Load background image
         try {
-            backgroundImage = ImageIO.read(new File("C:\\Users\\User\\IdeaProjects\\Pokemon2\\src\\professorBirch.png"));
+            backgroundImage = ImageIO.read(new File(currentWorkingDir + "/src/res/GUI usage/professorBirch.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
