@@ -16,6 +16,7 @@ public class Start extends JFrame {
         setLocationRelativeTo(null);
         playMusic("C:\\Users\\User\\IdeaProjects\\Pokemon2\\src\\Pokémon partners of different generations dancing _POKÉDANCE_ Animation Music Video.wav");
 
+
         // Load the background image
         ImageIcon backgroundImage = new ImageIcon("C:\\Users\\User\\IdeaProjects\\Pokemon2\\src\\GameBackground.png");
         JLabel backgroundLabel = new JLabel(backgroundImage);
@@ -26,7 +27,6 @@ public class Start extends JFrame {
 
         // Set the bounds for the background image
         backgroundLabel.setBounds(0, 0, backgroundImage.getIconWidth(), backgroundImage.getIconHeight());
-
         JLabel welcomeLabel = new JLabel("Welcome to Pokemon World ! ! !");
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 50));
         welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -41,7 +41,6 @@ public class Start extends JFrame {
         layeredPane.add(backgroundLabel, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(welcomeLabel, JLayeredPane.PALETTE_LAYER);
         layeredPane.add(startButton, JLayeredPane.MODAL_LAYER);
-
         setContentPane(layeredPane);
 
         startButton.addActionListener(new ActionListener() {
@@ -68,7 +67,27 @@ public class Start extends JFrame {
             DataLine.Info info = new DataLine.Info(Clip.class, format);
             Clip clip = (Clip) AudioSystem.getLine(info);
             clip.open(audioStream);
+           // clip.start();
+            // Add a LineListener to restart the clip when playback ends
+            clip.addLineListener(new LineListener() {
+                int repeatCount = 2; // Set the desired number of repeats
+
+                @Override
+                public void update(LineEvent event) {
+                    if (event.getType() == LineEvent.Type.STOP) {
+                        if (repeatCount > 0) {
+                            repeatCount--;
+                            clip.setFramePosition(0);
+                            clip.start();
+                        } else {
+                            // Close the clip when all repeats are finished
+                            clip.close();
+                        }
+                    }
+                }
+            });
             clip.start();
+
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             e.printStackTrace();
         }

@@ -16,7 +16,7 @@ public class Intro extends JFrame {
         setLocationRelativeTo(null);
 
         // Load the background image
-        ImageIcon backgroundImage = new ImageIcon("C:/Users/SCSM11/IdeaProjects/Pokemon/src/res/GUI usage/background.jpg");
+        ImageIcon backgroundImage = new ImageIcon("C:\\Users\\User\\IdeaProjects\\Pokemon2\\src\\res\\GUI usage\\background.jpg");
         JLabel backgroundLabel = new JLabel(backgroundImage);
 
         // Create a layered pane

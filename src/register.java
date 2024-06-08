@@ -18,7 +18,7 @@ public class register extends JFrame {
         setLocationRelativeTo(parent);
 
         // Load the background image
-        ImageIcon backgroundImage = new ImageIcon("C:/Users/SCSM11/IdeaProjects/Pokemon/src/res/GUI usage/registerPage.jpg");
+        ImageIcon backgroundImage = new ImageIcon("C:\\Users\\User\\IdeaProjects\\Pokemon2\\src\\res\\GUI usage\\registerPage.jpg");
         JLabel backgroundLabel = new JLabel(backgroundImage);
 
         // Create a layered pane
@@ -36,7 +36,7 @@ public class register extends JFrame {
         gbc.insets = new Insets(10, 10, 10, 10);
 
         // Icon
-        JLabel iconLabel = new JLabel(new ImageIcon("C:/Users/SCSM11/IdeaProjects/Pokemon/src/res/GUI usage/pokemon-trainer.png"));
+        JLabel iconLabel = new JLabel(new ImageIcon("C:\\Users\\User\\IdeaProjects\\Pokemon2\\src\\res\\GUI usage\\pokemon-trainer.png"));
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 3;
