@@ -39,6 +39,7 @@ public class ScriptGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(scriptTextArea);
         scrollPane.setPreferredSize(new Dimension(1200, 1000));  // Adjust size of the text area panel
 
+
         scriptTextArea.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -93,11 +94,13 @@ public class ScriptGUI extends JFrame {
                 continueScript(trainerName);
                 break;
             case 4:
-                choosePartner();
+                typeWriterEffect1("Now, you can login to your account to start your game.");
                 break;
             case 5:
-                typeWriterEffect1("Your very own adventure is about to unfold.\n\nTake courage, and leap into the world of POKEMON where dreams, adventures, and friendships await!\n");
-                break;
+                // Transition to LoginGUI after all scripts are displayed
+                SwingUtilities.invokeLater(() -> new login(null, new Dimension(2000, 1800))); // Create and show the login GUI
+                dispose(); // Close the current ScriptGUI window
+                return;
             default:
                 break;
         }
@@ -107,82 +110,6 @@ public class ScriptGUI extends JFrame {
     private void continueScript(String name) {
         String str1 = "BIRCH   : Right! So you're " + name + " who's moving to my hometown of LITTLEROOT. I get it now!\nBIRCH   : All right, are you ready?\n";
         typeWriterEffect1(str1);
-    }
-
-    private void choosePartner() {
-        String s1 = "BIRCH  : Now, you can choose one of the Pokemon. \n\n";
-        typeWriterEffect1(s1);
-        // Wait for the typewriter effect to finish before showing the option dialog
-        synchronized (this) {
-            try {
-                this.wait();  // Wait for ENTER key press to proceed
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        String[] options = {"Bulbasaur", "Charmander", "Squirtle"};
-        int choice = JOptionPane.showOptionDialog(this, s1, "Choose your Pokemon",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-
-        Pokemon chosenPokemon;
-        switch (choice) {
-            case 0:
-                chosenPokemon = new Pokemon("Bulbasaur", new String[]{"Grass", "Poison"}, 45, 49, 49, 45, "Vine Whip", "Grass", 100, "Venoshock", "Poison", 60);
-                break;
-            case 1:
-                chosenPokemon = new Pokemon("Charmander", new String[]{"Fire"}, 39, 52, 43, 65, "Scratch", "Normal", 40, "Ember", "Fire", 65);
-                break;
-            case 2:
-                chosenPokemon = new Pokemon("Squirtle", new String[]{"Water"}, 44, 48, 65, 43, "Tackle", "Normal", 40, "Water Pulse", "Water", 65);
-                break;
-            default:
-                chosenPokemon = new Pokemon("Bulbasaur", new String[]{"Grass", "Poison"}, 45, 49, 49, 45, "Vine Whip", "Grass", 100, "Venoshock", "Poison", 60);
-                break;
-        }
-
-        // Show the chosen Pokémon in a JOptionPane message dialog
-        JOptionPane.showMessageDialog(this, "You have chosen " + chosenPokemon.getName() + " as your partner!");
-        scriptStage++;
-        displayNextScript(); // Proceed to the next stage
-    }
-
-    public void selectPokemon(String pokemonName) {
-        Pokemon chosenPokemon;
-        switch (pokemonName) {
-            case "Bulbasaur":
-                chosenPokemon = new Pokemon("Bulbasaur", new String[]{"Grass", "Poison"}, 45, 49, 49, 45, "Vine Whip", "Grass", 100, "Venoshock", "Poison", 60);
-                break;
-            case "Charmander":
-                chosenPokemon = new Pokemon("Charmander", new String[]{"Fire"}, 39, 52, 43, 65, "Scratch", "Normal", 40, "Ember", "Fire", 65);
-                break;
-            case "Squirtle":
-                chosenPokemon = new Pokemon("Squirtle", new String[]{"Water"}, 44, 48, 65, 43, "Tackle", "Normal", 40, "Water Pulse", "Water", 65);
-                break;
-            default:
-                chosenPokemon = new Pokemon("Bulbasaur", new String[]{"Grass", "Poison"}, 45, 49, 49, 45, "Vine Whip", "Grass", 100, "Venoshock", "Poison", 60);
-                break;
-        }
-
-        // Show the chosen Pokémon in a JOptionPane message dialog
-        JOptionPane.showMessageDialog(this, "You have chosen " + chosenPokemon.getName() + " as your partner!");
-
-        scriptStage++;
-        displayNextScript(); // Proceed to the next stage
-    }
-
-    private void healthCareScript() {
-        String s1 = """
-                Nurse Joy   : Welcome to our POKEMON CENTER!\n
-                Nurse Joy   : We can heal your POKEMON to perfect health.\n
-                Nurse Joy   : Okay, I'll take your POKEMON for a few seconds.\n
-                .
-                ..
-                ...
-                ....!
-                Nurse Joy   : Thank you for waiting. We hope to see you again!
-                """;
-        typeWriterEffect2(s1);
     }
 
     private void typeWriterEffect1(String str) {
@@ -213,23 +140,5 @@ public class ScriptGUI extends JFrame {
                 e.printStackTrace();
             }
         }).start();
-    }
-
-    private void typeWriterEffect2(String str) {
-        new Thread(() -> {
-            char[] c = str.toCharArray();
-            for (char value : c) {
-                try {
-                    SwingUtilities.invokeAndWait(() -> scriptTextArea.append(String.valueOf(value)));
-                    Thread.sleep(50); // Adjust delay for readability
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new ScriptGUI("Ash"));
     }
 }

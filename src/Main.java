@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Main {
@@ -13,6 +14,12 @@ public class Main {
 //
 //        CityController controlPanel = new CityController(trainer);
 //        controlPanel.runCity();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Music();
+            }
+        });
 
 		 SaveGame saveGame = new SaveGame();
 		 saveGame.saveGameMain();

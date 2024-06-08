@@ -137,7 +137,8 @@ public class SaveGame {
 		login(username, password);
 	}
 
-	private void gameMenu(String username) {
+	//private void gameMenu(String username) {
+        public void gameMenu(String username) {
 		System.out.println("1. Start New Game");
 		System.out.println("2. Load Game");
 		System.out.print("Choose an option: ");
