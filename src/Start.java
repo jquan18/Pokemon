@@ -70,7 +70,7 @@ public class Start extends JFrame {
            // clip.start();
             // Add a LineListener to restart the clip when playback ends
             clip.addLineListener(new LineListener() {
-                int repeatCount = 2; // Set the desired number of repeats
+                int repeatCount = 30; // Set the desired number of repeats
 
                 @Override
                 public void update(LineEvent event) {
