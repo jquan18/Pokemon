@@ -227,7 +227,7 @@ public class battleSystem {
     public battleSystem(Trainer trainer, Enemy enemy) {
         this.trainer = trainer;
         this.enemy = enemy;
-        this.trainerCurrentPokemon = trainer.trainerBag.pokemonList.get(0);
+        this.trainerCurrentPokemon = trainer.trainerBag.pokemonList.list.get(0);
         this.isWildPokemon = enemy instanceof Wild_Pokemon;
         this.catched = false;
         this.keepBattle = true;
@@ -290,10 +290,10 @@ public class battleSystem {
     private void chooseEnemyPokemon() {
         if (isWildPokemon) {
             int index = new Random().nextInt(enemy.enemyBag.pokemonList.list.size());
-            enemyCurrentPokemon = enemy.enemyBag.pokemonList.get(index);
+            enemyCurrentPokemon = enemy.enemyBag.pokemonList.list.get(index);
             System.out.printf("A wild %s appeared!\n", enemyCurrentPokemon.getName());
         } else {
-            enemyCurrentPokemon = enemy.enemyBag.pokemonList.get(0);
+            enemyCurrentPokemon = enemy.enemyBag.pokemonList.list.get(0);
             System.out.printf("%s sends out %s [Level %d]!\n", enemy.getName(), enemyCurrentPokemon.getName(), enemyCurrentPokemon.getLevel());
         }
     }
@@ -303,10 +303,10 @@ public class battleSystem {
             return;  // Wild Pokémon do not switch out.
         } else {
             for (int i = 0; i < enemy.enemyBag.pokemonList.list.size(); i++) {
-                Pokemon current = enemy.enemyBag.pokemonList.get(i);
+                Pokemon current = enemy.enemyBag.pokemonList.list.get(i);
                 if (current.getName().equalsIgnoreCase(enemyCurrentPokemon.getName())) {
                     if (i + 1 < enemy.enemyBag.pokemonList.list.size()) {
-                        enemyCurrentPokemon = enemy.enemyBag.pokemonList.get(i + 1);
+                        enemyCurrentPokemon = enemy.enemyBag.pokemonList.list.get(i + 1);
                     }
                     break;
                 }
@@ -323,7 +323,7 @@ public class battleSystem {
             if (inputChecker.checkAbnormalInput(input, "1", "6")) {
                 int position = Integer.parseInt(input) - 1;
                 if (position >= 0 && position < trainer.trainerBag.pokemonList.list.size()) {
-                    Pokemon chosenPokemon = trainer.trainerBag.pokemonList.get(position);
+                    Pokemon chosenPokemon = trainer.trainerBag.pokemonList.list.get(position);
                     if (chosenPokemon.HP > 0) {
                         trainerCurrentPokemon = chosenPokemon;
                         System.out.printf("%s, I choose you!\n", trainerCurrentPokemon.getName());

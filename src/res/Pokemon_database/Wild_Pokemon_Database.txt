@@ -67,7 +67,7 @@ Farfetch'd,Normal,Flying,52,65,55,60,Peck,Flying,35,Air Cutter,Flying,60
 Venonat,Bug,Poison,60,55,50,45,Tackle,Normal,40,Psybeam,Psychic,65
 
 Fuschia City
-Gyarados,Water,Flying,95,125,100,81,Splash,Normal,30,Tackle,Normal,50
+Gyarados,Water,Flying,55,125,100,81,Splash,Normal,30,Tackle,Normal,50
 Exeggcute,Grass,Psychic,60,40,80,40,Bullet Seed,Grass,25,Mega Drain,Grass,40
 Pinsir,Bug,,65,125,100,85,Bug Bite,Bug,60,Storm Throw,Fighting,60
 Chansey,Normal,,250,5,5,50,Take Down,Normal,90,Covet,Normal,60
@@ -80,10 +80,10 @@ Marowak,Ground,,60,80,110,45,False Swipe,Normal,40,Bonemerang,Ground,50
 Cinnabar Island
 Electrode,Electric,,60,50,70,140,Tackle,Normal,40,Spark,Electric,65
 Seel,Water,,65,45,55,45,Icy Wind,Ice,40,Headbutt,Normal,70
-Tangela,Grass,,65,55,115,60,Absorb,Grass,20,Vine Whip,Grass,45
-Rhydon,Ground,Rock,105,130,120,40,Smack Down,Rock,50,Bullzone,Ground,60
-Muk,Poison,,105,105,75,50,Mud-Slap,Ground,20,Sludge,Poison,60
-Dewgong,Water,Ice,90,70,80,70,Headbutt,Normal,70,Aurora Beam,Ice,65
+Tangela,Grass,,65,55,75,60,Absorb,Grass,20,Vine Whip,Grass,45
+Rhydon,Ground,Rock,75,90,60,40,Smack Down,Rock,50,Bullzone,Ground,60
+Muk,Poison,,75,35,75,50,Mud-Slap,Ground,20,Sludge,Poison,60
+Dewgong,Water,Ice,50,70,80,70,Headbutt,Normal,70,Aurora Beam,Ice,65
 Kabuto,Rock,Water,30,80,90,55,Scratch,Normal,40,Aqua Jet,Water,40
 Aerodactyl,Rock,Flying,65,80,60,90,Thunder Fang,Electric,65,Wing Attack,Flying,60
 ===
