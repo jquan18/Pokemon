@@ -39,8 +39,11 @@ public class inputReader {
                         if (enemy.getClass() == GymLeader.class || enemy.getClass() == Gary.class) {
                             if (i == 6) break;
                         }
+
                     }
                 }
+//                else
+//                    break;
             }
             reader.close();
         } catch (FileNotFoundException e) {

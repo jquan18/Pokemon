@@ -33,7 +33,7 @@ public class CityController {
     public void runCity(){
         currentCityStack = new Stack<>();
         city = new ArrayList<>();
-        String[] cityList = new String[]{"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island"};
+        String[] cityList = new String[]{"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuschia City", "Saffron City", "Cinnabar Island"};
         int[][][] adjacent = new int[][][]{{{1, 5}, {9, 7}}, {{0, 5}, {2, 8}}, {{1, 8}, {3, 12}}, {{2, 12}, {8, 6}, {5, 9}}, {{8, 4}, {5, 5}, {7, 7}}, {{3, 9}, {8, 3}, {4, 5}, {7, 11}}, {{7, 10}, {8, 4}}, {{4, 7}, {6, 10}, {5, 11}, {9, 5}}, {{3, 6}, {5, 3}, {4, 3}, {6, 4}}, {{0, 7}, {7, 5}}};
 
         //add cities to ArrayList
@@ -114,7 +114,7 @@ public class CityController {
                 }
                 case "4b": {
                     System.out.println("Showing Pokemon!");
-                    trainer.checkAvailablePokemon(trainer.trainerBag.pokemonList.get(0));
+                    trainer.checkAvailablePokemon(trainer.trainerBag.pokemonList.list.get(0));
                     break;
                 }
                 case "4c": {
@@ -145,7 +145,7 @@ public class CityController {
                         else
                             System.out.println("Gary   : You have no enough strength to challenge me!");
                     }
-                    else if (currentCity.equalsIgnoreCase("Fuchsia City")) {
+                    else if (currentCity.equalsIgnoreCase("Fuschia City")) {
                         safariZone();
                     }
                     else {
@@ -307,7 +307,7 @@ public class CityController {
         String redColorCode = "\u001B[31m";
         String resetColorCode = "\u001B[0m";
 
-        String[] patterns = {"Pewter City", "Viridian City", "Pallet Town", "Cinnabar Island", "Celadon City", "Saffron City", "Cerulean City", "Lavender Town", "Vermillion City", "Fuchsia City"};
+        String[] patterns = {"Pewter City", "Viridian City", "Pallet Town", "Cinnabar Island", "Celadon City", "Saffron City", "Cerulean City", "Lavender Town", "Vermillion City", "Fuschia City"};
         for (int i = 0; i < patterns.length; i++) {
             if (currentCityStack.peek().cityName.equalsIgnoreCase(patterns[i])) {
                 Pattern pattern = Pattern.compile(patterns[i]);
@@ -544,7 +544,7 @@ public class CityController {
 //        CityController hi = new CityController();
 //        city = new ArrayList<>();
 //        currentCityStack = new Stack<>();
-//        String[] cityList = new String[]{"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island"};
+//        String[] cityList = new String[]{"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuschia City", "Saffron City", "Cinnabar Island"};
 //        int[][][] adjacent = new int[][][]{{{1, 5}, {9, 7}}, {{0, 5}, {2, 8}}, {{1, 8}, {3, 12}}, {{2, 12}, {8, 6}, {5, 9}}, {{8, 4}, {5, 5}, {7, 7}}, {{3, 9}, {8, 3}, {4, 5}, {7, 11}}, {{7, 10}, {8, 4}}, {{4, 7}, {6, 10}, {5, 11}, {9, 5}}, {{3, 6}, {5, 3}, {4, 3}, {6, 4}}, {{0, 7}, {7, 5}}};
 //
 //        //add cities to ArrayList

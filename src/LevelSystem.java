@@ -89,7 +89,7 @@ public class LevelSystem {
                 currentLevel = 25;
                 break;
             }
-            case "Fuchsia City": {
+            case "Fuschia City": {
                 currentLevel = new Random().nextInt(5)+23;
                 break;
             }case "Koga": {

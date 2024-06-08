@@ -57,12 +57,12 @@ public class PokemonList{
         }
         return true;
     }
-    public Pokemon get(int index) {
-        if (index < 0 || index > 6) {
-            throw new NoSuchElementException("PokemonList get(): Index is out of bound.");
-        }
-        return list.get(index);
-    }
+//    public Pokemon get(int index) {
+////        if (index < 0 || index > 6) {
+////            throw new NoSuchElementException("PokemonList get(): Index is out of bound.");
+////        }
+//        return list.get(index);
+//    }
 
     public void useCheatCode() {
         for (int i = 0; i < 6; i++) {

@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class City {
-    public static String[] cityList = {"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuchsia City", "Saffron City", "Cinnabar Island"};
+    public static String[] cityList = {"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuschia City", "Saffron City", "Cinnabar Island"};
     public static String[] leaderList = {"", "Giovanni", "Brock", "Misty", "Lt. Surge", "", "Erika", "Koga", "Sabrina", "Blaine"};
     public static String[] badge = {"", "Earth Badge", "Boulder Badge", "Cascade Badge", "Thunder Badge", "", "Rainbow Badge", "Soul Badge", "Marsh Badge", "Volcano Badge"};
     public String cityName;
@@ -75,7 +75,7 @@ public class City {
                 System.out.println("[2] Talk to Mom [Your hometown has no Gym]");
                 displayDefaultOptions();
                 break;
-            case "Fuchsia City":
+            case "Fuschia City":
                 System.out.println("[2] Challenge Gym Leader");
                 displayDefaultOptions();
                 System.out.println("[6] Safari Zone");
