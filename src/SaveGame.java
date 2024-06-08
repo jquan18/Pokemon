@@ -8,10 +8,11 @@ public class SaveGame {
 	private static final String DB_PASSWORD = "AVNS_DZSw_zX_KzacaJnoOj7";
 
 	private Scanner sc = new Scanner(System.in);
-	private String username;
-	private String password;
-	private boolean isLoggedIn;
-	private int slot;
+	public String username;
+	public String password;
+	public boolean isLoggedIn;
+	public boolean isRegistered;
+	public int slot;
 
 	public static void main(String[] args) {
 		SaveGame saveGame = new SaveGame();
@@ -34,18 +35,19 @@ public class SaveGame {
 				if (firstTimeRegister()) {
 					login(this.username, this.password);
 					System.out.println("Done login");
+				} else {
+					System.out.println("Failed to register.");
 				}
 				break;
 			case 2:
 				login();
 				if (!this.isLoggedIn) {
-					System.out.println("isloggedin: " + isLoggedIn);
 					System.out.println("Do you want to register a new account? (Y/N)");
 					String response = sc.next();
 					if (response.equalsIgnoreCase("Y")) {
 						saveGameMainChoice(1);
 					} else {
-						saveGameMainChoice(2);
+						break;
 					}
 				}
 				break;
@@ -55,13 +57,13 @@ public class SaveGame {
 		}
 	}
 
-	private boolean firstTimeRegister() {
+	public boolean firstTimeRegister() {
 		Script.prologue();
 		String name = Script.getTrainerName();
 		return register(name);
 	}
 
-	private boolean register() {
+	public boolean register() {
 		System.out.print("Enter username: ");
 		String username = sc.nextLine();
 
@@ -69,40 +71,86 @@ public class SaveGame {
 
 	}
 
-	private boolean register(String username) {
-		System.out.print("Enter password: ");
-		String password = sc.nextLine();
+	public boolean register(String username) {
+		isRegistered = false;
 
-		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-			 PreparedStatement checkUserStmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
-			 PreparedStatement statement = connection.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)")) {
+		while(!isRegistered) {
+			System.out.print("Enter password: ");
+			String password = sc.nextLine();
+			try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+				 PreparedStatement checkUserStmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+				 PreparedStatement statement = connection.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)")) {
 
-			checkUserStmt.setString(1, username);
-			ResultSet resultSet = checkUserStmt.executeQuery();
-			if (resultSet.next()) {
-				System.out.println("Username already exists.");
-				register();
+				checkUserStmt.setString(1, username);
+				ResultSet resultSet = checkUserStmt.executeQuery();
+				if (resultSet.next()) {
+					System.out.println("Username already exists. Please enter another username: ");
+					username = sc.nextLine();
+					continue;
+				}
+
+				statement.setString(1, username);
+				statement.setString(2, password);
+				int rowsAffected = statement.executeUpdate();
+				if (rowsAffected > 0) {
+					this.username = username;
+					this.password = password;
+					System.out.println("Register successful.");
+					isRegistered = true;
+				} else {
+					System.out.println("Register failed.");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Failed to register.");
 			}
-
-			statement.setString(1, username);
-			statement.setString(2, password);
-			int rowsAffected = statement.executeUpdate();
-			if (rowsAffected > 0) {
-				this.username = username;
-				this.password = password;
-				System.out.println("Register successful.");
-				return true;
-			} else {
-				System.out.println("Register failed.");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Failed to register.");
 		}
-		return false;
+		return isRegistered;
 	}
 
-	private void login(String username, String password) {
+	public boolean registerGUI(String username, String password) {
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+             PreparedStatement checkUserStmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+             PreparedStatement statement = connection.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)")) {
+
+            checkUserStmt.setString(1, username);
+            ResultSet resultSet = checkUserStmt.executeQuery();
+            if (resultSet.next()) {
+                System.out.println("Username already exists.");
+                return false;
+            }
+
+            statement.setString(1, username);
+            statement.setString(2, password);
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                this.username = username;
+                this.password = password;
+                System.out.println("Register successful.");
+                return true;
+            } else {
+                System.out.println("Register failed.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Failed to register.");
+        }
+        return false;
+    }
+
+	public void login() {
+		System.out.println("Welcome Back Trainer!");
+		System.out.print("Enter username: ");
+		System.out.flush();
+		String username = sc.nextLine().trim(); // Read the username and trim any extra spaces/newlines
+		System.out.print("Enter password: ");
+		System.out.flush();
+		String password = sc.nextLine().trim();
+
+		login(username, password);
+	}
+
+	public void login(String username, String password) {
 		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 			 PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?")) {
 
@@ -125,20 +173,32 @@ public class SaveGame {
 		}
 	}
 
-	private void login() {
-        System.out.println("Welcome Back Trainer!");
-        System.out.print("Enter username: ");
-		System.out.flush();
-        String username = sc.nextLine().trim(); // Read the username and trim any extra spaces/newlines
-        System.out.print("Enter password: ");
-		System.out.flush();
-        String password = sc.nextLine().trim();
+	public boolean loginGUI(String username, String password) {
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?")) {
 
-		login(username, password);
-	}
+            statement.setString(1, username);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
 
-	//private void gameMenu(String username) {
-        public void gameMenu(String username) {
+            if (resultSet.next()) {
+                this.username = username;
+                System.out.println("Login successful.");
+                this.isLoggedIn = true;
+                return true;
+            } else {
+                System.out.println("Login failed: Invalid username or password.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Failed to login.");
+            this.isLoggedIn = false;
+        }
+        return false;
+    }
+
+
+    public void gameMenu(String username) {
 		System.out.println("1. Start New Game");
 		System.out.println("2. Load Game");
 		System.out.print("Choose an option: ");
@@ -158,7 +218,7 @@ public class SaveGame {
 		}
 	}
 
-	private void startNewGame(String username) {
+	public void startNewGame(String username) {
 		System.out.print("Choose a save slot (1, 2, 3): ");
 		int slot = sc.nextInt();
 		this.slot = slot;
@@ -270,7 +330,7 @@ public class SaveGame {
 		}
 	}
 
-	private void loadGame(String username) {
+	public void loadGame(String username) {
 		System.out.print("Choose a save slot (1, 2, 3): ");
 		int slot = sc.nextInt();
 		sc.nextLine();

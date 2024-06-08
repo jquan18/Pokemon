@@ -8,7 +8,8 @@ import java.io.IOException;
 
 public class Music {
     public Music() {
-        playMusic("C:\\Users\\User\\IdeaProjects\\Pokemon2\\src\\Pokémon partners of different generations dancing _POKÉDANCE_ Animation Music Video.wav");
+		String currentWorkingDir = System.getProperty("user.dir");
+        playMusic(currentWorkingDir + "/src/res/GUI usage/Pokémon partners of different generations dancing _POKÉDANCE_ Animation Music Video.wav");
     }
 
     private void playMusic(String filePath) {

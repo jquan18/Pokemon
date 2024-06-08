@@ -184,6 +184,7 @@ public class register extends JFrame {
     private JButton submitButton;
     private JButton backButton;
     private Intro intro;
+	private SaveGame saveGame;
 
     public register(Intro parent, Dimension size) {
         this.intro = parent;
@@ -192,8 +193,9 @@ public class register extends JFrame {
         setSize(size); // Set the size based on Intro frame size
         setLocationRelativeTo(parent);
 
+		String currentWorkingDir = System.getProperty("user.dir");
         // Load the background image
-        ImageIcon backgroundImage = new ImageIcon("C:\\\\Users\\\\User\\\\IdeaProjects\\\\Pokemon2\\\\src\\\\res\\\\GUI usage\\\\registerPage.jpg");
+        ImageIcon backgroundImage = new ImageIcon(currentWorkingDir + "/src/res/GUI usage/registerPage.jpg");
         JLabel backgroundLabel = new JLabel(backgroundImage);
 
         // Create a layered pane
@@ -211,7 +213,7 @@ public class register extends JFrame {
         gbc.insets = new Insets(10, 10, 10, 10);
 
         // Icon
-        JLabel iconLabel = new JLabel(new ImageIcon("C:\\\\Users\\\\User\\\\IdeaProjects\\\\Pokemon2\\\\src\\\\res\\\\GUI usage\\\\pokemon-trainer.png"));
+        JLabel iconLabel = new JLabel(new ImageIcon(currentWorkingDir + "/src/res/GUI usage/pokemon-trainer.png"));
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 3;
@@ -313,9 +315,14 @@ public class register extends JFrame {
             } else {
                 // Check if passwords match
                 if (password.equals(confirmPassword)) {
-                    JOptionPane.showMessageDialog(register.this, "Registration successful!");
-                    new ScriptGUI(username);
-                    dispose();
+					saveGame = new SaveGame();
+					if (saveGame.registerGUI(username, password)) {
+                        JOptionPane.showMessageDialog(register.this, "Registration successful!");
+                        new ScriptGUI(username);
+                        dispose();
+					} else {
+						JOptionPane.showMessageDialog(register.this, "Username already exists. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+					}
                 } else {
                     JOptionPane.showMessageDialog(register.this, "Passwords do not match. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
