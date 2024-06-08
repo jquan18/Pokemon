@@ -123,7 +123,7 @@ public class Pokemon{
     }
 
 	public void setLevelManual(int level) {
-		this.levelSystem.setLevel(this, level);
+		this.levelSystem.setLevelManual(this, level);
 	}
 
     public int getAttack() {
