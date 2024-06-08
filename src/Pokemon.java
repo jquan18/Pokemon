@@ -37,7 +37,7 @@ public class Pokemon{
     }
 
 	//for savegame loadgame
-	public Pokemon(String name, String[] type,int maxHP, int HP,int attack, int defense, int speed, String QMName,String QMType, int QMDamage, String MMName, String MMType, int MMDamage) {
+	public Pokemon(String name, String[] type,int maxHP, int HP,int attack, int defense, int speed, String QMName,String QMType, int QMDamage, String MMName, String MMType, int MMDamage, int level) {
         this.name = name;
         this.type = new Type(type);
         this.attack = attack;
@@ -50,6 +50,9 @@ public class Pokemon{
         this.levelSystem = new LevelSystem();
         this.master = "Trainer";
         this.typeString = type;
+
+		//Set level
+		this.levelSystem.setLevelManual(this, level);
     }
 
     public void useMove(int index, Pokemon enemy) {
@@ -114,9 +117,15 @@ public class Pokemon{
 	public Type getType() {
 		return type;
 	}
+
     public void setLevel(String location) {
 		this.levelSystem.setDefaultLevel(location, this);
     }
+
+	public void setLevelManual(int level) {
+		this.levelSystem.setLevel(this, level);
+	}
+
     public int getAttack() {
         return this.attack;
     }

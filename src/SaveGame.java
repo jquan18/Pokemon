@@ -281,8 +281,8 @@ public class SaveGame {
 				}
 
 				String savePokemonQuery = "REPLACE INTO pokemon (save_id, pokeslot, name, type, hp, maxHP, attack, defense, speed, " +
-						"quickMoveName, quickMoveType, quickMoveDamage, quickMovePoints, mainMoveName, mainMoveType, mainMoveDamage, mainMovePoints) " +
-						"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+						"quickMoveName, quickMoveType, quickMoveDamage, quickMovePoints, mainMoveName, mainMoveType, mainMoveDamage, mainMovePoints, level) " +
+						"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				try (PreparedStatement savePokemonStmt = connection.prepareStatement(savePokemonQuery)) {
 					for (int i = 0; i < pokemonList.getAllPokemon().size(); i++) {
 						Pokemon pokemon = pokemonList.getAllPokemon().get(i);
@@ -306,6 +306,7 @@ public class SaveGame {
 						savePokemonStmt.setString(15, String.join(",", pokemon.mainMove.getMovesType().getMovesTypeString()));
 						savePokemonStmt.setInt(16, pokemon.mainMove.getDPR());
 						savePokemonStmt.setInt(17, pokemon.mainMove.MMPoint);
+						savePokemonStmt.setInt(18, pokemon.getLevel());
 
 						savePokemonStmt.addBatch();
 					}
@@ -373,8 +374,9 @@ public class SaveGame {
 							String mainMoveType = pokemonResultSet.getString("mainMoveType");
 							int mainMoveDamage = pokemonResultSet.getInt("mainMoveDamage");
 							int mainMovePoints = pokemonResultSet.getInt("mainMovePoints");
+							int level = pokemonResultSet.getInt("level");
 
-							Pokemon pokemon = new Pokemon(name, type, maxHP, hp, attack, defense, speed, quickMoveName, quickMoveType, quickMoveDamage, mainMoveName, mainMoveType, mainMoveDamage);
+							Pokemon pokemon = new Pokemon(name, type, maxHP, hp, attack, defense, speed, quickMoveName, quickMoveType, quickMoveDamage, mainMoveName, mainMoveType, mainMoveDamage, level);
 							pokemon.quickMove.QMPoint = quickMovePoints;
 							pokemon.mainMove.MMPoint = mainMovePoints;
 

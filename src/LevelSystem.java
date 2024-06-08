@@ -51,6 +51,11 @@ public class LevelSystem {
         this.currentEXP = EXP;
     }
 
+	public void setLevelManual(Pokemon pokemon, int level) {
+		currentLevel = level;
+		currentEXP = RequiredEXP[currentLevel - 1];
+	}
+
     public void setDefaultLevel(String location, Pokemon pokemon) {
         switch (location) {
             case "Pallet Town": {
