@@ -1,6 +1,7 @@
+Gary
 Pidgeotto,Normal,Flying,63,60,55,71,Gust,Flying,40,Quick Attack,Normal,60
-Rhydon,Ground,Rock,105,130,120,40,Smack Down,Rock,50,Bullzone,Ground,60
+Rhydon,Ground,Rock,60,65,55,40,Smack Down,Rock,50,Bullzone,Ground,60
 Exeggcute,Grass,Psychic,60,40,80,40,Bullet Seed,Grass,25,Mega Drain,Grass,40
-Gyarados,Water,Flying,95,125,100,81,Splash,Normal,30,Tackle,Normal,50
-Alakazam,Psychic,,55,50,45,120,Psycho Cut,Psychic,70,Future Sight,Psychic,120
-Charizard,Fire,Flying,78,108,85,100,Ember,Fire,40,Dragon Rage,Dragon,70
+Gyarados,Water,Flying,50,70,60,81,Splash,Normal,30,Tackle,Normal,50
+Alakazam,Psychic,,75,55,50,120,Psycho Cut,Psychic,70,Future Sight,Psychic,120
+Charizard,Fire,Flying,70,70,55,100,Ember,Fire,40,Dragon Rage,Dragon,70
