@@ -20,7 +20,6 @@ public class Music {
             DataLine.Info info = new DataLine.Info(Clip.class, format);
             Clip clip = (Clip) AudioSystem.getLine(info);
             clip.open(audioStream);
-            // clip.start();
             // Add a LineListener to restart the clip when playback ends
             clip.addLineListener(new LineListener() {
                 int repeatCount = 30; // Set the desired number of repeats
@@ -33,8 +32,7 @@ public class Music {
                             clip.setFramePosition(0);
                             clip.start();
                         } else {
-                            // Close the clip when all repeats are finished
-                            clip.close();
+                            clip.close(); // Constructor to initialize Gary with a given name and load his Pokémon
                         }
                     }
                 }

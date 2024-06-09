@@ -7,7 +7,7 @@ public class inputReader {
     public inputReader() {
         inputReader = "";
     }
-    // Use for read Pokemon based on enemy type from database
+
     public static void readPokemon(String file, Enemy enemy) {
         try {
             Scanner reader = new Scanner(new File(file));
