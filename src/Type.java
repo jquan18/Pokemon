@@ -1,5 +1,7 @@
 public class Type {
     private String[] type;
+
+    // The counter relationship of whole type of Pokemon
     private final double[][] counterMatrix = {
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0, 1, 1, 0.5, 1 },
             { 1, 0.5, 0.5, 2, 1, 2, 1, 1, 1, 1, 1, 2, 0.5, 1, 0.5, 1, 2, 1 },
@@ -30,6 +32,7 @@ public class Type {
         return this.type;
     }
 
+    //Use for TypeTester
     public void typeCounter(Pokemon own, Pokemon enemy) {
         int trainerTypeIndex = 0;
         int enemyTypeIndex = 0;
@@ -63,6 +66,7 @@ public class Type {
         }
     }
 
+    // When A received attack from B, the effectiveness of Pokemon is based on the type of move for this Pokemon and the type of Opposite Pokemon.
     public double moveCounter(String[] own, String[] opposite) {
         int trainerMoveIndex = 0;
         double total = 1;
