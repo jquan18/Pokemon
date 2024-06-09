@@ -161,6 +161,19 @@ public class CityController {
                 case "0": {
                     if (currentCity.equalsIgnoreCase(City.fateBattle)) {
                         bt = new battleSystem(this.trainer, new Gary("Gary"));
+                        int totalHP = 0;
+                        for (int i=0; i<trainer.trainerBag.pokemonList.list.size(); i++) {
+                            if (trainer.trainerBag.pokemonList.list.get(i) == null )
+                                break;
+                            totalHP += trainer.trainerBag.pokemonList.list.get(i).HP;
+                        }
+
+                        if (totalHP <= 0) {
+                            Script.BadEnding();
+                        }
+                        else
+                            Script.HappyEnding();
+                        System. exit(0);
                     }
                     else {
                         System.out.println("Invalid move!");
@@ -174,7 +187,6 @@ public class CityController {
             System.out.println();
         }
     }
-
     public static void pokemaze() {
         char[][] maze = {
                 {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
@@ -536,35 +548,4 @@ public class CityController {
         }
         System.out.println("\n");
     }
-
-
-
-// tester for shortest path
-//    public static void main(String[] args) {
-//        CityController hi = new CityController();
-//        city = new ArrayList<>();
-//        currentCityStack = new Stack<>();
-//        String[] cityList = new String[]{"Pallet Town", "Viridian City", "Pewter City", "Cerulean City", "Vermilion City", "Lavender Town", "Celadon City", "Fuschia City", "Saffron City", "Cinnabar Island"};
-//        int[][][] adjacent = new int[][][]{{{1, 5}, {9, 7}}, {{0, 5}, {2, 8}}, {{1, 8}, {3, 12}}, {{2, 12}, {8, 6}, {5, 9}}, {{8, 4}, {5, 5}, {7, 7}}, {{3, 9}, {8, 3}, {4, 5}, {7, 11}}, {{7, 10}, {8, 4}}, {{4, 7}, {6, 10}, {5, 11}, {9, 5}}, {{3, 6}, {5, 3}, {4, 3}, {6, 4}}, {{0, 7}, {7, 5}}};
-//
-//        //add cities to ArrayList
-//        for (int i = 0; i < 10; i++) {
-//            City newCity = new City(cityList[i]); // Create new City object
-//            newCity.setAdjacent(adjacent[i]); // Set adjacent array
-//            city.add(newCity);
-//        }
-//
-//        //((City) city.get(0)).displayCity();
-//        currentCityStack.push(city.getFirst());
-//
-//        hi.dijkstra();
-//
-//    }
-
-    //Safari Zone tester class
-//    public static void main(String[] args) {
-//        CityController hi = new CityController();
-//
-//        hi.safariZone();
-//    }
 }
