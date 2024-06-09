@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.logging.Level;
 
 public class LevelSystem {
+    // Array to store the required EXP for each level
     int[] RequiredEXP = new int[50];
     int currentEXP = 0,previousLevel=1, currentLevel=1;
 
@@ -10,24 +11,26 @@ public class LevelSystem {
     }
     public void initializeRequiredEXP() {
         for (int i=1; i<RequiredEXP.length; i++) {
+            // Set initial EXP requirement
             RequiredEXP[0] = 100;
-            if (i>=30) {
+            if (i>=30) {   // level 30 and above ranged 300
                 RequiredEXP[i] = RequiredEXP[i-1] + 300;
             }
-            else if (i>=20) {
+            else if (i>=20) {  // level 10-30 ranged 200
                 RequiredEXP[i] = RequiredEXP[i-1] + 200;
             }
-            else {
+            else {  // level 1-10 ranged 100
                 RequiredEXP[i] = RequiredEXP[i-1] + 100;
             }
         }
     }
-
+    // To add EXP and check for level up
     public void addEXP(Pokemon pokemon, int EXP) {
         System.out.println(pokemon.getName() + " earn "+ EXP + " EXP points");
         currentEXP += EXP;
         LevelUp(pokemon);
     }
+
     public void LevelUp(Pokemon pokemon) {
         previousLevel = currentLevel;
         //Set level 50 stop growth
@@ -37,6 +40,7 @@ public class LevelSystem {
                 break;
             }
         }
+        // if pokemon leveled up, increase attributes
         if (currentLevel > previousLevel) {
             System.out.printf("%s [ Level.%d ] --> [ Level.%d ]\n",pokemon.getName(),previousLevel,currentLevel);
             attributesIncrease(pokemon);
@@ -56,6 +60,7 @@ public class LevelSystem {
         currentEXP = RequiredEXP[currentLevel - 1];
     }
 
+    // set default level of pokemon based on location
     public void setDefaultLevel(String location, Pokemon pokemon) {
         switch (location) {
             case "Pallet Town": {
@@ -140,6 +145,7 @@ public class LevelSystem {
         this.currentEXP = RequiredEXP[currentLevel-1];
         attributesIncrease(pokemon);
     }
+
     public void attributesIncrease(Pokemon pokemon) {
         int evPoint = currentLevel - previousLevel;
         pokemon.HP += (evPoint*2) ;
