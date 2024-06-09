@@ -5,19 +5,24 @@ import java.util.Random;
 /*
 QM = quick move (low damage, but more change )
 MM = Main move (High damage, but less change)
+
+Create a Pokemon class to store each Pokemon as an independent object.
+Type of Pokemon also just a new object type, the effectiveness of pokemon will automaticcally cal in every battle
+LevelSystem used for set pokemon level based on their living area
+master is use for catch pokemon, trainer only can catch the pokemon without master.
+Moves will have further explain in its class
  */
 public class Pokemon{
     int maxHP, HP, speed, attack, defense;
     String name;
     Type type;
-//    private ArrayList<Moves> moves = new ArrayList<>();
     QuickMove quickMove;
     MainMove mainMove;
     LevelSystem levelSystem;
     String master;
     String[] typeString;
 
-
+// Load pokemon from Pokemon database
     public Pokemon() {
         this(null, null, 0, 0,0, 0, null, null, 0, null, null, 0 );
     }
@@ -26,7 +31,7 @@ public class Pokemon{
         this.type = new Type(type);
         this.attack = attack;
         this.defense = defense;
-        this.speed = speed;
+        this.speed = speed;     // Detect the priority of pokemon to attack
         this.maxHP = HP;
         this.HP = HP;
         this.quickMove = new QuickMove(QMName, QMType, QMDamage);
@@ -55,6 +60,7 @@ public class Pokemon{
 		this.levelSystem.setLevelManual(this, level);
     }
 
+    // For pokemon to use QuickMove or MainMove based on their selection in battlesystem, damage is calculated in this method
     public void useMove(int index, Pokemon enemy) {
         int value = 0;
         switch (index) {
@@ -78,16 +84,19 @@ public class Pokemon{
         receiveDamage(value, enemy);
     }
 
+    // Receive damage from opposite pokemon, for trainer, opposite is WildPokemon/Gary/GymLeader. for them, opposite is Trainer
     public void receiveDamage(int value, Pokemon enemy) {
         enemy.HP -= value;
         System.out.printf("%s received %d points damage!", enemy.getName(), value);
         if (enemy.HP < 0)
             enemy.HP = 0;
     }
+    // Display basic info of current pokemon
     public void displayPokemonStatus() {
         System.out.print(this.name);
         System.out.printf("--HP: [ %s ](%s/%s)\n", getHpBar(), this.HP, this.maxHP);
     }
+
     public String getHpBar() {
         int barLength = 10;
         int bar = Math.abs((int) Math.round((double) this.HP / maxHP * barLength));
@@ -122,6 +131,7 @@ public class Pokemon{
 		this.levelSystem.setDefaultLevel(location, this);
     }
 
+    // Use for savegame to set the level
 	public void setLevelManual(int level) {
 		this.levelSystem.setLevelManual(this, level);
 	}
