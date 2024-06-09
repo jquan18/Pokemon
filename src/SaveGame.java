@@ -52,7 +52,13 @@ public class SaveGame {
 				}
 				break;
 			default:
-				System.out.println("Invalid choice.");
+				System.out.println("Invalid choice. Please enter the correct choice.");
+				System.out.println("1. Register");
+				System.out.println("2. Login");
+				System.out.print("Choose an option: ");
+				int newChoice = sc.nextInt();
+				sc.nextLine();
+				saveGameMainChoice(newChoice);
 				break;
 		}
 	}
@@ -214,6 +220,7 @@ public class SaveGame {
 				break;
 			default:
 				System.out.println("Invalid choice.");
+				gameMenu(username);
 				break;
 		}
 	}
@@ -221,6 +228,11 @@ public class SaveGame {
 	public void startNewGame(String username) {
 		System.out.print("Choose a save slot (1, 2, 3): ");
 		int slot = sc.nextInt();
+		if (slot < 1 || slot > 3) {
+			System.out.println("Invalid slot number.");
+			startNewGame(username);
+			return;
+		}
 		this.slot = slot;
 		sc.nextLine();
 
@@ -334,6 +346,11 @@ public class SaveGame {
 	public void loadGame(String username) {
 		System.out.print("Choose a save slot (1, 2, 3): ");
 		int slot = sc.nextInt();
+		if (slot < 1 || slot > 3) {
+			System.out.println("Invalid slot number.");
+			loadGame(username);
+			return;
+		}
 		sc.nextLine();
 		this.slot = slot;
 
