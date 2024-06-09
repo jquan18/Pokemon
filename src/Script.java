@@ -140,6 +140,66 @@ public class Script {
                 """;
         typeWriterEffect2(s1);
     }
+
+    public static void BadEnding() {
+        String s1 = """
+                After defeating you, Gary leaves with disdain, and you stay at the point, unable to accept your defeat.
+                Suddenly! You feel a wave of dizziness. 
+                .
+                ..
+                ...
+                ....
+                You black out and pass out! 
+                .
+                ..
+                ...
+                BRICH   : Hi! Sorry to keep you waiting!
+                BRICH   : Welcome to the world of POKEMON!
+                BRICH   : My name is BRICH! But everyone calls me the POKEMON PROG!
+                
+                You realise that you seem to be stuck in a loop of some sort! 
+                .
+                ..
+                ...
+                Just somewhere in the town, a statue of an Ouroboros is flowing with some sort of mysterious bright light!
+                """;
+        typeWriterEffect2(s1);
+    }
+    public static void HappyEnding() {
+        String s1 = """
+                You got the win! 
+                Gary sends his best wishes for your might, 
+                and your mother and Brich prof came to cheer you on! 
+                Your name is forever etched in the history books of this town. 
+                
+                Your name will always be remembered!
+                .
+                ..
+                ... 
+                At night, you end the day's festivities and fall asleep in your bed. 
+                .
+                ..
+                ...
+                You wake up suddenly, standing up and walking to the window, 
+                the skyscrapers in front of you, 
+                no Pokémon following around the passersby on the streets. 
+                
+                You feel a sharp pain in your head as you recall everything! 
+                You seem to have had a beautiful dream.... 
+                Or .....
+                maybe it was travelling to another world? 
+                
+                But it was something you couldn't share with others. 
+                You recorded everything that happened, and the diary contains one more page of magnificent history,
+                waiting to be discovered by future generations.
+                
+                Years later, 
+                the diary is inadvertently taken out by your descendant, 
+                who learns the story and decides to make a game out of the experience!
+                
+                """;
+        typeWriterEffect2(s1);
+    }
 	
     public static void typeWriterEffect1(String str ) {
         char[] c = str.toCharArray();
@@ -166,4 +226,5 @@ public class Script {
             }
         }
     }
+
 }
