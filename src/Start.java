@@ -16,7 +16,7 @@ public class Start extends JFrame {
         setLocationRelativeTo(null);
 
 		String currentWorkingDir = System.getProperty("user.dir");
-        // playMusic(currentWorkingDir + "/src/res/GUI usage/Pokémon partners of different generations dancing _POKÉDANCE_ Animation Music Video.wav");
+         playMusic(currentWorkingDir + "/src/res/GUI usage/Pokémon partners of different generations dancing _POKÉDANCE_ Animation Music Video.wav");
 
 
         // Load the background image
