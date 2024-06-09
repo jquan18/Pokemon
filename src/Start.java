@@ -49,7 +49,6 @@ public class Start extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Intro intro = new Intro(Start.this, getSize());
-           //     register rg = new register(Start.this, getSize());
 
                 // Hide the current Intro GUI
                 setVisible(false);
@@ -69,7 +68,6 @@ public class Start extends JFrame {
             DataLine.Info info = new DataLine.Info(Clip.class, format);
             Clip clip = (Clip) AudioSystem.getLine(info);
             clip.open(audioStream);
-           // clip.start();
             // Add a LineListener to restart the clip when playback ends
             clip.addLineListener(new LineListener() {
                 int repeatCount = 30; // Set the desired number of repeats
@@ -82,8 +80,7 @@ public class Start extends JFrame {
                             clip.setFramePosition(0);
                             clip.start();
                         } else {
-                            // Close the clip when all repeats are finished
-                            clip.close();
+                            clip.close(); // Close the clip when all repeats are finished
                         }
                     }
                 }

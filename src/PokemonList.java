@@ -2,9 +2,7 @@
 import java.io.*;
 import java.util.*;
 
-/*
-PokemonList is used for make a direct change to the list of pokemon. For example, when using cheat code, detect the whole status of the list
- */
+
 public class PokemonList{
 
     ArrayList<Pokemon> list;
@@ -14,6 +12,9 @@ public class PokemonList{
             list.add(null);
         }
     }
+    /*
+    Need to test the catch pokemon. I think remove() will have some problem!
+     */
 
      public void add(int index, Pokemon pokemon) {
          if (index<0 || index> 6)
@@ -35,7 +36,6 @@ public class PokemonList{
          }
 
     }
-    // Check the whole status of pokemon
     public boolean checkStatus(Pokemon pokemon) {
         int totalHP = 0;
         for (int i=0; i<list.size(); i++) {
@@ -57,8 +57,13 @@ public class PokemonList{
         }
         return true;
     }
+//    public Pokemon get(int index) {
+////        if (index < 0 || index > 6) {
+////            throw new NoSuchElementException("PokemonList get(): Index is out of bound.");
+////        }
+//        return list.get(index);
+//    }
 
-    // Change the trainer pokemon list to strongest! tester and developer no need to train their pokemon from zero
     public void useCheatCode() {
         for (int i = 0; i < 6; i++) {
             list.set(i, null);
@@ -95,7 +100,6 @@ public class PokemonList{
 
         }
     }
-    //Use for save game
 	public ArrayList<Pokemon> getAllPokemon() {
         return new ArrayList<>(list);
     }

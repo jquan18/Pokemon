@@ -127,8 +127,8 @@ public class login extends JFrame {
                 saveGame = new SaveGame();
                 if (saveGame.loginGUI(username, password)) {
                     JOptionPane.showMessageDialog(login.this, "Login successful!\nWelcome " + username);
-					saveGame.gameMenu(username);
                     dispose();
+                    saveGame.gameMenu(username);
                 } else {
                     JOptionPane.showMessageDialog(login.this, "Login failed: Invalid username or password.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
